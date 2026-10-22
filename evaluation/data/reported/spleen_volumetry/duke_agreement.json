@@ -1,0 +1,192 @@
+{
+  "n": 28,
+  "excluded": "DSDS_0021",
+  "resamples": 10000,
+  "manual_ml": {
+    "median": 580.9035,
+    "q1": 412.683,
+    "q3": 790.90325,
+    "min": 174.619,
+    "max": 1597.908
+  },
+  "n_manual_gt_1000ml": 6,
+  "dicom_input_identical_to_nifti_input": 28,
+  "pairs": [
+    {
+      "label": "TS-Portable (PACS station, DICOM input) vs manual reference",
+      "n": 28,
+      "ccc": 0.992036,
+      "ccc_ci": [0.986488, 0.996645],
+      "abs_bias_ml": -23.921036,
+      "abs_loa_ml": [-98.969301, 51.12723],
+      "rel_bias_pct": -3.389046,
+      "rel_loa_pct": [-11.352616, 4.574523],
+      "rel_empirical_2.5_97.5_pct": [-12.059808, 2.527856],
+      "median_abs_rel_pct": 3.141168,
+      "median_abs_ml": 13.2505,
+      "max_abs_rel_pct": 13.312152,
+      "n_rel_gt5": 6,
+      "ba_percentile_ci": {
+        "bias": [-4.925367, -1.946816],
+        "loa_low": [-14.138776, -7.811061],
+        "loa_high": [2.527577, 6.162232]
+      }
+    },
+    {
+      "label": "Reference implementation 2.12.0 (workstation) vs manual reference",
+      "n": 28,
+      "ccc": 0.992304,
+      "ccc_ci": [0.986735, 0.996808],
+      "abs_bias_ml": -22.920643,
+      "abs_loa_ml": [-97.480654, 51.639368],
+      "rel_bias_pct": -3.188325,
+      "rel_loa_pct": [-11.05763, 4.68098],
+      "rel_empirical_2.5_97.5_pct": [-12.141397, 2.603017],
+      "median_abs_rel_pct": 3.287509,
+      "median_abs_ml": 12.6185,
+      "max_abs_rel_pct": 13.234487,
+      "n_rel_gt5": 6,
+      "ba_percentile_ci": {
+        "bias": [-4.688567, -1.756237],
+        "loa_low": [-13.957676, -7.421618],
+        "loa_high": [2.516499, 6.312812]
+      }
+    },
+    {
+      "label": "TS-Portable (PACS station, DICOM input) vs reference implementation 2.12.0",
+      "n": 28,
+      "ccc": 0.999988,
+      "ccc_ci": [0.999972, 0.999994],
+      "abs_bias_ml": -1.000393,
+      "abs_loa_ml": [-3.75769, 1.756904],
+      "rel_bias_pct": -0.200857,
+      "rel_loa_pct": [-1.098975, 0.697261],
+      "rel_empirical_2.5_97.5_pct": [-1.240621, 0.100431],
+      "median_abs_rel_pct": 0.093418,
+      "median_abs_ml": 0.592,
+      "max_abs_rel_pct": 2.316702,
+      "n_rel_gt5": 0,
+      "ba_percentile_ci": {
+        "bias": [-0.392525, -0.07144],
+        "loa_low": [-1.791155, -0.308754],
+        "loa_high": [0.149506, 1.081874]
+      }
+    }
+  ],
+  "overlap": {
+    "portable_dicom_vs_manual": {
+      "dsc": {
+        "median": 0.961085,
+        "q1": 0.949625,
+        "q3": 0.967295,
+        "min": 0.92301,
+        "max": 0.97407
+      },
+      "nsd1": {
+        "median": 0.85176,
+        "q1": 0.793392,
+        "q3": 0.879182,
+        "min": 0.70922,
+        "max": 0.92268
+      },
+      "nsd2": {
+        "median": 0.943125,
+        "q1": 0.915398,
+        "q3": 0.961732,
+        "min": 0.81172,
+        "max": 0.9809
+      },
+      "nsd3": {
+        "median": 0.980815,
+        "q1": 0.956078,
+        "q3": 0.991145,
+        "min": 0.87349,
+        "max": 0.99957
+      }
+    },
+    "ref2120_vs_manual": {
+      "dsc": {
+        "median": 0.96236,
+        "q1": 0.949575,
+        "q3": 0.967408,
+        "min": 0.9235,
+        "max": 0.97472
+      },
+      "nsd1": {
+        "median": 0.857435,
+        "q1": 0.811012,
+        "q3": 0.8815,
+        "min": 0.71141,
+        "max": 0.92308
+      },
+      "nsd2": {
+        "median": 0.94353,
+        "q1": 0.924092,
+        "q3": 0.962445,
+        "min": 0.81308,
+        "max": 0.981
+      },
+      "nsd3": {
+        "median": 0.98097,
+        "q1": 0.962705,
+        "q3": 0.991095,
+        "min": 0.87564,
+        "max": 0.99944
+      }
+    },
+    "portable_dicom_vs_ref2120": {
+      "dsc": {
+        "median": 0.998295,
+        "q1": 0.994628,
+        "q3": 0.999122,
+        "min": 0.97165,
+        "max": 0.99948
+      },
+      "nsd1": {
+        "median": 0.996245,
+        "q1": 0.990915,
+        "q3": 0.998802,
+        "min": 0.936,
+        "max": 0.99952
+      },
+      "nsd2": {
+        "median": 0.99995,
+        "q1": 0.999262,
+        "q3": 1,
+        "min": 0.99045,
+        "max": 1
+      },
+      "nsd3": {
+        "median": 1,
+        "q1": 0.999928,
+        "q3": 1,
+        "min": 0.99306,
+        "max": 1
+      }
+    }
+  },
+  "timing": {
+    "n": 28,
+    "nifti_s": {
+      "median": 6.3995,
+      "q1": 4.673,
+      "q3": 8.40025,
+      "min": 4.047,
+      "max": 12.746
+    },
+    "dicom_s": {
+      "median": 6.4765,
+      "q1": 4.87525,
+      "q3": 8.5895,
+      "min": 4.107,
+      "max": 13.287
+    },
+    "dicom_minus_nifti_s": {
+      "median": 0.124,
+      "q1": 0.044,
+      "q3": 0.24525,
+      "min": -0.168,
+      "max": 0.541
+    }
+  }
+}

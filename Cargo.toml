@@ -1,0 +1,55 @@
+[package]
+name = "ts-portable"
+version = "1.0.0"
+edition = "2024"
+description = "TS-Portable: 8-bit integer TotalSegmentator for CT organ segmentation on the CPU (command line and desktop app)"
+authors = ["Jeong Hyun Lee"]
+license = "Apache-2.0"
+repository = "https://github.com/sigjhl/ts-portable"
+autobins = false
+
+# The library crate keeps this name whatever the package is called, so the
+# `use onnx_totalseg_rs::...` imports in the binaries survive a package rename.
+[lib]
+name = "onnx_totalseg_rs"
+path = "src/lib.rs"
+
+[[bin]]
+name = "onnx-totalseg"
+path = "src/main.rs"
+
+# Friendly desktop front-end. Spawns the onnx-totalseg binary (the tested CLI
+# crop-cascade path) and shows per-organ volume and HU. No console window.
+[[bin]]
+name = "onnx-totalseg-gui"
+path = "src/gui_main.rs"
+
+[dependencies]
+eframe = { version = "0.31", default-features = false, features = ["glow", "default_fonts", "wayland", "x11"] }
+rfd = "0.15"
+anyhow = "1.0"
+byteordered = "0.6"
+clap = { version = "4.5", features = ["derive"] }
+dicom-object = { version = "0.10.0", features = ["inventory-registry"] }
+dicom-pixeldata = { version = "0.10.0", features = ["ndarray", "openjp2"] }
+flate2 = "1.0"
+image = { version = "0.25.6", default-features = false, features = ["png"] }
+libloading = "0.9"
+ndarray = "0.17"
+ndarray16 = { package = "ndarray", version = "0.16" }
+nifti = { version = "0.17.0", default-features = false, features = ["ndarray_volumes"] }
+ort = { version = "2.0.0-rc.12", default-features = false, features = [
+  "std",
+  "ndarray",
+  "load-dynamic",
+  "api-22",
+  "cuda",
+  "directml",
+  "openvino",
+] }
+rayon = "1.10"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tempfile = "3.12"
+walkdir = "2.5"
+zip = { version = "6.0", default-features = false, features = ["deflate"] }

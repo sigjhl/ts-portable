@@ -1,0 +1,98 @@
+{
+ "spleen_only_gpu": {
+  "n": 100,
+  "volume_240_vs_2120": {
+   "ccc": 0.9999927681254455,
+   "rel_bias_pct": -0.0033537035409560278,
+   "rel_loa_pct": [
+    -0.34920131341634947,
+    0.3424939063344374
+   ],
+   "median_abs_rel_pct": 0.014651992575954533,
+   "n_rel_gt2": 0
+  },
+  "volume_240_vs_manual": {
+   "ccc": 0.989404175555823,
+   "rel_bias_pct": -6.85239227211801,
+   "rel_loa_pct": [
+    -32.939233094424225,
+    19.2344485501882
+   ],
+   "median_abs_rel_pct": 4.895303812448697,
+   "n_rel_gt2": 84
+  },
+  "volume_2120_vs_manual": {
+   "ccc": 0.989445813465962,
+   "rel_bias_pct": -6.845974193563173,
+   "rel_loa_pct": [
+    -32.99010298046154,
+    19.298154593335198
+   ],
+   "median_abs_rel_pct": 4.872123748872265,
+   "n_rel_gt2": 83
+  },
+  "dsc_vs_manual_240_mean": 0.9431376698104755,
+  "dsc_vs_manual_2120_mean": 0.943308314084301,
+  "dsc_240_vs_2120_mean": 0.9986510602474704,
+  "dsc_240_vs_2120_min": 0.9828326012077134,
+  "identical_masks": 10
+ },
+ "full_gpu": {
+  "n": 100,
+  "mean_dsc_vs_manual_240": 0.8495776388853152,
+  "mean_dsc_vs_manual_2120": 0.8495097522066306,
+  "per_case_diff_2120_minus_240_mean": -6.788667868464659e-05,
+  "per_case_diff_abs_max": 0.006954159086719813,
+  "direct_dsc_by_organ_mean": {
+   "spleen": 0.9995671072320281,
+   "kidney_right": 0.9995004317316718,
+   "kidney_left": 0.9997609577646561,
+   "gallbladder": 0.9965270948594149,
+   "esophagus": 0.9961332953449101,
+   "liver": 0.9993676372351092,
+   "stomach": 0.9988543813704208,
+   "aorta": 0.998505857021246,
+   "inferior_vena_cava": 0.9982877007781097,
+   "pancreas": 0.9983898452321718,
+   "adrenal_gland_right": 0.995511914221261,
+   "adrenal_gland_left": 0.9974362361670698,
+   "duodenum": 0.9972228192071347,
+   "urinary_bladder": 0.9991234961123996,
+   "prostate": 0.9993293600312197
+  },
+  "direct_dsc_by_organ_min": {
+   "spleen": 0.9940463539359362,
+   "kidney_right": 0.9945234494635556,
+   "kidney_left": 0.9949659171838438,
+   "gallbladder": 0.8825797406239047,
+   "esophagus": 0.9589485055815629,
+   "liver": 0.9928291280604448,
+   "stomach": 0.9837913955046181,
+   "aorta": 0.9568778549186386,
+   "inferior_vena_cava": 0.9764213197969543,
+   "pancreas": 0.9668958702186354,
+   "adrenal_gland_right": 0.9335965541995693,
+   "adrenal_gland_left": 0.9400551793328317,
+   "duodenum": 0.917456920408841,
+   "urinary_bladder": 0.9828565057550854,
+   "prostate": 0.9886678217920376
+  }
+ },
+ "timing_median_wall_s": {
+  "ts2120|spleen|gpu": {
+   "n": 100,
+   "median": 16.354999999999997,
+   "p90": 18.734
+  },
+  "ts240|spleen|gpu": {
+   "n": 100,
+   "median": 14.780000000000001,
+   "p90": 16.845
+  },
+  "ts240|full|gpu": {
+   "n": 100,
+   "median": 51.66,
+   "p90": 73.65299999999999
+  }
+ }
+}

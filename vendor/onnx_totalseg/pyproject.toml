@@ -1,0 +1,31 @@
+[project]
+name = "onnx-totalseg"
+version = "0.1.0"
+description = "Dependency-light ONNX Runtime port of TotalSegmentator's CT inference path (CPU/any-GPU plugin)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+# Runtime deps ONLY (the shipped plugin). No torch, no nnunetv2.
+# Export toolkit deps (torch/nnunetv2/totalsegmentator/onnx) are layered at dev time
+# via `uv run --with`, against the existing stock TS venv — never shipped.
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "scikit-image>=0.21",
+    "nibabel>=5.0",
+    "onnxruntime>=1.17",
+    "isal>=1.8.0",
+    "pydicom>=3.0.2",
+    "dicom2nifti>=2.6.2",
+]
+
+[project.scripts]
+onnx-totalseg = "onnx_totalseg.cli:main"
+onnx-totalseg-serve = "onnx_totalseg.server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/onnx_totalseg"]

@@ -1,0 +1,46 @@
+# Builds and tests the Rust runtime on the three desktop platforms on every push and pull
+# request, and runs the evaluation code's unit tests. Release zips come from windows-bundle.yml.
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  rust:
+    name: Rust (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Linux desktop libraries (GUI build)
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y libgtk-3-dev libxkbcommon-dev pkg-config
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: Build
+        run: cargo build --locked --bins
+      - name: Test
+        run: cargo test --locked
+      - name: CLI runs
+        run: cargo run --locked --bin onnx-totalseg -- --version
+
+  evaluation:
+    name: Evaluation code tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: pip install numpy scipy nibabel surface-distance==0.1
+      - name: Unit tests
+        run: python -m unittest discover -s evaluation/scoring -p 'test_*.py'

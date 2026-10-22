@@ -1,0 +1,101 @@
+# Builds the Windows app zip: the GUI and CLI, the OpenVINO runtime libraries,
+# third-party license notices, and an empty models\ folder. The INT8 models are
+# not bundled; users download ts-portable-models.zip from the Hugging
+# Face models repository and unzip it into the app folder (see the README).
+#
+# Pushing a `v*` tag publishes the zip as a GitHub Release asset with a
+# build-provenance attestation (public repositories only); a tag with a hyphen,
+# such as v0.1.0-rc1, publishes a pre-release. A manual run only
+# builds and checks; it uploads nothing.
+name: Windows bundle
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write      # create the release
+  id-token: write      # sign the attestation
+  attestations: write
+
+jobs:
+  bundle:
+    runs-on: windows-latest
+    env:
+      BUNDLE: ts-portable-windows
+      MODELS_URL: https://huggingface.co/sigjhl/ts-portable/resolve/main/ts-portable-models.zip
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Test
+        run: cargo test --release --locked
+
+      - name: Build
+        run: cargo build --release --locked --bins
+
+      - name: Stage bundle
+        run: |
+          # prepare_windows_openvino.ps1 copies a models directory; give it one
+          # holding only download instructions.
+          New-Item -ItemType Directory -Force models | Out-Null
+          @(
+            "Download the INT8 models:"
+            "  $env:MODELS_URL"
+            "and unzip it into the app folder (the folder holding onnx-totalseg-gui.exe),"
+            "so that this models folder receives the 15 model files. Checksums are in"
+            "models\SHA256SUMS.txt inside the zip."
+          ) | Set-Content -Encoding utf8 models\README.txt
+          & deployment\prepare_windows_openvino.ps1 -StagingDir "dist\$env:BUNDLE" -ModelsDir models -Force
+          Copy-Item target\release\onnx-totalseg-gui.exe "dist\$env:BUNDLE\"
+          # Third-party license notices from the runtime wheels.
+          $licenses = New-Item -ItemType Directory -Force "dist\$env:BUNDLE\licenses"
+          foreach ($pkg in Get-ChildItem .pkg-cache -Directory) {
+            Get-ChildItem $pkg.FullName -Recurse -File |
+              Where-Object { $_.Name -match '^(LICENSE|NOTICE|ThirdPartyNotices|third-party-programs)' } |
+              ForEach-Object {
+                $rel = $_.FullName.Substring($pkg.FullName.Length + 1) -replace '[\\/]', '_'
+                Copy-Item $_.FullName (Join-Path $licenses "$($pkg.Name)_$rel")
+              }
+          }
+
+      - name: Smoke test
+        run: |
+          & "dist\$env:BUNDLE\onnx-totalseg.exe" --help
+          if ($LASTEXITCODE -ne 0) { throw "onnx-totalseg.exe --help failed with exit code $LASTEXITCODE" }
+
+      - name: Zip
+        run: |
+          Compress-Archive -Path "dist\$env:BUNDLE" -DestinationPath "$env:BUNDLE.zip" -CompressionLevel Optimal
+          $hash = (Get-FileHash -Algorithm SHA256 "$env:BUNDLE.zip").Hash.ToLower()
+          "$hash  $env:BUNDLE.zip" | Set-Content -Encoding ascii "$env:BUNDLE.zip.sha256"
+          Get-Content "$env:BUNDLE.zip.sha256"
+          "{0:N1} MB" -f ((Get-Item "$env:BUNDLE.zip").Length / 1MB)
+
+      # Artifact attestations need a public repository on GitHub Free/Pro.
+      - name: Attest build provenance
+        if: startsWith(github.ref, 'refs/tags/v') && github.event.repository.visibility == 'public'
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: ${{ env.BUNDLE }}.zip
+
+      - name: Publish release
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Build the flags as an array literal: assigning the result of an `if`
+          # unrolls a one-element array into a string, and splatting a string
+          # passes it one character at a time.
+          $flags = @('--title', "ts-portable $env:GITHUB_REF_NAME", '--generate-notes', '--verify-tag')
+          # A tag with a hyphen (v0.1.0-rc1, v0.2.0-beta) publishes a pre-release.
+          if ($env:GITHUB_REF_NAME -like '*-*') { $flags += '--prerelease' }
+          gh release create $env:GITHUB_REF_NAME "$env:BUNDLE.zip" "$env:BUNDLE.zip.sha256" @flags
+          if ($LASTEXITCODE -ne 0) { throw "gh release create failed with exit code $LASTEXITCODE" }

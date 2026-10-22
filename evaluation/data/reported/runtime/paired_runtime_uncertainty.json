@@ -1,0 +1,4287 @@
+{
+  "method": "10,000 ordinary paired case-level bootstrap resamples with BCa 95% confidence intervals",
+  "estimands": ["median paired wall-time difference", "ratio of marginal medians"],
+  "direction": "comparator minus/divided by INT8-TS CPU; positive differences and ratios above 1 favor INT8-TS CPU speed",
+  "candidate_condition": "ours_int8_nncf",
+  "cases": "all 100 AMOS22 validation CT cases (n = 100 per arm and tier)",
+  "interpretation": "Intervals quantify sampling variability across the 100 cases; one observation per condition and case does not estimate repeated-run system variability.",
+  "environment": {
+    "R_version": "R version 4.1.2 (2021-11-01)",
+    "boot_version": "1.3.28",
+    "jsonlite_version": "1.7.3"
+  },
+  "comparisons": {
+    "total_segmentator_cpu": {
+      "full": {
+        "tier": "full",
+        "resolution_mm": 1.5,
+        "comparator_condition": "ts_cpu",
+        "n": 100,
+        "candidate_cpu_median_s": 47.995,
+        "comparator_median_s": 342.53,
+        "median_paired_difference_comparator_minus_candidate_s": 293.96,
+        "median_paired_difference": {
+          "method": "BCa",
+          "ci95": [290.83, 298.39],
+          "eligible": true,
+          "warnings": []
+        },
+        "ratio_of_marginal_medians_comparator_over_candidate": 7.13678508177935,
+        "ratio_of_marginal_medians": {
+          "method": "BCa",
+          "ci95": [7.07752341311134, 7.20977554017202],
+          "eligible": true,
+          "warnings": []
+        },
+        "candidate_faster_case_count": 100,
+        "bootstrap": {
+          "implementation": "R boot::boot and boot::boot.ci",
+          "package_version": "1.3.28",
+          "method": "ordinary paired case bootstrap; BCa 95% confidence interval",
+          "replicates": 10000,
+          "seed": 20260721,
+          "rng": "Mersenne-Twister; Inversion; Rejection"
+        },
+        "pairs": [
+          {
+            "case": "amos_0008",
+            "candidate_cpu_s": 64.38,
+            "comparator_s": 456.65
+          },
+          {
+            "case": "amos_0013",
+            "candidate_cpu_s": 47.18,
+            "comparator_s": 345.09
+          },
+          {
+            "case": "amos_0018",
+            "candidate_cpu_s": 62.58,
+            "comparator_s": 456.19
+          },
+          {
+            "case": "amos_0022",
+            "candidate_cpu_s": 63.6,
+            "comparator_s": 466.86
+          },
+          {
+            "case": "amos_0029",
+            "candidate_cpu_s": 62.79,
+            "comparator_s": 453.19
+          },
+          {
+            "case": "amos_0032",
+            "candidate_cpu_s": 63.62,
+            "comparator_s": 474.37
+          },
+          {
+            "case": "amos_0034",
+            "candidate_cpu_s": 62.12,
+            "comparator_s": 446.91
+          },
+          {
+            "case": "amos_0040",
+            "candidate_cpu_s": 62.04,
+            "comparator_s": 442.11
+          },
+          {
+            "case": "amos_0041",
+            "candidate_cpu_s": 47.48,
+            "comparator_s": 342.67
+          },
+          {
+            "case": "amos_0051",
+            "candidate_cpu_s": 47.5,
+            "comparator_s": 343.74
+          },
+          {
+            "case": "amos_0056",
+            "candidate_cpu_s": 49.09,
+            "comparator_s": 362.81
+          },
+          {
+            "case": "amos_0061",
+            "candidate_cpu_s": 47.59,
+            "comparator_s": 328.76
+          },
+          {
+            "case": "amos_0063",
+            "candidate_cpu_s": 62.81,
+            "comparator_s": 445.96
+          },
+          {
+            "case": "amos_0070",
+            "candidate_cpu_s": 62.62,
+            "comparator_s": 448.68
+          },
+          {
+            "case": "amos_0073",
+            "candidate_cpu_s": 47.66,
+            "comparator_s": 348.17
+          },
+          {
+            "case": "amos_0085",
+            "candidate_cpu_s": 62.18,
+            "comparator_s": 445.22
+          },
+          {
+            "case": "amos_0087",
+            "candidate_cpu_s": 47.54,
+            "comparator_s": 339.75
+          },
+          {
+            "case": "amos_0090",
+            "candidate_cpu_s": 82.75,
+            "comparator_s": 600.57
+          },
+          {
+            "case": "amos_0106",
+            "candidate_cpu_s": 64.45,
+            "comparator_s": 472.02
+          },
+          {
+            "case": "amos_0108",
+            "candidate_cpu_s": 62.3,
+            "comparator_s": 454
+          },
+          {
+            "case": "amos_0112",
+            "candidate_cpu_s": 64.48,
+            "comparator_s": 466.01
+          },
+          {
+            "case": "amos_0117",
+            "candidate_cpu_s": 62.68,
+            "comparator_s": 449.59
+          },
+          {
+            "case": "amos_0120",
+            "candidate_cpu_s": 47.59,
+            "comparator_s": 344.3
+          },
+          {
+            "case": "amos_0123",
+            "candidate_cpu_s": 62.53,
+            "comparator_s": 453.44
+          },
+          {
+            "case": "amos_0128",
+            "candidate_cpu_s": 48.43,
+            "comparator_s": 351.68
+          },
+          {
+            "case": "amos_0132",
+            "candidate_cpu_s": 79.08,
+            "comparator_s": 581.48
+          },
+          {
+            "case": "amos_0136",
+            "candidate_cpu_s": 62.82,
+            "comparator_s": 447.81
+          },
+          {
+            "case": "amos_0140",
+            "candidate_cpu_s": 64.37,
+            "comparator_s": 460.32
+          },
+          {
+            "case": "amos_0144",
+            "candidate_cpu_s": 77.95,
+            "comparator_s": 563.76
+          },
+          {
+            "case": "amos_0150",
+            "candidate_cpu_s": 50,
+            "comparator_s": 365.74
+          },
+          {
+            "case": "amos_0155",
+            "candidate_cpu_s": 78.24,
+            "comparator_s": 565.86
+          },
+          {
+            "case": "amos_0157",
+            "candidate_cpu_s": 47.57,
+            "comparator_s": 344.41
+          },
+          {
+            "case": "amos_0167",
+            "candidate_cpu_s": 47.56,
+            "comparator_s": 339.04
+          },
+          {
+            "case": "amos_0174",
+            "candidate_cpu_s": 134.59,
+            "comparator_s": 956.01
+          },
+          {
+            "case": "amos_0176",
+            "candidate_cpu_s": 62.48,
+            "comparator_s": 462.21
+          },
+          {
+            "case": "amos_0189",
+            "candidate_cpu_s": 48.19,
+            "comparator_s": 339.35
+          },
+          {
+            "case": "amos_0191",
+            "candidate_cpu_s": 47.84,
+            "comparator_s": 348.16
+          },
+          {
+            "case": "amos_0194",
+            "candidate_cpu_s": 48.08,
+            "comparator_s": 341.77
+          },
+          {
+            "case": "amos_0200",
+            "candidate_cpu_s": 64.39,
+            "comparator_s": 469.22
+          },
+          {
+            "case": "amos_0202",
+            "candidate_cpu_s": 47.47,
+            "comparator_s": 343.64
+          },
+          {
+            "case": "amos_0203",
+            "candidate_cpu_s": 24.83,
+            "comparator_s": 175.91
+          },
+          {
+            "case": "amos_0204",
+            "candidate_cpu_s": 23.97,
+            "comparator_s": 174.35
+          },
+          {
+            "case": "amos_0206",
+            "candidate_cpu_s": 31.41,
+            "comparator_s": 219.81
+          },
+          {
+            "case": "amos_0207",
+            "candidate_cpu_s": 48.97,
+            "comparator_s": 342.25
+          },
+          {
+            "case": "amos_0208",
+            "candidate_cpu_s": 23.73,
+            "comparator_s": 168.14
+          },
+          {
+            "case": "amos_0216",
+            "candidate_cpu_s": 24.73,
+            "comparator_s": 175.83
+          },
+          {
+            "case": "amos_0218",
+            "candidate_cpu_s": 47.62,
+            "comparator_s": 340.4
+          },
+          {
+            "case": "amos_0219",
+            "candidate_cpu_s": 23.67,
+            "comparator_s": 174.7
+          },
+          {
+            "case": "amos_0223",
+            "candidate_cpu_s": 23.98,
+            "comparator_s": 170.91
+          },
+          {
+            "case": "amos_0228",
+            "candidate_cpu_s": 62.61,
+            "comparator_s": 438.86
+          },
+          {
+            "case": "amos_0233",
+            "candidate_cpu_s": 63.18,
+            "comparator_s": 446.17
+          },
+          {
+            "case": "amos_0238",
+            "candidate_cpu_s": 48.16,
+            "comparator_s": 335.99
+          },
+          {
+            "case": "amos_0244",
+            "candidate_cpu_s": 63.6,
+            "comparator_s": 461.83
+          },
+          {
+            "case": "amos_0247",
+            "candidate_cpu_s": 31.52,
+            "comparator_s": 222.15
+          },
+          {
+            "case": "amos_0250",
+            "candidate_cpu_s": 31.31,
+            "comparator_s": 219.06
+          },
+          {
+            "case": "amos_0255",
+            "candidate_cpu_s": 63.29,
+            "comparator_s": 445.97
+          },
+          {
+            "case": "amos_0257",
+            "candidate_cpu_s": 61.76,
+            "comparator_s": 437.54
+          },
+          {
+            "case": "amos_0258",
+            "candidate_cpu_s": 30.53,
+            "comparator_s": 220.98
+          },
+          {
+            "case": "amos_0278",
+            "candidate_cpu_s": 48.41,
+            "comparator_s": 339.67
+          },
+          {
+            "case": "amos_0280",
+            "candidate_cpu_s": 23.36,
+            "comparator_s": 169.04
+          },
+          {
+            "case": "amos_0283",
+            "candidate_cpu_s": 23.75,
+            "comparator_s": 169.52
+          },
+          {
+            "case": "amos_0284",
+            "candidate_cpu_s": 23.71,
+            "comparator_s": 172.71
+          },
+          {
+            "case": "amos_0286",
+            "candidate_cpu_s": 48.36,
+            "comparator_s": 334.96
+          },
+          {
+            "case": "amos_0287",
+            "candidate_cpu_s": 84.37,
+            "comparator_s": 603.52
+          },
+          {
+            "case": "amos_0289",
+            "candidate_cpu_s": 47.71,
+            "comparator_s": 339.6
+          },
+          {
+            "case": "amos_0290",
+            "candidate_cpu_s": 23.51,
+            "comparator_s": 166.07
+          },
+          {
+            "case": "amos_0292",
+            "candidate_cpu_s": 47.44,
+            "comparator_s": 333.81
+          },
+          {
+            "case": "amos_0293",
+            "candidate_cpu_s": 30.82,
+            "comparator_s": 218.44
+          },
+          {
+            "case": "amos_0304",
+            "candidate_cpu_s": 23.53,
+            "comparator_s": 167.73
+          },
+          {
+            "case": "amos_0308",
+            "candidate_cpu_s": 23,
+            "comparator_s": 166.38
+          },
+          {
+            "case": "amos_0309",
+            "candidate_cpu_s": 48.54,
+            "comparator_s": 342.39
+          },
+          {
+            "case": "amos_0310",
+            "candidate_cpu_s": 31.29,
+            "comparator_s": 223.14
+          },
+          {
+            "case": "amos_0311",
+            "candidate_cpu_s": 23.35,
+            "comparator_s": 166.66
+          },
+          {
+            "case": "amos_0313",
+            "candidate_cpu_s": 48.33,
+            "comparator_s": 339.16
+          },
+          {
+            "case": "amos_0316",
+            "candidate_cpu_s": 47.94,
+            "comparator_s": 344.68
+          },
+          {
+            "case": "amos_0318",
+            "candidate_cpu_s": 23.37,
+            "comparator_s": 168.38
+          },
+          {
+            "case": "amos_0323",
+            "candidate_cpu_s": 47.67,
+            "comparator_s": 334.92
+          },
+          {
+            "case": "amos_0325",
+            "candidate_cpu_s": 47.89,
+            "comparator_s": 347.85
+          },
+          {
+            "case": "amos_0326",
+            "candidate_cpu_s": 29.72,
+            "comparator_s": 211.35
+          },
+          {
+            "case": "amos_0328",
+            "candidate_cpu_s": 61.95,
+            "comparator_s": 440.35
+          },
+          {
+            "case": "amos_0333",
+            "candidate_cpu_s": 47.62,
+            "comparator_s": 332.45
+          },
+          {
+            "case": "amos_0334",
+            "candidate_cpu_s": 29.5,
+            "comparator_s": 213.84
+          },
+          {
+            "case": "amos_0339",
+            "candidate_cpu_s": 23.6,
+            "comparator_s": 167.31
+          },
+          {
+            "case": "amos_0342",
+            "candidate_cpu_s": 30.32,
+            "comparator_s": 216.67
+          },
+          {
+            "case": "amos_0344",
+            "candidate_cpu_s": 30.5,
+            "comparator_s": 220.33
+          },
+          {
+            "case": "amos_0346",
+            "candidate_cpu_s": 22.79,
+            "comparator_s": 165.52
+          },
+          {
+            "case": "amos_0352",
+            "candidate_cpu_s": 47.26,
+            "comparator_s": 331.7
+          },
+          {
+            "case": "amos_0356",
+            "candidate_cpu_s": 46.87,
+            "comparator_s": 332.13
+          },
+          {
+            "case": "amos_0357",
+            "candidate_cpu_s": 31.33,
+            "comparator_s": 220.88
+          },
+          {
+            "case": "amos_0363",
+            "candidate_cpu_s": 47.48,
+            "comparator_s": 333.49
+          },
+          {
+            "case": "amos_0364",
+            "candidate_cpu_s": 62.09,
+            "comparator_s": 431.77
+          },
+          {
+            "case": "amos_0365",
+            "candidate_cpu_s": 49.63,
+            "comparator_s": 348.6
+          },
+          {
+            "case": "amos_0368",
+            "candidate_cpu_s": 48.22,
+            "comparator_s": 334.89
+          },
+          {
+            "case": "amos_0372",
+            "candidate_cpu_s": 49.11,
+            "comparator_s": 343.6
+          },
+          {
+            "case": "amos_0373",
+            "candidate_cpu_s": 49.32,
+            "comparator_s": 343.39
+          },
+          {
+            "case": "amos_0377",
+            "candidate_cpu_s": 24.4,
+            "comparator_s": 171.61
+          },
+          {
+            "case": "amos_0385",
+            "candidate_cpu_s": 83.16,
+            "comparator_s": 574.01
+          },
+          {
+            "case": "amos_0397",
+            "candidate_cpu_s": 47.7,
+            "comparator_s": 332.02
+          },
+          {
+            "case": "amos_0399",
+            "candidate_cpu_s": 48.05,
+            "comparator_s": 338.88
+          },
+          {
+            "case": "amos_0409",
+            "candidate_cpu_s": 48.6,
+            "comparator_s": 347.47
+          }
+        ]
+      },
+      "fast": {
+        "tier": "fast",
+        "resolution_mm": 3,
+        "comparator_condition": "ts_cpu",
+        "n": 100,
+        "candidate_cpu_median_s": 3.87,
+        "comparator_median_s": 27.28,
+        "median_paired_difference_comparator_minus_candidate_s": 23.225,
+        "median_paired_difference": {
+          "method": "BCa",
+          "ci95": [19.515, 24.14],
+          "eligible": true,
+          "warnings": []
+        },
+        "ratio_of_marginal_medians_comparator_over_candidate": 7.04909560723514,
+        "ratio_of_marginal_medians": {
+          "method": "BCa",
+          "ci95": [6.5757180156658, 7.25024559381568],
+          "eligible": true,
+          "warnings": []
+        },
+        "candidate_faster_case_count": 100,
+        "bootstrap": {
+          "implementation": "R boot::boot and boot::boot.ci",
+          "package_version": "1.3.28",
+          "method": "ordinary paired case bootstrap; BCa 95% confidence interval",
+          "replicates": 10000,
+          "seed": 20260722,
+          "rng": "Mersenne-Twister; Inversion; Rejection"
+        },
+        "pairs": [
+          {
+            "case": "amos_0008",
+            "candidate_cpu_s": 4.81,
+            "comparator_s": 31.21
+          },
+          {
+            "case": "amos_0013",
+            "candidate_cpu_s": 3.87,
+            "comparator_s": 27.47
+          },
+          {
+            "case": "amos_0018",
+            "candidate_cpu_s": 5.28,
+            "comparator_s": 36.74
+          },
+          {
+            "case": "amos_0022",
+            "candidate_cpu_s": 5.97,
+            "comparator_s": 39.88
+          },
+          {
+            "case": "amos_0029",
+            "candidate_cpu_s": 5.73,
+            "comparator_s": 39.38
+          },
+          {
+            "case": "amos_0032",
+            "candidate_cpu_s": 5.28,
+            "comparator_s": 38.04
+          },
+          {
+            "case": "amos_0034",
+            "candidate_cpu_s": 5.21,
+            "comparator_s": 35.32
+          },
+          {
+            "case": "amos_0040",
+            "candidate_cpu_s": 4.05,
+            "comparator_s": 29.3
+          },
+          {
+            "case": "amos_0041",
+            "candidate_cpu_s": 3.84,
+            "comparator_s": 27.55
+          },
+          {
+            "case": "amos_0051",
+            "candidate_cpu_s": 3.84,
+            "comparator_s": 27.14
+          },
+          {
+            "case": "amos_0056",
+            "candidate_cpu_s": 4.6,
+            "comparator_s": 31.96
+          },
+          {
+            "case": "amos_0061",
+            "candidate_cpu_s": 3.66,
+            "comparator_s": 27.94
+          },
+          {
+            "case": "amos_0063",
+            "candidate_cpu_s": 5.26,
+            "comparator_s": 37.8
+          },
+          {
+            "case": "amos_0070",
+            "candidate_cpu_s": 5.76,
+            "comparator_s": 39.8
+          },
+          {
+            "case": "amos_0073",
+            "candidate_cpu_s": 3.87,
+            "comparator_s": 27.71
+          },
+          {
+            "case": "amos_0085",
+            "candidate_cpu_s": 3.77,
+            "comparator_s": 24.87
+          },
+          {
+            "case": "amos_0087",
+            "candidate_cpu_s": 3.8,
+            "comparator_s": 27.68
+          },
+          {
+            "case": "amos_0090",
+            "candidate_cpu_s": 5.32,
+            "comparator_s": 37.55
+          },
+          {
+            "case": "amos_0106",
+            "candidate_cpu_s": 5.84,
+            "comparator_s": 39.56
+          },
+          {
+            "case": "amos_0108",
+            "candidate_cpu_s": 5.26,
+            "comparator_s": 35.75
+          },
+          {
+            "case": "amos_0112",
+            "candidate_cpu_s": 4.6,
+            "comparator_s": 30.96
+          },
+          {
+            "case": "amos_0117",
+            "candidate_cpu_s": 5.68,
+            "comparator_s": 36.67
+          },
+          {
+            "case": "amos_0120",
+            "candidate_cpu_s": 3.9,
+            "comparator_s": 27.05
+          },
+          {
+            "case": "amos_0123",
+            "candidate_cpu_s": 5.24,
+            "comparator_s": 36.05
+          },
+          {
+            "case": "amos_0128",
+            "candidate_cpu_s": 4.55,
+            "comparator_s": 30.1
+          },
+          {
+            "case": "amos_0132",
+            "candidate_cpu_s": 5.61,
+            "comparator_s": 39.35
+          },
+          {
+            "case": "amos_0136",
+            "candidate_cpu_s": 5.23,
+            "comparator_s": 35.83
+          },
+          {
+            "case": "amos_0140",
+            "candidate_cpu_s": 5.85,
+            "comparator_s": 38.43
+          },
+          {
+            "case": "amos_0144",
+            "candidate_cpu_s": 6.84,
+            "comparator_s": 44.82
+          },
+          {
+            "case": "amos_0150",
+            "candidate_cpu_s": 4.6,
+            "comparator_s": 31.39
+          },
+          {
+            "case": "amos_0155",
+            "candidate_cpu_s": 5.46,
+            "comparator_s": 38.04
+          },
+          {
+            "case": "amos_0157",
+            "candidate_cpu_s": 3.92,
+            "comparator_s": 28.06
+          },
+          {
+            "case": "amos_0167",
+            "candidate_cpu_s": 3.9,
+            "comparator_s": 28.35
+          },
+          {
+            "case": "amos_0174",
+            "candidate_cpu_s": 5.55,
+            "comparator_s": 42.05
+          },
+          {
+            "case": "amos_0176",
+            "candidate_cpu_s": 3.5,
+            "comparator_s": 25.5
+          },
+          {
+            "case": "amos_0189",
+            "candidate_cpu_s": 3.14,
+            "comparator_s": 20.95
+          },
+          {
+            "case": "amos_0191",
+            "candidate_cpu_s": 4.5,
+            "comparator_s": 28.81
+          },
+          {
+            "case": "amos_0194",
+            "candidate_cpu_s": 4.12,
+            "comparator_s": 28.37
+          },
+          {
+            "case": "amos_0200",
+            "candidate_cpu_s": 5.56,
+            "comparator_s": 39.59
+          },
+          {
+            "case": "amos_0202",
+            "candidate_cpu_s": 3.87,
+            "comparator_s": 27.61
+          },
+          {
+            "case": "amos_0203",
+            "candidate_cpu_s": 3.18,
+            "comparator_s": 17.46
+          },
+          {
+            "case": "amos_0204",
+            "candidate_cpu_s": 2.99,
+            "comparator_s": 16.77
+          },
+          {
+            "case": "amos_0206",
+            "candidate_cpu_s": 3.73,
+            "comparator_s": 20.08
+          },
+          {
+            "case": "amos_0207",
+            "candidate_cpu_s": 5.24,
+            "comparator_s": 30.86
+          },
+          {
+            "case": "amos_0208",
+            "candidate_cpu_s": 2.99,
+            "comparator_s": 16.76
+          },
+          {
+            "case": "amos_0216",
+            "candidate_cpu_s": 3.03,
+            "comparator_s": 17.52
+          },
+          {
+            "case": "amos_0218",
+            "candidate_cpu_s": 4.44,
+            "comparator_s": 28.91
+          },
+          {
+            "case": "amos_0219",
+            "candidate_cpu_s": 2.76,
+            "comparator_s": 18.02
+          },
+          {
+            "case": "amos_0223",
+            "candidate_cpu_s": 2.77,
+            "comparator_s": 16.23
+          },
+          {
+            "case": "amos_0228",
+            "candidate_cpu_s": 4.71,
+            "comparator_s": 27.26
+          },
+          {
+            "case": "amos_0233",
+            "candidate_cpu_s": 4.6,
+            "comparator_s": 27.3
+          },
+          {
+            "case": "amos_0238",
+            "candidate_cpu_s": 4.54,
+            "comparator_s": 29.39
+          },
+          {
+            "case": "amos_0244",
+            "candidate_cpu_s": 6.18,
+            "comparator_s": 42.27
+          },
+          {
+            "case": "amos_0247",
+            "candidate_cpu_s": 3.99,
+            "comparator_s": 20.9
+          },
+          {
+            "case": "amos_0250",
+            "candidate_cpu_s": 3.56,
+            "comparator_s": 19.91
+          },
+          {
+            "case": "amos_0255",
+            "candidate_cpu_s": 4.4,
+            "comparator_s": 27.2
+          },
+          {
+            "case": "amos_0257",
+            "candidate_cpu_s": 2.88,
+            "comparator_s": 19.75
+          },
+          {
+            "case": "amos_0258",
+            "candidate_cpu_s": 2.85,
+            "comparator_s": 17.73
+          },
+          {
+            "case": "amos_0278",
+            "candidate_cpu_s": 3.78,
+            "comparator_s": 22.2
+          },
+          {
+            "case": "amos_0280",
+            "candidate_cpu_s": 2.54,
+            "comparator_s": 15.74
+          },
+          {
+            "case": "amos_0283",
+            "candidate_cpu_s": 3.01,
+            "comparator_s": 16.44
+          },
+          {
+            "case": "amos_0284",
+            "candidate_cpu_s": 2.71,
+            "comparator_s": 18.27
+          },
+          {
+            "case": "amos_0286",
+            "candidate_cpu_s": 3.56,
+            "comparator_s": 21.13
+          },
+          {
+            "case": "amos_0287",
+            "candidate_cpu_s": 5.46,
+            "comparator_s": 35.64
+          },
+          {
+            "case": "amos_0289",
+            "candidate_cpu_s": 3.37,
+            "comparator_s": 22.85
+          },
+          {
+            "case": "amos_0290",
+            "candidate_cpu_s": 2.75,
+            "comparator_s": 16.26
+          },
+          {
+            "case": "amos_0292",
+            "candidate_cpu_s": 2.88,
+            "comparator_s": 19.23
+          },
+          {
+            "case": "amos_0293",
+            "candidate_cpu_s": 3.79,
+            "comparator_s": 21.57
+          },
+          {
+            "case": "amos_0304",
+            "candidate_cpu_s": 2.53,
+            "comparator_s": 17.14
+          },
+          {
+            "case": "amos_0308",
+            "candidate_cpu_s": 2.09,
+            "comparator_s": 14.85
+          },
+          {
+            "case": "amos_0309",
+            "candidate_cpu_s": 3.63,
+            "comparator_s": 23.56
+          },
+          {
+            "case": "amos_0310",
+            "candidate_cpu_s": 4.67,
+            "comparator_s": 26.3
+          },
+          {
+            "case": "amos_0311",
+            "candidate_cpu_s": 2.75,
+            "comparator_s": 16.08
+          },
+          {
+            "case": "amos_0313",
+            "candidate_cpu_s": 3.58,
+            "comparator_s": 21.16
+          },
+          {
+            "case": "amos_0316",
+            "candidate_cpu_s": 3.59,
+            "comparator_s": 23.7
+          },
+          {
+            "case": "amos_0318",
+            "candidate_cpu_s": 2.06,
+            "comparator_s": 15.05
+          },
+          {
+            "case": "amos_0323",
+            "candidate_cpu_s": 3.55,
+            "comparator_s": 20.61
+          },
+          {
+            "case": "amos_0325",
+            "candidate_cpu_s": 4.54,
+            "comparator_s": 30.74
+          },
+          {
+            "case": "amos_0326",
+            "candidate_cpu_s": 2.62,
+            "comparator_s": 17.13
+          },
+          {
+            "case": "amos_0328",
+            "candidate_cpu_s": 3.72,
+            "comparator_s": 24.31
+          },
+          {
+            "case": "amos_0333",
+            "candidate_cpu_s": 3.36,
+            "comparator_s": 20.34
+          },
+          {
+            "case": "amos_0334",
+            "candidate_cpu_s": 2.63,
+            "comparator_s": 18.41
+          },
+          {
+            "case": "amos_0339",
+            "candidate_cpu_s": 2.99,
+            "comparator_s": 16.21
+          },
+          {
+            "case": "amos_0342",
+            "candidate_cpu_s": 2.87,
+            "comparator_s": 17.88
+          },
+          {
+            "case": "amos_0344",
+            "candidate_cpu_s": 3.54,
+            "comparator_s": 21.98
+          },
+          {
+            "case": "amos_0346",
+            "candidate_cpu_s": 1.91,
+            "comparator_s": 14.36
+          },
+          {
+            "case": "amos_0352",
+            "candidate_cpu_s": 2.87,
+            "comparator_s": 19.1
+          },
+          {
+            "case": "amos_0356",
+            "candidate_cpu_s": 3.15,
+            "comparator_s": 19.6
+          },
+          {
+            "case": "amos_0357",
+            "candidate_cpu_s": 3.7,
+            "comparator_s": 20.66
+          },
+          {
+            "case": "amos_0363",
+            "candidate_cpu_s": 4.24,
+            "comparator_s": 28.31
+          },
+          {
+            "case": "amos_0364",
+            "candidate_cpu_s": 3.35,
+            "comparator_s": 21.43
+          },
+          {
+            "case": "amos_0365",
+            "candidate_cpu_s": 4.83,
+            "comparator_s": 30.77
+          },
+          {
+            "case": "amos_0368",
+            "candidate_cpu_s": 4.27,
+            "comparator_s": 28.27
+          },
+          {
+            "case": "amos_0372",
+            "candidate_cpu_s": 4.58,
+            "comparator_s": 30.42
+          },
+          {
+            "case": "amos_0373",
+            "candidate_cpu_s": 4.56,
+            "comparator_s": 30.6
+          },
+          {
+            "case": "amos_0377",
+            "candidate_cpu_s": 3.34,
+            "comparator_s": 20.59
+          },
+          {
+            "case": "amos_0385",
+            "candidate_cpu_s": 4.41,
+            "comparator_s": 30.25
+          },
+          {
+            "case": "amos_0397",
+            "candidate_cpu_s": 4.23,
+            "comparator_s": 28.31
+          },
+          {
+            "case": "amos_0399",
+            "candidate_cpu_s": 3.35,
+            "comparator_s": 20.65
+          },
+          {
+            "case": "amos_0409",
+            "candidate_cpu_s": 4.55,
+            "comparator_s": 29.78
+          }
+        ]
+      }
+    },
+    "total_segmentator_rtx_a6000_gpu": {
+      "full": {
+        "tier": "full",
+        "resolution_mm": 1.5,
+        "comparator_condition": "ts_gpu",
+        "n": 100,
+        "candidate_cpu_median_s": 47.995,
+        "comparator_median_s": 61.51,
+        "median_paired_difference_comparator_minus_candidate_s": 15.7,
+        "median_paired_difference": {
+          "method": "BCa",
+          "ci95": [13.045, 19.87],
+          "eligible": true,
+          "warnings": []
+        },
+        "ratio_of_marginal_medians_comparator_over_candidate": 1.28159183248255,
+        "ratio_of_marginal_medians": {
+          "method": "BCa",
+          "ci95": [1.2539415598066, 1.34538151611211],
+          "eligible": true,
+          "warnings": []
+        },
+        "candidate_faster_case_count": 99,
+        "bootstrap": {
+          "implementation": "R boot::boot and boot::boot.ci",
+          "package_version": "1.3.28",
+          "method": "ordinary paired case bootstrap; BCa 95% confidence interval",
+          "replicates": 10000,
+          "seed": 20260721,
+          "rng": "Mersenne-Twister; Inversion; Rejection"
+        },
+        "pairs": [
+          {
+            "case": "amos_0008",
+            "candidate_cpu_s": 64.38,
+            "comparator_s": 86.32
+          },
+          {
+            "case": "amos_0013",
+            "candidate_cpu_s": 47.18,
+            "comparator_s": 58.5
+          },
+          {
+            "case": "amos_0018",
+            "candidate_cpu_s": 62.58,
+            "comparator_s": 77.16
+          },
+          {
+            "case": "amos_0022",
+            "candidate_cpu_s": 63.6,
+            "comparator_s": 82.57
+          },
+          {
+            "case": "amos_0029",
+            "candidate_cpu_s": 62.79,
+            "comparator_s": 79.16
+          },
+          {
+            "case": "amos_0032",
+            "candidate_cpu_s": 63.62,
+            "comparator_s": 89.99
+          },
+          {
+            "case": "amos_0034",
+            "candidate_cpu_s": 62.12,
+            "comparator_s": 68.41
+          },
+          {
+            "case": "amos_0040",
+            "candidate_cpu_s": 62.04,
+            "comparator_s": 67.68
+          },
+          {
+            "case": "amos_0041",
+            "candidate_cpu_s": 47.48,
+            "comparator_s": 58.52
+          },
+          {
+            "case": "amos_0051",
+            "candidate_cpu_s": 47.5,
+            "comparator_s": 60.28
+          },
+          {
+            "case": "amos_0056",
+            "candidate_cpu_s": 49.09,
+            "comparator_s": 74.78
+          },
+          {
+            "case": "amos_0061",
+            "candidate_cpu_s": 47.59,
+            "comparator_s": 56.42
+          },
+          {
+            "case": "amos_0063",
+            "candidate_cpu_s": 62.81,
+            "comparator_s": 71.66
+          },
+          {
+            "case": "amos_0070",
+            "candidate_cpu_s": 62.62,
+            "comparator_s": 71.54
+          },
+          {
+            "case": "amos_0073",
+            "candidate_cpu_s": 47.66,
+            "comparator_s": 61.73
+          },
+          {
+            "case": "amos_0085",
+            "candidate_cpu_s": 62.18,
+            "comparator_s": 67.65
+          },
+          {
+            "case": "amos_0087",
+            "candidate_cpu_s": 47.54,
+            "comparator_s": 60.54
+          },
+          {
+            "case": "amos_0090",
+            "candidate_cpu_s": 82.75,
+            "comparator_s": 93.78
+          },
+          {
+            "case": "amos_0106",
+            "candidate_cpu_s": 64.45,
+            "comparator_s": 96.45
+          },
+          {
+            "case": "amos_0108",
+            "candidate_cpu_s": 62.3,
+            "comparator_s": 72.09
+          },
+          {
+            "case": "amos_0112",
+            "candidate_cpu_s": 64.48,
+            "comparator_s": 86.15
+          },
+          {
+            "case": "amos_0117",
+            "candidate_cpu_s": 62.68,
+            "comparator_s": 69.63
+          },
+          {
+            "case": "amos_0120",
+            "candidate_cpu_s": 47.59,
+            "comparator_s": 61.21
+          },
+          {
+            "case": "amos_0123",
+            "candidate_cpu_s": 62.53,
+            "comparator_s": 72.54
+          },
+          {
+            "case": "amos_0128",
+            "candidate_cpu_s": 48.43,
+            "comparator_s": 69.41
+          },
+          {
+            "case": "amos_0132",
+            "candidate_cpu_s": 79.08,
+            "comparator_s": 105.65
+          },
+          {
+            "case": "amos_0136",
+            "candidate_cpu_s": 62.82,
+            "comparator_s": 75.75
+          },
+          {
+            "case": "amos_0140",
+            "candidate_cpu_s": 64.37,
+            "comparator_s": 84.24
+          },
+          {
+            "case": "amos_0144",
+            "candidate_cpu_s": 77.95,
+            "comparator_s": 93.42
+          },
+          {
+            "case": "amos_0150",
+            "candidate_cpu_s": 50,
+            "comparator_s": 90.75
+          },
+          {
+            "case": "amos_0155",
+            "candidate_cpu_s": 78.24,
+            "comparator_s": 91.87
+          },
+          {
+            "case": "amos_0157",
+            "candidate_cpu_s": 47.57,
+            "comparator_s": 63.5
+          },
+          {
+            "case": "amos_0167",
+            "candidate_cpu_s": 47.56,
+            "comparator_s": 61.49
+          },
+          {
+            "case": "amos_0174",
+            "candidate_cpu_s": 134.59,
+            "comparator_s": 117.96
+          },
+          {
+            "case": "amos_0176",
+            "candidate_cpu_s": 62.48,
+            "comparator_s": 81.6
+          },
+          {
+            "case": "amos_0189",
+            "candidate_cpu_s": 48.19,
+            "comparator_s": 58.69
+          },
+          {
+            "case": "amos_0191",
+            "candidate_cpu_s": 47.84,
+            "comparator_s": 64.16
+          },
+          {
+            "case": "amos_0194",
+            "candidate_cpu_s": 48.08,
+            "comparator_s": 58.01
+          },
+          {
+            "case": "amos_0200",
+            "candidate_cpu_s": 64.39,
+            "comparator_s": 97.03
+          },
+          {
+            "case": "amos_0202",
+            "candidate_cpu_s": 47.47,
+            "comparator_s": 59.97
+          },
+          {
+            "case": "amos_0203",
+            "candidate_cpu_s": 24.83,
+            "comparator_s": 54.34
+          },
+          {
+            "case": "amos_0204",
+            "candidate_cpu_s": 23.97,
+            "comparator_s": 50.68
+          },
+          {
+            "case": "amos_0206",
+            "candidate_cpu_s": 31.41,
+            "comparator_s": 60.36
+          },
+          {
+            "case": "amos_0207",
+            "candidate_cpu_s": 48.97,
+            "comparator_s": 66.5
+          },
+          {
+            "case": "amos_0208",
+            "candidate_cpu_s": 23.73,
+            "comparator_s": 49.27
+          },
+          {
+            "case": "amos_0216",
+            "candidate_cpu_s": 24.73,
+            "comparator_s": 55.54
+          },
+          {
+            "case": "amos_0218",
+            "candidate_cpu_s": 47.62,
+            "comparator_s": 59.33
+          },
+          {
+            "case": "amos_0219",
+            "candidate_cpu_s": 23.67,
+            "comparator_s": 48.52
+          },
+          {
+            "case": "amos_0223",
+            "candidate_cpu_s": 23.98,
+            "comparator_s": 49.75
+          },
+          {
+            "case": "amos_0228",
+            "candidate_cpu_s": 62.61,
+            "comparator_s": 69.18
+          },
+          {
+            "case": "amos_0233",
+            "candidate_cpu_s": 63.18,
+            "comparator_s": 73.35
+          },
+          {
+            "case": "amos_0238",
+            "candidate_cpu_s": 48.16,
+            "comparator_s": 61.25
+          },
+          {
+            "case": "amos_0244",
+            "candidate_cpu_s": 63.6,
+            "comparator_s": 80.01
+          },
+          {
+            "case": "amos_0247",
+            "candidate_cpu_s": 31.52,
+            "comparator_s": 65.18
+          },
+          {
+            "case": "amos_0250",
+            "candidate_cpu_s": 31.31,
+            "comparator_s": 57.41
+          },
+          {
+            "case": "amos_0255",
+            "candidate_cpu_s": 63.29,
+            "comparator_s": 73.11
+          },
+          {
+            "case": "amos_0257",
+            "candidate_cpu_s": 61.76,
+            "comparator_s": 62.77
+          },
+          {
+            "case": "amos_0258",
+            "candidate_cpu_s": 30.53,
+            "comparator_s": 55.82
+          },
+          {
+            "case": "amos_0278",
+            "candidate_cpu_s": 48.41,
+            "comparator_s": 60.06
+          },
+          {
+            "case": "amos_0280",
+            "candidate_cpu_s": 23.36,
+            "comparator_s": 47.53
+          },
+          {
+            "case": "amos_0283",
+            "candidate_cpu_s": 23.75,
+            "comparator_s": 49.74
+          },
+          {
+            "case": "amos_0284",
+            "candidate_cpu_s": 23.71,
+            "comparator_s": 48.29
+          },
+          {
+            "case": "amos_0286",
+            "candidate_cpu_s": 48.36,
+            "comparator_s": 59.33
+          },
+          {
+            "case": "amos_0287",
+            "candidate_cpu_s": 84.37,
+            "comparator_s": 89.23
+          },
+          {
+            "case": "amos_0289",
+            "candidate_cpu_s": 47.71,
+            "comparator_s": 56.93
+          },
+          {
+            "case": "amos_0290",
+            "candidate_cpu_s": 23.51,
+            "comparator_s": 45.23
+          },
+          {
+            "case": "amos_0292",
+            "candidate_cpu_s": 47.44,
+            "comparator_s": 54.47
+          },
+          {
+            "case": "amos_0293",
+            "candidate_cpu_s": 30.82,
+            "comparator_s": 58.71
+          },
+          {
+            "case": "amos_0304",
+            "candidate_cpu_s": 23.53,
+            "comparator_s": 45.03
+          },
+          {
+            "case": "amos_0308",
+            "candidate_cpu_s": 23,
+            "comparator_s": 46.02
+          },
+          {
+            "case": "amos_0309",
+            "candidate_cpu_s": 48.54,
+            "comparator_s": 60.49
+          },
+          {
+            "case": "amos_0310",
+            "candidate_cpu_s": 31.29,
+            "comparator_s": 62.14
+          },
+          {
+            "case": "amos_0311",
+            "candidate_cpu_s": 23.35,
+            "comparator_s": 44.92
+          },
+          {
+            "case": "amos_0313",
+            "candidate_cpu_s": 48.33,
+            "comparator_s": 61.53
+          },
+          {
+            "case": "amos_0316",
+            "candidate_cpu_s": 47.94,
+            "comparator_s": 61.56
+          },
+          {
+            "case": "amos_0318",
+            "candidate_cpu_s": 23.37,
+            "comparator_s": 48.6
+          },
+          {
+            "case": "amos_0323",
+            "candidate_cpu_s": 47.67,
+            "comparator_s": 56.62
+          },
+          {
+            "case": "amos_0325",
+            "candidate_cpu_s": 47.89,
+            "comparator_s": 62.11
+          },
+          {
+            "case": "amos_0326",
+            "candidate_cpu_s": 29.72,
+            "comparator_s": 51.28
+          },
+          {
+            "case": "amos_0328",
+            "candidate_cpu_s": 61.95,
+            "comparator_s": 66.59
+          },
+          {
+            "case": "amos_0333",
+            "candidate_cpu_s": 47.62,
+            "comparator_s": 55.45
+          },
+          {
+            "case": "amos_0334",
+            "candidate_cpu_s": 29.5,
+            "comparator_s": 48.38
+          },
+          {
+            "case": "amos_0339",
+            "candidate_cpu_s": 23.6,
+            "comparator_s": 47
+          },
+          {
+            "case": "amos_0342",
+            "candidate_cpu_s": 30.32,
+            "comparator_s": 55.68
+          },
+          {
+            "case": "amos_0344",
+            "candidate_cpu_s": 30.5,
+            "comparator_s": 54.54
+          },
+          {
+            "case": "amos_0346",
+            "candidate_cpu_s": 22.79,
+            "comparator_s": 43.53
+          },
+          {
+            "case": "amos_0352",
+            "candidate_cpu_s": 47.26,
+            "comparator_s": 54.44
+          },
+          {
+            "case": "amos_0356",
+            "candidate_cpu_s": 46.87,
+            "comparator_s": 49.71
+          },
+          {
+            "case": "amos_0357",
+            "candidate_cpu_s": 31.33,
+            "comparator_s": 60.84
+          },
+          {
+            "case": "amos_0363",
+            "candidate_cpu_s": 47.48,
+            "comparator_s": 57.75
+          },
+          {
+            "case": "amos_0364",
+            "candidate_cpu_s": 62.09,
+            "comparator_s": 64.92
+          },
+          {
+            "case": "amos_0365",
+            "candidate_cpu_s": 49.63,
+            "comparator_s": 78.85
+          },
+          {
+            "case": "amos_0368",
+            "candidate_cpu_s": 48.22,
+            "comparator_s": 65.11
+          },
+          {
+            "case": "amos_0372",
+            "candidate_cpu_s": 49.11,
+            "comparator_s": 76.63
+          },
+          {
+            "case": "amos_0373",
+            "candidate_cpu_s": 49.32,
+            "comparator_s": 79.92
+          },
+          {
+            "case": "amos_0377",
+            "candidate_cpu_s": 24.4,
+            "comparator_s": 53.65
+          },
+          {
+            "case": "amos_0385",
+            "candidate_cpu_s": 83.16,
+            "comparator_s": 86
+          },
+          {
+            "case": "amos_0397",
+            "candidate_cpu_s": 47.7,
+            "comparator_s": 58.67
+          },
+          {
+            "case": "amos_0399",
+            "candidate_cpu_s": 48.05,
+            "comparator_s": 58.21
+          },
+          {
+            "case": "amos_0409",
+            "candidate_cpu_s": 48.6,
+            "comparator_s": 71.93
+          }
+        ]
+      },
+      "fast": {
+        "tier": "fast",
+        "resolution_mm": 3,
+        "comparator_condition": "ts_gpu",
+        "n": 100,
+        "candidate_cpu_median_s": 3.87,
+        "comparator_median_s": 16.06,
+        "median_paired_difference_comparator_minus_candidate_s": 12.275,
+        "median_paired_difference": {
+          "method": "BCa",
+          "ci95": [11.88, 12.61],
+          "eligible": true,
+          "warnings": []
+        },
+        "ratio_of_marginal_medians_comparator_over_candidate": 4.14987080103359,
+        "ratio_of_marginal_medians": {
+          "method": "BCa",
+          "ci95": [3.8113855898803, 4.35856464313451],
+          "eligible": true,
+          "warnings": []
+        },
+        "candidate_faster_case_count": 100,
+        "bootstrap": {
+          "implementation": "R boot::boot and boot::boot.ci",
+          "package_version": "1.3.28",
+          "method": "ordinary paired case bootstrap; BCa 95% confidence interval",
+          "replicates": 10000,
+          "seed": 20260722,
+          "rng": "Mersenne-Twister; Inversion; Rejection"
+        },
+        "pairs": [
+          {
+            "case": "amos_0008",
+            "candidate_cpu_s": 4.81,
+            "comparator_s": 18.99
+          },
+          {
+            "case": "amos_0013",
+            "candidate_cpu_s": 3.87,
+            "comparator_s": 13.79
+          },
+          {
+            "case": "amos_0018",
+            "candidate_cpu_s": 5.28,
+            "comparator_s": 16.06
+          },
+          {
+            "case": "amos_0022",
+            "candidate_cpu_s": 5.97,
+            "comparator_s": 19.67
+          },
+          {
+            "case": "amos_0029",
+            "candidate_cpu_s": 5.73,
+            "comparator_s": 16.79
+          },
+          {
+            "case": "amos_0032",
+            "candidate_cpu_s": 5.28,
+            "comparator_s": 17.21
+          },
+          {
+            "case": "amos_0034",
+            "candidate_cpu_s": 5.21,
+            "comparator_s": 14.86
+          },
+          {
+            "case": "amos_0040",
+            "candidate_cpu_s": 4.05,
+            "comparator_s": 14.85
+          },
+          {
+            "case": "amos_0041",
+            "candidate_cpu_s": 3.84,
+            "comparator_s": 13.79
+          },
+          {
+            "case": "amos_0051",
+            "candidate_cpu_s": 3.84,
+            "comparator_s": 14.24
+          },
+          {
+            "case": "amos_0056",
+            "candidate_cpu_s": 4.6,
+            "comparator_s": 17.56
+          },
+          {
+            "case": "amos_0061",
+            "candidate_cpu_s": 3.66,
+            "comparator_s": 13.43
+          },
+          {
+            "case": "amos_0063",
+            "candidate_cpu_s": 5.26,
+            "comparator_s": 15.87
+          },
+          {
+            "case": "amos_0070",
+            "candidate_cpu_s": 5.76,
+            "comparator_s": 17.73
+          },
+          {
+            "case": "amos_0073",
+            "candidate_cpu_s": 3.87,
+            "comparator_s": 14.09
+          },
+          {
+            "case": "amos_0085",
+            "candidate_cpu_s": 3.77,
+            "comparator_s": 15.08
+          },
+          {
+            "case": "amos_0087",
+            "candidate_cpu_s": 3.8,
+            "comparator_s": 14.06
+          },
+          {
+            "case": "amos_0090",
+            "candidate_cpu_s": 5.32,
+            "comparator_s": 17.32
+          },
+          {
+            "case": "amos_0106",
+            "candidate_cpu_s": 5.84,
+            "comparator_s": 20.34
+          },
+          {
+            "case": "amos_0108",
+            "candidate_cpu_s": 5.26,
+            "comparator_s": 15.41
+          },
+          {
+            "case": "amos_0112",
+            "candidate_cpu_s": 4.6,
+            "comparator_s": 18.94
+          },
+          {
+            "case": "amos_0117",
+            "candidate_cpu_s": 5.68,
+            "comparator_s": 17.48
+          },
+          {
+            "case": "amos_0120",
+            "candidate_cpu_s": 3.9,
+            "comparator_s": 14.21
+          },
+          {
+            "case": "amos_0123",
+            "candidate_cpu_s": 5.24,
+            "comparator_s": 15.55
+          },
+          {
+            "case": "amos_0128",
+            "candidate_cpu_s": 4.55,
+            "comparator_s": 17.59
+          },
+          {
+            "case": "amos_0132",
+            "candidate_cpu_s": 5.61,
+            "comparator_s": 18.94
+          },
+          {
+            "case": "amos_0136",
+            "candidate_cpu_s": 5.23,
+            "comparator_s": 16.05
+          },
+          {
+            "case": "amos_0140",
+            "candidate_cpu_s": 5.85,
+            "comparator_s": 18.97
+          },
+          {
+            "case": "amos_0144",
+            "candidate_cpu_s": 6.84,
+            "comparator_s": 17.67
+          },
+          {
+            "case": "amos_0150",
+            "candidate_cpu_s": 4.6,
+            "comparator_s": 19.68
+          },
+          {
+            "case": "amos_0155",
+            "candidate_cpu_s": 5.46,
+            "comparator_s": 17.68
+          },
+          {
+            "case": "amos_0157",
+            "candidate_cpu_s": 3.92,
+            "comparator_s": 14.6
+          },
+          {
+            "case": "amos_0167",
+            "candidate_cpu_s": 3.9,
+            "comparator_s": 14.11
+          },
+          {
+            "case": "amos_0174",
+            "candidate_cpu_s": 5.55,
+            "comparator_s": 19.46
+          },
+          {
+            "case": "amos_0176",
+            "candidate_cpu_s": 3.5,
+            "comparator_s": 16.06
+          },
+          {
+            "case": "amos_0189",
+            "candidate_cpu_s": 3.14,
+            "comparator_s": 15.65
+          },
+          {
+            "case": "amos_0191",
+            "candidate_cpu_s": 4.5,
+            "comparator_s": 16.71
+          },
+          {
+            "case": "amos_0194",
+            "candidate_cpu_s": 4.12,
+            "comparator_s": 15.6
+          },
+          {
+            "case": "amos_0200",
+            "candidate_cpu_s": 5.56,
+            "comparator_s": 18.36
+          },
+          {
+            "case": "amos_0202",
+            "candidate_cpu_s": 3.87,
+            "comparator_s": 14.02
+          },
+          {
+            "case": "amos_0203",
+            "candidate_cpu_s": 3.18,
+            "comparator_s": 16.1
+          },
+          {
+            "case": "amos_0204",
+            "candidate_cpu_s": 2.99,
+            "comparator_s": 15.68
+          },
+          {
+            "case": "amos_0206",
+            "candidate_cpu_s": 3.73,
+            "comparator_s": 17.76
+          },
+          {
+            "case": "amos_0207",
+            "candidate_cpu_s": 5.24,
+            "comparator_s": 19.23
+          },
+          {
+            "case": "amos_0208",
+            "candidate_cpu_s": 2.99,
+            "comparator_s": 15.55
+          },
+          {
+            "case": "amos_0216",
+            "candidate_cpu_s": 3.03,
+            "comparator_s": 16.36
+          },
+          {
+            "case": "amos_0218",
+            "candidate_cpu_s": 4.44,
+            "comparator_s": 15.46
+          },
+          {
+            "case": "amos_0219",
+            "candidate_cpu_s": 2.76,
+            "comparator_s": 15.19
+          },
+          {
+            "case": "amos_0223",
+            "candidate_cpu_s": 2.77,
+            "comparator_s": 15.31
+          },
+          {
+            "case": "amos_0228",
+            "candidate_cpu_s": 4.71,
+            "comparator_s": 18.57
+          },
+          {
+            "case": "amos_0233",
+            "candidate_cpu_s": 4.6,
+            "comparator_s": 19.02
+          },
+          {
+            "case": "amos_0238",
+            "candidate_cpu_s": 4.54,
+            "comparator_s": 16.91
+          },
+          {
+            "case": "amos_0244",
+            "candidate_cpu_s": 6.18,
+            "comparator_s": 20.08
+          },
+          {
+            "case": "amos_0247",
+            "candidate_cpu_s": 3.99,
+            "comparator_s": 18.89
+          },
+          {
+            "case": "amos_0250",
+            "candidate_cpu_s": 3.56,
+            "comparator_s": 17.32
+          },
+          {
+            "case": "amos_0255",
+            "candidate_cpu_s": 4.4,
+            "comparator_s": 19.13
+          },
+          {
+            "case": "amos_0257",
+            "candidate_cpu_s": 2.88,
+            "comparator_s": 14.14
+          },
+          {
+            "case": "amos_0258",
+            "candidate_cpu_s": 2.85,
+            "comparator_s": 14.4
+          },
+          {
+            "case": "amos_0278",
+            "candidate_cpu_s": 3.78,
+            "comparator_s": 17.08
+          },
+          {
+            "case": "amos_0280",
+            "candidate_cpu_s": 2.54,
+            "comparator_s": 14.26
+          },
+          {
+            "case": "amos_0283",
+            "candidate_cpu_s": 3.01,
+            "comparator_s": 15.34
+          },
+          {
+            "case": "amos_0284",
+            "candidate_cpu_s": 2.71,
+            "comparator_s": 15.42
+          },
+          {
+            "case": "amos_0286",
+            "candidate_cpu_s": 3.56,
+            "comparator_s": 16.53
+          },
+          {
+            "case": "amos_0287",
+            "candidate_cpu_s": 5.46,
+            "comparator_s": 21.78
+          },
+          {
+            "case": "amos_0289",
+            "candidate_cpu_s": 3.37,
+            "comparator_s": 16.03
+          },
+          {
+            "case": "amos_0290",
+            "candidate_cpu_s": 2.75,
+            "comparator_s": 14.84
+          },
+          {
+            "case": "amos_0292",
+            "candidate_cpu_s": 2.88,
+            "comparator_s": 13.44
+          },
+          {
+            "case": "amos_0293",
+            "candidate_cpu_s": 3.79,
+            "comparator_s": 16.98
+          },
+          {
+            "case": "amos_0304",
+            "candidate_cpu_s": 2.53,
+            "comparator_s": 14.41
+          },
+          {
+            "case": "amos_0308",
+            "candidate_cpu_s": 2.09,
+            "comparator_s": 12.5
+          },
+          {
+            "case": "amos_0309",
+            "candidate_cpu_s": 3.63,
+            "comparator_s": 16.84
+          },
+          {
+            "case": "amos_0310",
+            "candidate_cpu_s": 4.67,
+            "comparator_s": 18.07
+          },
+          {
+            "case": "amos_0311",
+            "candidate_cpu_s": 2.75,
+            "comparator_s": 14.45
+          },
+          {
+            "case": "amos_0313",
+            "candidate_cpu_s": 3.58,
+            "comparator_s": 16.69
+          },
+          {
+            "case": "amos_0316",
+            "candidate_cpu_s": 3.59,
+            "comparator_s": 16.73
+          },
+          {
+            "case": "amos_0318",
+            "candidate_cpu_s": 2.06,
+            "comparator_s": 12.92
+          },
+          {
+            "case": "amos_0323",
+            "candidate_cpu_s": 3.55,
+            "comparator_s": 16.33
+          },
+          {
+            "case": "amos_0325",
+            "candidate_cpu_s": 4.54,
+            "comparator_s": 16.42
+          },
+          {
+            "case": "amos_0326",
+            "candidate_cpu_s": 2.62,
+            "comparator_s": 13.51
+          },
+          {
+            "case": "amos_0328",
+            "candidate_cpu_s": 3.72,
+            "comparator_s": 15.33
+          },
+          {
+            "case": "amos_0333",
+            "candidate_cpu_s": 3.36,
+            "comparator_s": 15.55
+          },
+          {
+            "case": "amos_0334",
+            "candidate_cpu_s": 2.63,
+            "comparator_s": 13.55
+          },
+          {
+            "case": "amos_0339",
+            "candidate_cpu_s": 2.99,
+            "comparator_s": 15.18
+          },
+          {
+            "case": "amos_0342",
+            "candidate_cpu_s": 2.87,
+            "comparator_s": 14.17
+          },
+          {
+            "case": "amos_0344",
+            "candidate_cpu_s": 3.54,
+            "comparator_s": 18.07
+          },
+          {
+            "case": "amos_0346",
+            "candidate_cpu_s": 1.91,
+            "comparator_s": 12.2
+          },
+          {
+            "case": "amos_0352",
+            "candidate_cpu_s": 2.87,
+            "comparator_s": 13.64
+          },
+          {
+            "case": "amos_0356",
+            "candidate_cpu_s": 3.15,
+            "comparator_s": 13.86
+          },
+          {
+            "case": "amos_0357",
+            "candidate_cpu_s": 3.7,
+            "comparator_s": 18
+          },
+          {
+            "case": "amos_0363",
+            "candidate_cpu_s": 4.24,
+            "comparator_s": 15.46
+          },
+          {
+            "case": "amos_0364",
+            "candidate_cpu_s": 3.35,
+            "comparator_s": 16.84
+          },
+          {
+            "case": "amos_0365",
+            "candidate_cpu_s": 4.83,
+            "comparator_s": 18.27
+          },
+          {
+            "case": "amos_0368",
+            "candidate_cpu_s": 4.27,
+            "comparator_s": 16.45
+          },
+          {
+            "case": "amos_0372",
+            "candidate_cpu_s": 4.58,
+            "comparator_s": 18.53
+          },
+          {
+            "case": "amos_0373",
+            "candidate_cpu_s": 4.56,
+            "comparator_s": 18.1
+          },
+          {
+            "case": "amos_0377",
+            "candidate_cpu_s": 3.34,
+            "comparator_s": 15.98
+          },
+          {
+            "case": "amos_0385",
+            "candidate_cpu_s": 4.41,
+            "comparator_s": 17.93
+          },
+          {
+            "case": "amos_0397",
+            "candidate_cpu_s": 4.23,
+            "comparator_s": 15.79
+          },
+          {
+            "case": "amos_0399",
+            "candidate_cpu_s": 3.35,
+            "comparator_s": 15.75
+          },
+          {
+            "case": "amos_0409",
+            "candidate_cpu_s": 4.55,
+            "comparator_s": 16.9
+          }
+        ]
+      }
+    },
+    "rust_fp32_openvino_cpu": {
+      "full": {
+        "tier": "full",
+        "resolution_mm": 1.5,
+        "comparator_condition": "ours_fp32",
+        "n": 100,
+        "candidate_cpu_median_s": 47.995,
+        "comparator_median_s": 97.95,
+        "median_paired_difference_comparator_minus_candidate_s": 49.995,
+        "median_paired_difference": {
+          "method": "BCa",
+          "ci95": [49.855, 50.075],
+          "eligible": true,
+          "warnings": []
+        },
+        "ratio_of_marginal_medians_comparator_over_candidate": 2.04083758724867,
+        "ratio_of_marginal_medians": {
+          "method": "BCa",
+          "ci95": [2.02867457452295, 2.05107724645297],
+          "eligible": true,
+          "warnings": []
+        },
+        "candidate_faster_case_count": 100,
+        "bootstrap": {
+          "implementation": "R boot::boot and boot::boot.ci",
+          "package_version": "1.3.28",
+          "method": "ordinary paired case bootstrap; BCa 95% confidence interval",
+          "replicates": 10000,
+          "seed": 20260721,
+          "rng": "Mersenne-Twister; Inversion; Rejection"
+        },
+        "pairs": [
+          {
+            "case": "amos_0008",
+            "candidate_cpu_s": 64.38,
+            "comparator_s": 131.15
+          },
+          {
+            "case": "amos_0013",
+            "candidate_cpu_s": 47.18,
+            "comparator_s": 97.17
+          },
+          {
+            "case": "amos_0018",
+            "candidate_cpu_s": 62.58,
+            "comparator_s": 129.17
+          },
+          {
+            "case": "amos_0022",
+            "candidate_cpu_s": 63.6,
+            "comparator_s": 129.86
+          },
+          {
+            "case": "amos_0029",
+            "candidate_cpu_s": 62.79,
+            "comparator_s": 129.71
+          },
+          {
+            "case": "amos_0032",
+            "candidate_cpu_s": 63.62,
+            "comparator_s": 130.29
+          },
+          {
+            "case": "amos_0034",
+            "candidate_cpu_s": 62.12,
+            "comparator_s": 128.54
+          },
+          {
+            "case": "amos_0040",
+            "candidate_cpu_s": 62.04,
+            "comparator_s": 128.4
+          },
+          {
+            "case": "amos_0041",
+            "candidate_cpu_s": 47.48,
+            "comparator_s": 97.23
+          },
+          {
+            "case": "amos_0051",
+            "candidate_cpu_s": 47.5,
+            "comparator_s": 97.53
+          },
+          {
+            "case": "amos_0056",
+            "candidate_cpu_s": 49.09,
+            "comparator_s": 98.89
+          },
+          {
+            "case": "amos_0061",
+            "candidate_cpu_s": 47.59,
+            "comparator_s": 97.54
+          },
+          {
+            "case": "amos_0063",
+            "candidate_cpu_s": 62.81,
+            "comparator_s": 128.68
+          },
+          {
+            "case": "amos_0070",
+            "candidate_cpu_s": 62.62,
+            "comparator_s": 129.06
+          },
+          {
+            "case": "amos_0073",
+            "candidate_cpu_s": 47.66,
+            "comparator_s": 97.63
+          },
+          {
+            "case": "amos_0085",
+            "candidate_cpu_s": 62.18,
+            "comparator_s": 127.83
+          },
+          {
+            "case": "amos_0087",
+            "candidate_cpu_s": 47.54,
+            "comparator_s": 97.49
+          },
+          {
+            "case": "amos_0090",
+            "candidate_cpu_s": 82.75,
+            "comparator_s": 171.03
+          },
+          {
+            "case": "amos_0106",
+            "candidate_cpu_s": 64.45,
+            "comparator_s": 130.74
+          },
+          {
+            "case": "amos_0108",
+            "candidate_cpu_s": 62.3,
+            "comparator_s": 128.66
+          },
+          {
+            "case": "amos_0112",
+            "candidate_cpu_s": 64.48,
+            "comparator_s": 130.9
+          },
+          {
+            "case": "amos_0117",
+            "candidate_cpu_s": 62.68,
+            "comparator_s": 128.89
+          },
+          {
+            "case": "amos_0120",
+            "candidate_cpu_s": 47.59,
+            "comparator_s": 97.35
+          },
+          {
+            "case": "amos_0123",
+            "candidate_cpu_s": 62.53,
+            "comparator_s": 128.78
+          },
+          {
+            "case": "amos_0128",
+            "candidate_cpu_s": 48.43,
+            "comparator_s": 98.51
+          },
+          {
+            "case": "amos_0132",
+            "candidate_cpu_s": 79.08,
+            "comparator_s": 162.19
+          },
+          {
+            "case": "amos_0136",
+            "candidate_cpu_s": 62.82,
+            "comparator_s": 128.89
+          },
+          {
+            "case": "amos_0140",
+            "candidate_cpu_s": 64.37,
+            "comparator_s": 130.72
+          },
+          {
+            "case": "amos_0144",
+            "candidate_cpu_s": 77.95,
+            "comparator_s": 160.95
+          },
+          {
+            "case": "amos_0150",
+            "candidate_cpu_s": 50,
+            "comparator_s": 99.94
+          },
+          {
+            "case": "amos_0155",
+            "candidate_cpu_s": 78.24,
+            "comparator_s": 160.61
+          },
+          {
+            "case": "amos_0157",
+            "candidate_cpu_s": 47.57,
+            "comparator_s": 97.63
+          },
+          {
+            "case": "amos_0167",
+            "candidate_cpu_s": 47.56,
+            "comparator_s": 97.58
+          },
+          {
+            "case": "amos_0174",
+            "candidate_cpu_s": 134.59,
+            "comparator_s": 281.59
+          },
+          {
+            "case": "amos_0176",
+            "candidate_cpu_s": 62.48,
+            "comparator_s": 128.83
+          },
+          {
+            "case": "amos_0189",
+            "candidate_cpu_s": 48.19,
+            "comparator_s": 97.81
+          },
+          {
+            "case": "amos_0191",
+            "candidate_cpu_s": 47.84,
+            "comparator_s": 98.09
+          },
+          {
+            "case": "amos_0194",
+            "candidate_cpu_s": 48.08,
+            "comparator_s": 98.17
+          },
+          {
+            "case": "amos_0200",
+            "candidate_cpu_s": 64.39,
+            "comparator_s": 130.64
+          },
+          {
+            "case": "amos_0202",
+            "candidate_cpu_s": 47.47,
+            "comparator_s": 97.33
+          },
+          {
+            "case": "amos_0203",
+            "candidate_cpu_s": 24.83,
+            "comparator_s": 47.45
+          },
+          {
+            "case": "amos_0204",
+            "candidate_cpu_s": 23.97,
+            "comparator_s": 46.65
+          },
+          {
+            "case": "amos_0206",
+            "candidate_cpu_s": 31.41,
+            "comparator_s": 61.34
+          },
+          {
+            "case": "amos_0207",
+            "candidate_cpu_s": 48.97,
+            "comparator_s": 99.04
+          },
+          {
+            "case": "amos_0208",
+            "candidate_cpu_s": 23.73,
+            "comparator_s": 46.46
+          },
+          {
+            "case": "amos_0216",
+            "candidate_cpu_s": 24.73,
+            "comparator_s": 47.33
+          },
+          {
+            "case": "amos_0218",
+            "candidate_cpu_s": 47.62,
+            "comparator_s": 97.71
+          },
+          {
+            "case": "amos_0219",
+            "candidate_cpu_s": 23.67,
+            "comparator_s": 46.45
+          },
+          {
+            "case": "amos_0223",
+            "candidate_cpu_s": 23.98,
+            "comparator_s": 46.5
+          },
+          {
+            "case": "amos_0228",
+            "candidate_cpu_s": 62.61,
+            "comparator_s": 129.02
+          },
+          {
+            "case": "amos_0233",
+            "candidate_cpu_s": 63.18,
+            "comparator_s": 129.37
+          },
+          {
+            "case": "amos_0238",
+            "candidate_cpu_s": 48.16,
+            "comparator_s": 97.65
+          },
+          {
+            "case": "amos_0244",
+            "candidate_cpu_s": 63.6,
+            "comparator_s": 129.96
+          },
+          {
+            "case": "amos_0247",
+            "candidate_cpu_s": 31.52,
+            "comparator_s": 61.42
+          },
+          {
+            "case": "amos_0250",
+            "candidate_cpu_s": 31.31,
+            "comparator_s": 61.13
+          },
+          {
+            "case": "amos_0255",
+            "candidate_cpu_s": 63.29,
+            "comparator_s": 129.58
+          },
+          {
+            "case": "amos_0257",
+            "candidate_cpu_s": 61.76,
+            "comparator_s": 127.96
+          },
+          {
+            "case": "amos_0258",
+            "candidate_cpu_s": 30.53,
+            "comparator_s": 60.61
+          },
+          {
+            "case": "amos_0278",
+            "candidate_cpu_s": 48.41,
+            "comparator_s": 98.26
+          },
+          {
+            "case": "amos_0280",
+            "candidate_cpu_s": 23.36,
+            "comparator_s": 46.22
+          },
+          {
+            "case": "amos_0283",
+            "candidate_cpu_s": 23.75,
+            "comparator_s": 46.47
+          },
+          {
+            "case": "amos_0284",
+            "candidate_cpu_s": 23.71,
+            "comparator_s": 46.49
+          },
+          {
+            "case": "amos_0286",
+            "candidate_cpu_s": 48.36,
+            "comparator_s": 98.11
+          },
+          {
+            "case": "amos_0287",
+            "candidate_cpu_s": 84.37,
+            "comparator_s": 172.19
+          },
+          {
+            "case": "amos_0289",
+            "candidate_cpu_s": 47.71,
+            "comparator_s": 97.74
+          },
+          {
+            "case": "amos_0290",
+            "candidate_cpu_s": 23.51,
+            "comparator_s": 46.12
+          },
+          {
+            "case": "amos_0292",
+            "candidate_cpu_s": 47.44,
+            "comparator_s": 97.15
+          },
+          {
+            "case": "amos_0293",
+            "candidate_cpu_s": 30.82,
+            "comparator_s": 60.85
+          },
+          {
+            "case": "amos_0304",
+            "candidate_cpu_s": 23.53,
+            "comparator_s": 46.21
+          },
+          {
+            "case": "amos_0308",
+            "candidate_cpu_s": 23,
+            "comparator_s": 45.8
+          },
+          {
+            "case": "amos_0309",
+            "candidate_cpu_s": 48.54,
+            "comparator_s": 98.34
+          },
+          {
+            "case": "amos_0310",
+            "candidate_cpu_s": 31.29,
+            "comparator_s": 61.25
+          },
+          {
+            "case": "amos_0311",
+            "candidate_cpu_s": 23.35,
+            "comparator_s": 45.79
+          },
+          {
+            "case": "amos_0313",
+            "candidate_cpu_s": 48.33,
+            "comparator_s": 98.52
+          },
+          {
+            "case": "amos_0316",
+            "candidate_cpu_s": 47.94,
+            "comparator_s": 98.3
+          },
+          {
+            "case": "amos_0318",
+            "candidate_cpu_s": 23.37,
+            "comparator_s": 46.01
+          },
+          {
+            "case": "amos_0323",
+            "candidate_cpu_s": 47.67,
+            "comparator_s": 97.56
+          },
+          {
+            "case": "amos_0325",
+            "candidate_cpu_s": 47.89,
+            "comparator_s": 98.09
+          },
+          {
+            "case": "amos_0326",
+            "candidate_cpu_s": 29.72,
+            "comparator_s": 59.81
+          },
+          {
+            "case": "amos_0328",
+            "candidate_cpu_s": 61.95,
+            "comparator_s": 128.32
+          },
+          {
+            "case": "amos_0333",
+            "candidate_cpu_s": 47.62,
+            "comparator_s": 97.48
+          },
+          {
+            "case": "amos_0334",
+            "candidate_cpu_s": 29.5,
+            "comparator_s": 59.57
+          },
+          {
+            "case": "amos_0339",
+            "candidate_cpu_s": 23.6,
+            "comparator_s": 46.19
+          },
+          {
+            "case": "amos_0342",
+            "candidate_cpu_s": 30.32,
+            "comparator_s": 60.17
+          },
+          {
+            "case": "amos_0344",
+            "candidate_cpu_s": 30.5,
+            "comparator_s": 60.38
+          },
+          {
+            "case": "amos_0346",
+            "candidate_cpu_s": 22.79,
+            "comparator_s": 45.38
+          },
+          {
+            "case": "amos_0352",
+            "candidate_cpu_s": 47.26,
+            "comparator_s": 96.98
+          },
+          {
+            "case": "amos_0356",
+            "candidate_cpu_s": 46.87,
+            "comparator_s": 96.78
+          },
+          {
+            "case": "amos_0357",
+            "candidate_cpu_s": 31.33,
+            "comparator_s": 61.13
+          },
+          {
+            "case": "amos_0363",
+            "candidate_cpu_s": 47.48,
+            "comparator_s": 97.77
+          },
+          {
+            "case": "amos_0364",
+            "candidate_cpu_s": 62.09,
+            "comparator_s": 128.56
+          },
+          {
+            "case": "amos_0365",
+            "candidate_cpu_s": 49.63,
+            "comparator_s": 99.62
+          },
+          {
+            "case": "amos_0368",
+            "candidate_cpu_s": 48.22,
+            "comparator_s": 98.13
+          },
+          {
+            "case": "amos_0372",
+            "candidate_cpu_s": 49.11,
+            "comparator_s": 99.17
+          },
+          {
+            "case": "amos_0373",
+            "candidate_cpu_s": 49.32,
+            "comparator_s": 99.32
+          },
+          {
+            "case": "amos_0377",
+            "candidate_cpu_s": 24.4,
+            "comparator_s": 47.09
+          },
+          {
+            "case": "amos_0385",
+            "candidate_cpu_s": 83.16,
+            "comparator_s": 171.66
+          },
+          {
+            "case": "amos_0397",
+            "candidate_cpu_s": 47.7,
+            "comparator_s": 97.75
+          },
+          {
+            "case": "amos_0399",
+            "candidate_cpu_s": 48.05,
+            "comparator_s": 97.7
+          },
+          {
+            "case": "amos_0409",
+            "candidate_cpu_s": 48.6,
+            "comparator_s": 98.64
+          }
+        ]
+      },
+      "fast": {
+        "tier": "fast",
+        "resolution_mm": 3,
+        "comparator_condition": "ours_fp32",
+        "n": 100,
+        "candidate_cpu_median_s": 3.87,
+        "comparator_median_s": 6.34,
+        "median_paired_difference_comparator_minus_candidate_s": 2.24,
+        "median_paired_difference": {
+          "method": "BCa",
+          "ci95": [1.355, 2.34],
+          "eligible": true,
+          "warnings": []
+        },
+        "ratio_of_marginal_medians_comparator_over_candidate": 1.63824289405685,
+        "ratio_of_marginal_medians": {
+          "method": "BCa",
+          "ci95": [1.59662775616083, 1.71815718157182],
+          "eligible": true,
+          "warnings": "extreme order statistics used as endpoints"
+        },
+        "candidate_faster_case_count": 100,
+        "bootstrap": {
+          "implementation": "R boot::boot and boot::boot.ci",
+          "package_version": "1.3.28",
+          "method": "ordinary paired case bootstrap; BCa 95% confidence interval",
+          "replicates": 10000,
+          "seed": 20260722,
+          "rng": "Mersenne-Twister; Inversion; Rejection"
+        },
+        "pairs": [
+          {
+            "case": "amos_0008",
+            "candidate_cpu_s": 4.81,
+            "comparator_s": 7.13
+          },
+          {
+            "case": "amos_0013",
+            "candidate_cpu_s": 3.87,
+            "comparator_s": 6.16
+          },
+          {
+            "case": "amos_0018",
+            "candidate_cpu_s": 5.28,
+            "comparator_s": 8.8
+          },
+          {
+            "case": "amos_0022",
+            "candidate_cpu_s": 5.97,
+            "comparator_s": 9.47
+          },
+          {
+            "case": "amos_0029",
+            "candidate_cpu_s": 5.73,
+            "comparator_s": 9.05
+          },
+          {
+            "case": "amos_0032",
+            "candidate_cpu_s": 5.28,
+            "comparator_s": 8.96
+          },
+          {
+            "case": "amos_0034",
+            "candidate_cpu_s": 5.21,
+            "comparator_s": 8.64
+          },
+          {
+            "case": "amos_0040",
+            "candidate_cpu_s": 4.05,
+            "comparator_s": 6.4
+          },
+          {
+            "case": "amos_0041",
+            "candidate_cpu_s": 3.84,
+            "comparator_s": 6.34
+          },
+          {
+            "case": "amos_0051",
+            "candidate_cpu_s": 3.84,
+            "comparator_s": 6.41
+          },
+          {
+            "case": "amos_0056",
+            "candidate_cpu_s": 4.6,
+            "comparator_s": 6.84
+          },
+          {
+            "case": "amos_0061",
+            "candidate_cpu_s": 3.66,
+            "comparator_s": 6.34
+          },
+          {
+            "case": "amos_0063",
+            "candidate_cpu_s": 5.26,
+            "comparator_s": 8.9
+          },
+          {
+            "case": "amos_0070",
+            "candidate_cpu_s": 5.76,
+            "comparator_s": 9.45
+          },
+          {
+            "case": "amos_0073",
+            "candidate_cpu_s": 3.87,
+            "comparator_s": 6.42
+          },
+          {
+            "case": "amos_0085",
+            "candidate_cpu_s": 3.77,
+            "comparator_s": 5.65
+          },
+          {
+            "case": "amos_0087",
+            "candidate_cpu_s": 3.8,
+            "comparator_s": 6.15
+          },
+          {
+            "case": "amos_0090",
+            "candidate_cpu_s": 5.32,
+            "comparator_s": 8.91
+          },
+          {
+            "case": "amos_0106",
+            "candidate_cpu_s": 5.84,
+            "comparator_s": 9.55
+          },
+          {
+            "case": "amos_0108",
+            "candidate_cpu_s": 5.26,
+            "comparator_s": 8.72
+          },
+          {
+            "case": "amos_0112",
+            "candidate_cpu_s": 4.6,
+            "comparator_s": 7.14
+          },
+          {
+            "case": "amos_0117",
+            "candidate_cpu_s": 5.68,
+            "comparator_s": 9.37
+          },
+          {
+            "case": "amos_0120",
+            "candidate_cpu_s": 3.9,
+            "comparator_s": 6.4
+          },
+          {
+            "case": "amos_0123",
+            "candidate_cpu_s": 5.24,
+            "comparator_s": 8.79
+          },
+          {
+            "case": "amos_0128",
+            "candidate_cpu_s": 4.55,
+            "comparator_s": 6.81
+          },
+          {
+            "case": "amos_0132",
+            "candidate_cpu_s": 5.61,
+            "comparator_s": 9.03
+          },
+          {
+            "case": "amos_0136",
+            "candidate_cpu_s": 5.23,
+            "comparator_s": 8.79
+          },
+          {
+            "case": "amos_0140",
+            "candidate_cpu_s": 5.85,
+            "comparator_s": 9.46
+          },
+          {
+            "case": "amos_0144",
+            "candidate_cpu_s": 6.84,
+            "comparator_s": 11.59
+          },
+          {
+            "case": "amos_0150",
+            "candidate_cpu_s": 4.6,
+            "comparator_s": 7.13
+          },
+          {
+            "case": "amos_0155",
+            "candidate_cpu_s": 5.46,
+            "comparator_s": 8.97
+          },
+          {
+            "case": "amos_0157",
+            "candidate_cpu_s": 3.92,
+            "comparator_s": 6.39
+          },
+          {
+            "case": "amos_0167",
+            "candidate_cpu_s": 3.9,
+            "comparator_s": 6.16
+          },
+          {
+            "case": "amos_0174",
+            "candidate_cpu_s": 5.55,
+            "comparator_s": 9.37
+          },
+          {
+            "case": "amos_0176",
+            "candidate_cpu_s": 3.5,
+            "comparator_s": 5.45
+          },
+          {
+            "case": "amos_0189",
+            "candidate_cpu_s": 3.14,
+            "comparator_s": 4.5
+          },
+          {
+            "case": "amos_0191",
+            "candidate_cpu_s": 4.5,
+            "comparator_s": 6.84
+          },
+          {
+            "case": "amos_0194",
+            "candidate_cpu_s": 4.12,
+            "comparator_s": 6.59
+          },
+          {
+            "case": "amos_0200",
+            "candidate_cpu_s": 5.56,
+            "comparator_s": 9.23
+          },
+          {
+            "case": "amos_0202",
+            "candidate_cpu_s": 3.87,
+            "comparator_s": 6.18
+          },
+          {
+            "case": "amos_0203",
+            "candidate_cpu_s": 3.18,
+            "comparator_s": 3.84
+          },
+          {
+            "case": "amos_0204",
+            "candidate_cpu_s": 2.99,
+            "comparator_s": 3.58
+          },
+          {
+            "case": "amos_0206",
+            "candidate_cpu_s": 3.73,
+            "comparator_s": 4.76
+          },
+          {
+            "case": "amos_0207",
+            "candidate_cpu_s": 5.24,
+            "comparator_s": 7.73
+          },
+          {
+            "case": "amos_0208",
+            "candidate_cpu_s": 2.99,
+            "comparator_s": 3.57
+          },
+          {
+            "case": "amos_0216",
+            "candidate_cpu_s": 3.03,
+            "comparator_s": 3.84
+          },
+          {
+            "case": "amos_0218",
+            "candidate_cpu_s": 4.44,
+            "comparator_s": 6.83
+          },
+          {
+            "case": "amos_0219",
+            "candidate_cpu_s": 2.76,
+            "comparator_s": 3.59
+          },
+          {
+            "case": "amos_0223",
+            "candidate_cpu_s": 2.77,
+            "comparator_s": 3.57
+          },
+          {
+            "case": "amos_0228",
+            "candidate_cpu_s": 4.71,
+            "comparator_s": 6.54
+          },
+          {
+            "case": "amos_0233",
+            "candidate_cpu_s": 4.6,
+            "comparator_s": 6.6
+          },
+          {
+            "case": "amos_0238",
+            "candidate_cpu_s": 4.54,
+            "comparator_s": 6.92
+          },
+          {
+            "case": "amos_0244",
+            "candidate_cpu_s": 6.18,
+            "comparator_s": 9.83
+          },
+          {
+            "case": "amos_0247",
+            "candidate_cpu_s": 3.99,
+            "comparator_s": 4.88
+          },
+          {
+            "case": "amos_0250",
+            "candidate_cpu_s": 3.56,
+            "comparator_s": 4.58
+          },
+          {
+            "case": "amos_0255",
+            "candidate_cpu_s": 4.4,
+            "comparator_s": 6.35
+          },
+          {
+            "case": "amos_0257",
+            "candidate_cpu_s": 2.88,
+            "comparator_s": 4.07
+          },
+          {
+            "case": "amos_0258",
+            "candidate_cpu_s": 2.85,
+            "comparator_s": 3.71
+          },
+          {
+            "case": "amos_0278",
+            "candidate_cpu_s": 3.78,
+            "comparator_s": 4.92
+          },
+          {
+            "case": "amos_0280",
+            "candidate_cpu_s": 2.54,
+            "comparator_s": 3.33
+          },
+          {
+            "case": "amos_0283",
+            "candidate_cpu_s": 3.01,
+            "comparator_s": 3.52
+          },
+          {
+            "case": "amos_0284",
+            "candidate_cpu_s": 2.71,
+            "comparator_s": 3.38
+          },
+          {
+            "case": "amos_0286",
+            "candidate_cpu_s": 3.56,
+            "comparator_s": 4.73
+          },
+          {
+            "case": "amos_0287",
+            "candidate_cpu_s": 5.46,
+            "comparator_s": 7.85
+          },
+          {
+            "case": "amos_0289",
+            "candidate_cpu_s": 3.37,
+            "comparator_s": 4.7
+          },
+          {
+            "case": "amos_0290",
+            "candidate_cpu_s": 2.75,
+            "comparator_s": 3.34
+          },
+          {
+            "case": "amos_0292",
+            "candidate_cpu_s": 2.88,
+            "comparator_s": 4.01
+          },
+          {
+            "case": "amos_0293",
+            "candidate_cpu_s": 3.79,
+            "comparator_s": 5
+          },
+          {
+            "case": "amos_0304",
+            "candidate_cpu_s": 2.53,
+            "comparator_s": 3.32
+          },
+          {
+            "case": "amos_0308",
+            "candidate_cpu_s": 2.09,
+            "comparator_s": 2.87
+          },
+          {
+            "case": "amos_0309",
+            "candidate_cpu_s": 3.63,
+            "comparator_s": 4.94
+          },
+          {
+            "case": "amos_0310",
+            "candidate_cpu_s": 4.67,
+            "comparator_s": 6.47
+          },
+          {
+            "case": "amos_0311",
+            "candidate_cpu_s": 2.75,
+            "comparator_s": 3.56
+          },
+          {
+            "case": "amos_0313",
+            "candidate_cpu_s": 3.58,
+            "comparator_s": 4.74
+          },
+          {
+            "case": "amos_0316",
+            "candidate_cpu_s": 3.59,
+            "comparator_s": 4.78
+          },
+          {
+            "case": "amos_0318",
+            "candidate_cpu_s": 2.06,
+            "comparator_s": 2.84
+          },
+          {
+            "case": "amos_0323",
+            "candidate_cpu_s": 3.55,
+            "comparator_s": 4.69
+          },
+          {
+            "case": "amos_0325",
+            "candidate_cpu_s": 4.54,
+            "comparator_s": 6.85
+          },
+          {
+            "case": "amos_0326",
+            "candidate_cpu_s": 2.62,
+            "comparator_s": 3.69
+          },
+          {
+            "case": "amos_0328",
+            "candidate_cpu_s": 3.72,
+            "comparator_s": 5.59
+          },
+          {
+            "case": "amos_0333",
+            "candidate_cpu_s": 3.36,
+            "comparator_s": 4.76
+          },
+          {
+            "case": "amos_0334",
+            "candidate_cpu_s": 2.63,
+            "comparator_s": 3.71
+          },
+          {
+            "case": "amos_0339",
+            "candidate_cpu_s": 2.99,
+            "comparator_s": 3.55
+          },
+          {
+            "case": "amos_0342",
+            "candidate_cpu_s": 2.87,
+            "comparator_s": 3.62
+          },
+          {
+            "case": "amos_0344",
+            "candidate_cpu_s": 3.54,
+            "comparator_s": 4.63
+          },
+          {
+            "case": "amos_0346",
+            "candidate_cpu_s": 1.91,
+            "comparator_s": 2.61
+          },
+          {
+            "case": "amos_0352",
+            "candidate_cpu_s": 2.87,
+            "comparator_s": 4.07
+          },
+          {
+            "case": "amos_0356",
+            "candidate_cpu_s": 3.15,
+            "comparator_s": 4.24
+          },
+          {
+            "case": "amos_0357",
+            "candidate_cpu_s": 3.7,
+            "comparator_s": 4.63
+          },
+          {
+            "case": "amos_0363",
+            "candidate_cpu_s": 4.24,
+            "comparator_s": 6.61
+          },
+          {
+            "case": "amos_0364",
+            "candidate_cpu_s": 3.35,
+            "comparator_s": 4.75
+          },
+          {
+            "case": "amos_0365",
+            "candidate_cpu_s": 4.83,
+            "comparator_s": 7.07
+          },
+          {
+            "case": "amos_0368",
+            "candidate_cpu_s": 4.27,
+            "comparator_s": 6.64
+          },
+          {
+            "case": "amos_0372",
+            "candidate_cpu_s": 4.58,
+            "comparator_s": 7.09
+          },
+          {
+            "case": "amos_0373",
+            "candidate_cpu_s": 4.56,
+            "comparator_s": 6.83
+          },
+          {
+            "case": "amos_0377",
+            "candidate_cpu_s": 3.34,
+            "comparator_s": 4.53
+          },
+          {
+            "case": "amos_0385",
+            "candidate_cpu_s": 4.41,
+            "comparator_s": 6.9
+          },
+          {
+            "case": "amos_0397",
+            "candidate_cpu_s": 4.23,
+            "comparator_s": 6.66
+          },
+          {
+            "case": "amos_0399",
+            "candidate_cpu_s": 3.35,
+            "comparator_s": 4.5
+          },
+          {
+            "case": "amos_0409",
+            "candidate_cpu_s": 4.55,
+            "comparator_s": 6.89
+          }
+        ]
+      }
+    },
+    "rust_fp32_onnxruntime_cuda_a6000": {
+      "full": {
+        "tier": "full",
+        "resolution_mm": 1.5,
+        "comparator_condition": "ours_fp32_cuda",
+        "n": 100,
+        "candidate_cpu_median_s": 47.995,
+        "comparator_median_s": 16.515,
+        "median_paired_difference_comparator_minus_candidate_s": -31.505,
+        "median_paired_difference": {
+          "method": "BCa",
+          "ci95": [-31.65, -31.43],
+          "eligible": true,
+          "warnings": []
+        },
+        "ratio_of_marginal_medians_comparator_over_candidate": 0.344098343577456,
+        "ratio_of_marginal_medians": {
+          "method": "BCa",
+          "ci95": [0.33760893525824, 0.349442379182156],
+          "eligible": true,
+          "warnings": []
+        },
+        "candidate_faster_case_count": 0,
+        "bootstrap": {
+          "implementation": "R boot::boot and boot::boot.ci",
+          "package_version": "1.3.28",
+          "method": "ordinary paired case bootstrap; BCa 95% confidence interval",
+          "replicates": 10000,
+          "seed": 20260721,
+          "rng": "Mersenne-Twister; Inversion; Rejection"
+        },
+        "pairs": [
+          {
+            "case": "amos_0008",
+            "candidate_cpu_s": 64.38,
+            "comparator_s": 23.13
+          },
+          {
+            "case": "amos_0013",
+            "candidate_cpu_s": 47.18,
+            "comparator_s": 15.78
+          },
+          {
+            "case": "amos_0018",
+            "candidate_cpu_s": 62.58,
+            "comparator_s": 20.3
+          },
+          {
+            "case": "amos_0022",
+            "candidate_cpu_s": 63.6,
+            "comparator_s": 21.23
+          },
+          {
+            "case": "amos_0029",
+            "candidate_cpu_s": 62.79,
+            "comparator_s": 20.77
+          },
+          {
+            "case": "amos_0032",
+            "candidate_cpu_s": 63.62,
+            "comparator_s": 21.62
+          },
+          {
+            "case": "amos_0034",
+            "candidate_cpu_s": 62.12,
+            "comparator_s": 19.82
+          },
+          {
+            "case": "amos_0040",
+            "candidate_cpu_s": 62.04,
+            "comparator_s": 19.78
+          },
+          {
+            "case": "amos_0041",
+            "candidate_cpu_s": 47.48,
+            "comparator_s": 15.75
+          },
+          {
+            "case": "amos_0051",
+            "candidate_cpu_s": 47.5,
+            "comparator_s": 15.98
+          },
+          {
+            "case": "amos_0056",
+            "candidate_cpu_s": 49.09,
+            "comparator_s": 17.65
+          },
+          {
+            "case": "amos_0061",
+            "candidate_cpu_s": 47.59,
+            "comparator_s": 16.06
+          },
+          {
+            "case": "amos_0063",
+            "candidate_cpu_s": 62.81,
+            "comparator_s": 20.19
+          },
+          {
+            "case": "amos_0070",
+            "candidate_cpu_s": 62.62,
+            "comparator_s": 20.65
+          },
+          {
+            "case": "amos_0073",
+            "candidate_cpu_s": 47.66,
+            "comparator_s": 16.15
+          },
+          {
+            "case": "amos_0085",
+            "candidate_cpu_s": 62.18,
+            "comparator_s": 19.52
+          },
+          {
+            "case": "amos_0087",
+            "candidate_cpu_s": 47.54,
+            "comparator_s": 16.04
+          },
+          {
+            "case": "amos_0090",
+            "candidate_cpu_s": 82.75,
+            "comparator_s": 25.91
+          },
+          {
+            "case": "amos_0106",
+            "candidate_cpu_s": 64.45,
+            "comparator_s": 22.16
+          },
+          {
+            "case": "amos_0108",
+            "candidate_cpu_s": 62.3,
+            "comparator_s": 19.97
+          },
+          {
+            "case": "amos_0112",
+            "candidate_cpu_s": 64.48,
+            "comparator_s": 22.29
+          },
+          {
+            "case": "amos_0117",
+            "candidate_cpu_s": 62.68,
+            "comparator_s": 20.32
+          },
+          {
+            "case": "amos_0120",
+            "candidate_cpu_s": 47.59,
+            "comparator_s": 16.03
+          },
+          {
+            "case": "amos_0123",
+            "candidate_cpu_s": 62.53,
+            "comparator_s": 20.13
+          },
+          {
+            "case": "amos_0128",
+            "candidate_cpu_s": 48.43,
+            "comparator_s": 16.94
+          },
+          {
+            "case": "amos_0132",
+            "candidate_cpu_s": 79.08,
+            "comparator_s": 26.14
+          },
+          {
+            "case": "amos_0136",
+            "candidate_cpu_s": 62.82,
+            "comparator_s": 20.37
+          },
+          {
+            "case": "amos_0140",
+            "candidate_cpu_s": 64.37,
+            "comparator_s": 22.1
+          },
+          {
+            "case": "amos_0144",
+            "candidate_cpu_s": 77.95,
+            "comparator_s": 24.82
+          },
+          {
+            "case": "amos_0150",
+            "candidate_cpu_s": 50,
+            "comparator_s": 18.63
+          },
+          {
+            "case": "amos_0155",
+            "candidate_cpu_s": 78.24,
+            "comparator_s": 24.94
+          },
+          {
+            "case": "amos_0157",
+            "candidate_cpu_s": 47.57,
+            "comparator_s": 16.25
+          },
+          {
+            "case": "amos_0167",
+            "candidate_cpu_s": 47.56,
+            "comparator_s": 16.24
+          },
+          {
+            "case": "amos_0174",
+            "candidate_cpu_s": 134.59,
+            "comparator_s": 39.49
+          },
+          {
+            "case": "amos_0176",
+            "candidate_cpu_s": 62.48,
+            "comparator_s": 20.15
+          },
+          {
+            "case": "amos_0189",
+            "candidate_cpu_s": 48.19,
+            "comparator_s": 16.61
+          },
+          {
+            "case": "amos_0191",
+            "candidate_cpu_s": 47.84,
+            "comparator_s": 16.37
+          },
+          {
+            "case": "amos_0194",
+            "candidate_cpu_s": 48.08,
+            "comparator_s": 16.62
+          },
+          {
+            "case": "amos_0200",
+            "candidate_cpu_s": 64.39,
+            "comparator_s": 22.05
+          },
+          {
+            "case": "amos_0202",
+            "candidate_cpu_s": 47.47,
+            "comparator_s": 16.2
+          },
+          {
+            "case": "amos_0203",
+            "candidate_cpu_s": 24.83,
+            "comparator_s": 11.37
+          },
+          {
+            "case": "amos_0204",
+            "candidate_cpu_s": 23.97,
+            "comparator_s": 10.75
+          },
+          {
+            "case": "amos_0206",
+            "candidate_cpu_s": 31.41,
+            "comparator_s": 13.37
+          },
+          {
+            "case": "amos_0207",
+            "candidate_cpu_s": 48.97,
+            "comparator_s": 17.52
+          },
+          {
+            "case": "amos_0208",
+            "candidate_cpu_s": 23.73,
+            "comparator_s": 10.53
+          },
+          {
+            "case": "amos_0216",
+            "candidate_cpu_s": 24.73,
+            "comparator_s": 11.55
+          },
+          {
+            "case": "amos_0218",
+            "candidate_cpu_s": 47.62,
+            "comparator_s": 16.19
+          },
+          {
+            "case": "amos_0219",
+            "candidate_cpu_s": 23.67,
+            "comparator_s": 10.53
+          },
+          {
+            "case": "amos_0223",
+            "candidate_cpu_s": 23.98,
+            "comparator_s": 10.4
+          },
+          {
+            "case": "amos_0228",
+            "candidate_cpu_s": 62.61,
+            "comparator_s": 20.41
+          },
+          {
+            "case": "amos_0233",
+            "candidate_cpu_s": 63.18,
+            "comparator_s": 20.7
+          },
+          {
+            "case": "amos_0238",
+            "candidate_cpu_s": 48.16,
+            "comparator_s": 16.48
+          },
+          {
+            "case": "amos_0244",
+            "candidate_cpu_s": 63.6,
+            "comparator_s": 21.38
+          },
+          {
+            "case": "amos_0247",
+            "candidate_cpu_s": 31.52,
+            "comparator_s": 13.36
+          },
+          {
+            "case": "amos_0250",
+            "candidate_cpu_s": 31.31,
+            "comparator_s": 12.89
+          },
+          {
+            "case": "amos_0255",
+            "candidate_cpu_s": 63.29,
+            "comparator_s": 20.44
+          },
+          {
+            "case": "amos_0257",
+            "candidate_cpu_s": 61.76,
+            "comparator_s": 19.08
+          },
+          {
+            "case": "amos_0258",
+            "candidate_cpu_s": 30.53,
+            "comparator_s": 12.48
+          },
+          {
+            "case": "amos_0278",
+            "candidate_cpu_s": 48.41,
+            "comparator_s": 16.9
+          },
+          {
+            "case": "amos_0280",
+            "candidate_cpu_s": 23.36,
+            "comparator_s": 10.04
+          },
+          {
+            "case": "amos_0283",
+            "candidate_cpu_s": 23.75,
+            "comparator_s": 10.48
+          },
+          {
+            "case": "amos_0284",
+            "candidate_cpu_s": 23.71,
+            "comparator_s": 10.46
+          },
+          {
+            "case": "amos_0286",
+            "candidate_cpu_s": 48.36,
+            "comparator_s": 16.63
+          },
+          {
+            "case": "amos_0287",
+            "candidate_cpu_s": 84.37,
+            "comparator_s": 27.29
+          },
+          {
+            "case": "amos_0289",
+            "candidate_cpu_s": 47.71,
+            "comparator_s": 16.5
+          },
+          {
+            "case": "amos_0290",
+            "candidate_cpu_s": 23.51,
+            "comparator_s": 10.17
+          },
+          {
+            "case": "amos_0292",
+            "candidate_cpu_s": 47.44,
+            "comparator_s": 15.78
+          },
+          {
+            "case": "amos_0293",
+            "candidate_cpu_s": 30.82,
+            "comparator_s": 12.63
+          },
+          {
+            "case": "amos_0304",
+            "candidate_cpu_s": 23.53,
+            "comparator_s": 10.16
+          },
+          {
+            "case": "amos_0308",
+            "candidate_cpu_s": 23,
+            "comparator_s": 9.6
+          },
+          {
+            "case": "amos_0309",
+            "candidate_cpu_s": 48.54,
+            "comparator_s": 18.07
+          },
+          {
+            "case": "amos_0310",
+            "candidate_cpu_s": 31.29,
+            "comparator_s": 13.22
+          },
+          {
+            "case": "amos_0311",
+            "candidate_cpu_s": 23.35,
+            "comparator_s": 9.96
+          },
+          {
+            "case": "amos_0313",
+            "candidate_cpu_s": 48.33,
+            "comparator_s": 16.84
+          },
+          {
+            "case": "amos_0316",
+            "candidate_cpu_s": 47.94,
+            "comparator_s": 16.55
+          },
+          {
+            "case": "amos_0318",
+            "candidate_cpu_s": 23.37,
+            "comparator_s": 9.82
+          },
+          {
+            "case": "amos_0323",
+            "candidate_cpu_s": 47.67,
+            "comparator_s": 16.26
+          },
+          {
+            "case": "amos_0325",
+            "candidate_cpu_s": 47.89,
+            "comparator_s": 16.53
+          },
+          {
+            "case": "amos_0326",
+            "candidate_cpu_s": 29.72,
+            "comparator_s": 11.65
+          },
+          {
+            "case": "amos_0328",
+            "candidate_cpu_s": 61.95,
+            "comparator_s": 19.55
+          },
+          {
+            "case": "amos_0333",
+            "candidate_cpu_s": 47.62,
+            "comparator_s": 15.95
+          },
+          {
+            "case": "amos_0334",
+            "candidate_cpu_s": 29.5,
+            "comparator_s": 11.41
+          },
+          {
+            "case": "amos_0339",
+            "candidate_cpu_s": 23.6,
+            "comparator_s": 10.16
+          },
+          {
+            "case": "amos_0342",
+            "candidate_cpu_s": 30.32,
+            "comparator_s": 12.09
+          },
+          {
+            "case": "amos_0344",
+            "candidate_cpu_s": 30.5,
+            "comparator_s": 12.8
+          },
+          {
+            "case": "amos_0346",
+            "candidate_cpu_s": 22.79,
+            "comparator_s": 9.34
+          },
+          {
+            "case": "amos_0352",
+            "candidate_cpu_s": 47.26,
+            "comparator_s": 15.83
+          },
+          {
+            "case": "amos_0356",
+            "candidate_cpu_s": 46.87,
+            "comparator_s": 15.22
+          },
+          {
+            "case": "amos_0357",
+            "candidate_cpu_s": 31.33,
+            "comparator_s": 13.11
+          },
+          {
+            "case": "amos_0363",
+            "candidate_cpu_s": 47.48,
+            "comparator_s": 16.03
+          },
+          {
+            "case": "amos_0364",
+            "candidate_cpu_s": 62.09,
+            "comparator_s": 19.66
+          },
+          {
+            "case": "amos_0365",
+            "candidate_cpu_s": 49.63,
+            "comparator_s": 18.06
+          },
+          {
+            "case": "amos_0368",
+            "candidate_cpu_s": 48.22,
+            "comparator_s": 16.64
+          },
+          {
+            "case": "amos_0372",
+            "candidate_cpu_s": 49.11,
+            "comparator_s": 17.42
+          },
+          {
+            "case": "amos_0373",
+            "candidate_cpu_s": 49.32,
+            "comparator_s": 17.89
+          },
+          {
+            "case": "amos_0377",
+            "candidate_cpu_s": 24.4,
+            "comparator_s": 10.91
+          },
+          {
+            "case": "amos_0385",
+            "candidate_cpu_s": 83.16,
+            "comparator_s": 26.14
+          },
+          {
+            "case": "amos_0397",
+            "candidate_cpu_s": 47.7,
+            "comparator_s": 16.16
+          },
+          {
+            "case": "amos_0399",
+            "candidate_cpu_s": 48.05,
+            "comparator_s": 16.5
+          },
+          {
+            "case": "amos_0409",
+            "candidate_cpu_s": 48.6,
+            "comparator_s": 17.26
+          }
+        ]
+      },
+      "fast": {
+        "tier": "fast",
+        "resolution_mm": 3,
+        "comparator_condition": "ours_fp32_cuda",
+        "n": 100,
+        "candidate_cpu_median_s": 3.87,
+        "comparator_median_s": 2.9,
+        "median_paired_difference_comparator_minus_candidate_s": -1.355,
+        "median_paired_difference": {
+          "method": "BCa",
+          "ci95": [-1.415, -0.86],
+          "eligible": true,
+          "warnings": []
+        },
+        "ratio_of_marginal_medians_comparator_over_candidate": 0.749354005167959,
+        "ratio_of_marginal_medians": {
+          "method": "BCa",
+          "ci95": [0.708578143360752, 0.793388429752066],
+          "eligible": true,
+          "warnings": []
+        },
+        "candidate_faster_case_count": 0,
+        "bootstrap": {
+          "implementation": "R boot::boot and boot::boot.ci",
+          "package_version": "1.3.28",
+          "method": "ordinary paired case bootstrap; BCa 95% confidence interval",
+          "replicates": 10000,
+          "seed": 20260722,
+          "rng": "Mersenne-Twister; Inversion; Rejection"
+        },
+        "pairs": [
+          {
+            "case": "amos_0008",
+            "candidate_cpu_s": 4.81,
+            "comparator_s": 3.32
+          },
+          {
+            "case": "amos_0013",
+            "candidate_cpu_s": 3.87,
+            "comparator_s": 2.28
+          },
+          {
+            "case": "amos_0018",
+            "candidate_cpu_s": 5.28,
+            "comparator_s": 3.05
+          },
+          {
+            "case": "amos_0022",
+            "candidate_cpu_s": 5.97,
+            "comparator_s": 3.65
+          },
+          {
+            "case": "amos_0029",
+            "candidate_cpu_s": 5.73,
+            "comparator_s": 3.25
+          },
+          {
+            "case": "amos_0032",
+            "candidate_cpu_s": 5.28,
+            "comparator_s": 3.12
+          },
+          {
+            "case": "amos_0034",
+            "candidate_cpu_s": 5.21,
+            "comparator_s": 2.97
+          },
+          {
+            "case": "amos_0040",
+            "candidate_cpu_s": 4.05,
+            "comparator_s": 2.54
+          },
+          {
+            "case": "amos_0041",
+            "candidate_cpu_s": 3.84,
+            "comparator_s": 2.3
+          },
+          {
+            "case": "amos_0051",
+            "candidate_cpu_s": 3.84,
+            "comparator_s": 2.5
+          },
+          {
+            "case": "amos_0056",
+            "candidate_cpu_s": 4.6,
+            "comparator_s": 2.92
+          },
+          {
+            "case": "amos_0061",
+            "candidate_cpu_s": 3.66,
+            "comparator_s": 2.25
+          },
+          {
+            "case": "amos_0063",
+            "candidate_cpu_s": 5.26,
+            "comparator_s": 3.23
+          },
+          {
+            "case": "amos_0070",
+            "candidate_cpu_s": 5.76,
+            "comparator_s": 3.63
+          },
+          {
+            "case": "amos_0073",
+            "candidate_cpu_s": 3.87,
+            "comparator_s": 2.32
+          },
+          {
+            "case": "amos_0085",
+            "candidate_cpu_s": 3.77,
+            "comparator_s": 2.58
+          },
+          {
+            "case": "amos_0087",
+            "candidate_cpu_s": 3.8,
+            "comparator_s": 2.33
+          },
+          {
+            "case": "amos_0090",
+            "candidate_cpu_s": 5.32,
+            "comparator_s": 3.1
+          },
+          {
+            "case": "amos_0106",
+            "candidate_cpu_s": 5.84,
+            "comparator_s": 3.65
+          },
+          {
+            "case": "amos_0108",
+            "candidate_cpu_s": 5.26,
+            "comparator_s": 3.04
+          },
+          {
+            "case": "amos_0112",
+            "candidate_cpu_s": 4.6,
+            "comparator_s": 3.17
+          },
+          {
+            "case": "amos_0117",
+            "candidate_cpu_s": 5.68,
+            "comparator_s": 3.46
+          },
+          {
+            "case": "amos_0120",
+            "candidate_cpu_s": 3.9,
+            "comparator_s": 2.49
+          },
+          {
+            "case": "amos_0123",
+            "candidate_cpu_s": 5.24,
+            "comparator_s": 3
+          },
+          {
+            "case": "amos_0128",
+            "candidate_cpu_s": 4.55,
+            "comparator_s": 3.18
+          },
+          {
+            "case": "amos_0132",
+            "candidate_cpu_s": 5.61,
+            "comparator_s": 3.28
+          },
+          {
+            "case": "amos_0136",
+            "candidate_cpu_s": 5.23,
+            "comparator_s": 3.03
+          },
+          {
+            "case": "amos_0140",
+            "candidate_cpu_s": 5.85,
+            "comparator_s": 3.65
+          },
+          {
+            "case": "amos_0144",
+            "candidate_cpu_s": 6.84,
+            "comparator_s": 3.57
+          },
+          {
+            "case": "amos_0150",
+            "candidate_cpu_s": 4.6,
+            "comparator_s": 3.16
+          },
+          {
+            "case": "amos_0155",
+            "candidate_cpu_s": 5.46,
+            "comparator_s": 3.3
+          },
+          {
+            "case": "amos_0157",
+            "candidate_cpu_s": 3.92,
+            "comparator_s": 2.55
+          },
+          {
+            "case": "amos_0167",
+            "candidate_cpu_s": 3.9,
+            "comparator_s": 2.3
+          },
+          {
+            "case": "amos_0174",
+            "candidate_cpu_s": 5.55,
+            "comparator_s": 3.29
+          },
+          {
+            "case": "amos_0176",
+            "candidate_cpu_s": 3.5,
+            "comparator_s": 2.35
+          },
+          {
+            "case": "amos_0189",
+            "candidate_cpu_s": 3.14,
+            "comparator_s": 2.68
+          },
+          {
+            "case": "amos_0191",
+            "candidate_cpu_s": 4.5,
+            "comparator_s": 2.93
+          },
+          {
+            "case": "amos_0194",
+            "candidate_cpu_s": 4.12,
+            "comparator_s": 2.75
+          },
+          {
+            "case": "amos_0200",
+            "candidate_cpu_s": 5.56,
+            "comparator_s": 3.3
+          },
+          {
+            "case": "amos_0202",
+            "candidate_cpu_s": 3.87,
+            "comparator_s": 2.49
+          },
+          {
+            "case": "amos_0203",
+            "candidate_cpu_s": 3.18,
+            "comparator_s": 2.88
+          },
+          {
+            "case": "amos_0204",
+            "candidate_cpu_s": 2.99,
+            "comparator_s": 2.67
+          },
+          {
+            "case": "amos_0206",
+            "candidate_cpu_s": 3.73,
+            "comparator_s": 3.36
+          },
+          {
+            "case": "amos_0207",
+            "candidate_cpu_s": 5.24,
+            "comparator_s": 3.87
+          },
+          {
+            "case": "amos_0208",
+            "candidate_cpu_s": 2.99,
+            "comparator_s": 2.68
+          },
+          {
+            "case": "amos_0216",
+            "candidate_cpu_s": 3.03,
+            "comparator_s": 2.91
+          },
+          {
+            "case": "amos_0218",
+            "candidate_cpu_s": 4.44,
+            "comparator_s": 2.75
+          },
+          {
+            "case": "amos_0219",
+            "candidate_cpu_s": 2.76,
+            "comparator_s": 2.48
+          },
+          {
+            "case": "amos_0223",
+            "candidate_cpu_s": 2.77,
+            "comparator_s": 2.46
+          },
+          {
+            "case": "amos_0228",
+            "candidate_cpu_s": 4.71,
+            "comparator_s": 3.62
+          },
+          {
+            "case": "amos_0233",
+            "candidate_cpu_s": 4.6,
+            "comparator_s": 3.57
+          },
+          {
+            "case": "amos_0238",
+            "candidate_cpu_s": 4.54,
+            "comparator_s": 3.12
+          },
+          {
+            "case": "amos_0244",
+            "candidate_cpu_s": 6.18,
+            "comparator_s": 4.15
+          },
+          {
+            "case": "amos_0247",
+            "candidate_cpu_s": 3.99,
+            "comparator_s": 3.36
+          },
+          {
+            "case": "amos_0250",
+            "candidate_cpu_s": 3.56,
+            "comparator_s": 3.15
+          },
+          {
+            "case": "amos_0255",
+            "candidate_cpu_s": 4.4,
+            "comparator_s": 3.44
+          },
+          {
+            "case": "amos_0257",
+            "candidate_cpu_s": 2.88,
+            "comparator_s": 2.23
+          },
+          {
+            "case": "amos_0258",
+            "candidate_cpu_s": 2.85,
+            "comparator_s": 2.08
+          },
+          {
+            "case": "amos_0278",
+            "candidate_cpu_s": 3.78,
+            "comparator_s": 3.12
+          },
+          {
+            "case": "amos_0280",
+            "candidate_cpu_s": 2.54,
+            "comparator_s": 2.35
+          },
+          {
+            "case": "amos_0283",
+            "candidate_cpu_s": 3.01,
+            "comparator_s": 2.65
+          },
+          {
+            "case": "amos_0284",
+            "candidate_cpu_s": 2.71,
+            "comparator_s": 2.67
+          },
+          {
+            "case": "amos_0286",
+            "candidate_cpu_s": 3.56,
+            "comparator_s": 2.91
+          },
+          {
+            "case": "amos_0287",
+            "candidate_cpu_s": 5.46,
+            "comparator_s": 3.92
+          },
+          {
+            "case": "amos_0289",
+            "candidate_cpu_s": 3.37,
+            "comparator_s": 2.69
+          },
+          {
+            "case": "amos_0290",
+            "candidate_cpu_s": 2.75,
+            "comparator_s": 2.46
+          },
+          {
+            "case": "amos_0292",
+            "candidate_cpu_s": 2.88,
+            "comparator_s": 2.02
+          },
+          {
+            "case": "amos_0293",
+            "candidate_cpu_s": 3.79,
+            "comparator_s": 3.18
+          },
+          {
+            "case": "amos_0304",
+            "candidate_cpu_s": 2.53,
+            "comparator_s": 2.25
+          },
+          {
+            "case": "amos_0308",
+            "candidate_cpu_s": 2.09,
+            "comparator_s": 1.88
+          },
+          {
+            "case": "amos_0309",
+            "candidate_cpu_s": 3.63,
+            "comparator_s": 2.9
+          },
+          {
+            "case": "amos_0310",
+            "candidate_cpu_s": 4.67,
+            "comparator_s": 3.57
+          },
+          {
+            "case": "amos_0311",
+            "candidate_cpu_s": 2.75,
+            "comparator_s": 2.55
+          },
+          {
+            "case": "amos_0313",
+            "candidate_cpu_s": 3.58,
+            "comparator_s": 2.89
+          },
+          {
+            "case": "amos_0316",
+            "candidate_cpu_s": 3.59,
+            "comparator_s": 2.9
+          },
+          {
+            "case": "amos_0318",
+            "candidate_cpu_s": 2.06,
+            "comparator_s": 1.79
+          },
+          {
+            "case": "amos_0323",
+            "candidate_cpu_s": 3.55,
+            "comparator_s": 2.89
+          },
+          {
+            "case": "amos_0325",
+            "candidate_cpu_s": 4.54,
+            "comparator_s": 3.16
+          },
+          {
+            "case": "amos_0326",
+            "candidate_cpu_s": 2.62,
+            "comparator_s": 2.08
+          },
+          {
+            "case": "amos_0328",
+            "candidate_cpu_s": 3.72,
+            "comparator_s": 2.71
+          },
+          {
+            "case": "amos_0333",
+            "candidate_cpu_s": 3.36,
+            "comparator_s": 2.7
+          },
+          {
+            "case": "amos_0334",
+            "candidate_cpu_s": 2.63,
+            "comparator_s": 2.22
+          },
+          {
+            "case": "amos_0339",
+            "candidate_cpu_s": 2.99,
+            "comparator_s": 2.65
+          },
+          {
+            "case": "amos_0342",
+            "candidate_cpu_s": 2.87,
+            "comparator_s": 2.25
+          },
+          {
+            "case": "amos_0344",
+            "candidate_cpu_s": 3.54,
+            "comparator_s": 2.99
+          },
+          {
+            "case": "amos_0346",
+            "candidate_cpu_s": 1.91,
+            "comparator_s": 1.76
+          },
+          {
+            "case": "amos_0352",
+            "candidate_cpu_s": 2.87,
+            "comparator_s": 2.06
+          },
+          {
+            "case": "amos_0356",
+            "candidate_cpu_s": 3.15,
+            "comparator_s": 2.25
+          },
+          {
+            "case": "amos_0357",
+            "candidate_cpu_s": 3.7,
+            "comparator_s": 3.36
+          },
+          {
+            "case": "amos_0363",
+            "candidate_cpu_s": 4.24,
+            "comparator_s": 2.76
+          },
+          {
+            "case": "amos_0364",
+            "candidate_cpu_s": 3.35,
+            "comparator_s": 2.9
+          },
+          {
+            "case": "amos_0365",
+            "candidate_cpu_s": 4.83,
+            "comparator_s": 3.17
+          },
+          {
+            "case": "amos_0368",
+            "candidate_cpu_s": 4.27,
+            "comparator_s": 2.77
+          },
+          {
+            "case": "amos_0372",
+            "candidate_cpu_s": 4.58,
+            "comparator_s": 3.17
+          },
+          {
+            "case": "amos_0373",
+            "candidate_cpu_s": 4.56,
+            "comparator_s": 3.16
+          },
+          {
+            "case": "amos_0377",
+            "candidate_cpu_s": 3.34,
+            "comparator_s": 2.68
+          },
+          {
+            "case": "amos_0385",
+            "candidate_cpu_s": 4.41,
+            "comparator_s": 2.99
+          },
+          {
+            "case": "amos_0397",
+            "candidate_cpu_s": 4.23,
+            "comparator_s": 2.76
+          },
+          {
+            "case": "amos_0399",
+            "candidate_cpu_s": 3.35,
+            "comparator_s": 2.7
+          },
+          {
+            "case": "amos_0409",
+            "candidate_cpu_s": 4.55,
+            "comparator_s": 2.97
+          }
+        ]
+      }
+    }
+  }
+}

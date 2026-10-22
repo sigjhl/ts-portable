@@ -1,0 +1,14 @@
+# Python dependencies for the INT8 quantization pipeline.
+# Versions pinned to those used to generate the manuscript's models.
+nncf==3.2.0
+onnx==1.22.0
+onnxruntime==1.27.0
+numpy
+nibabel
+#
+# The vendored onnx_totalseg package supplies preprocessing and pulls its own
+# runtime deps (scipy, scikit-image, pydicom, dicom2nifti, isal, ...):
+#   pip install -e vendor/onnx_totalseg
+#
+# Deployed INT8 inference (OpenVINO EP) uses onnxruntime-openvino 1.24.1
+# (bundles OpenVINO 2025.4.1), installed separately in the runtime environment.

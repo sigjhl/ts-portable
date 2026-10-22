@@ -1,0 +1,25 @@
+TS-Portable (repository ts-portable)
+Copyright 2026 Jeong Hyun Lee
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+It is derived from the following works:
+
+TotalSegmentator (https://github.com/wasserth/TotalSegmentator), version 2.12.0,
+task "total". Copyright University Hospital Basel. Licensed under the Apache
+License, Version 2.0. The INT8 ONNX model weights distributed with this project
+are quantized conversions of the TotalSegmentator "total" task weights and are
+redistributed under the same license. Wasserthal J, et al. TotalSegmentator:
+robust segmentation of 104 anatomic structures in CT images. Radiol Artif
+Intell 2023;5:e230024.
+
+nnU-Net (https://github.com/MIC-DKFZ/nnUNet). Copyright German Cancer Research
+Center (DKFZ), Division of Medical Image Computing. Licensed under the Apache
+License, Version 2.0. The preprocessing code in vendor/onnx_totalseg/
+(_nnunet_ops.py, io_nibabel.py) and the Rust resampling and sliding-window
+code in src/ are ports of nnU-Net routines. Isensee F, et al. nnU-Net: a
+self-configuring method for deep learning-based biomedical image segmentation.
+Nat Methods 2021;18:203-211.
+
+The Windows release bundle also contains ONNX Runtime (MIT), OpenVINO
+(Apache-2.0) and their third-party notices in the licenses/ folder of the zip.

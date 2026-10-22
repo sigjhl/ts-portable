@@ -1,0 +1,17 @@
+# Rust build
+/target/
+
+# Model weights and data are hosted separately (see README Models), never committed
+/models/
+*.onnx
+*.nii
+*.nii.gz
+*.dcm
+*.zip
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+.DS_Store

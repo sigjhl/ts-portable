@@ -1,0 +1,26 @@
+# Evaluation code for the paper (see README.md in this folder).
+#
+# Python 3.10 or later. The analyses that run from the included result files
+# (noninferiority/summarize_accuracy.py, runtime/summarize_runtime.py, compare_results.py) need only
+# the standard library; the rest needs:
+numpy>=1.26           # reported scoring: 2.5.0
+nibabel>=5.2          # reported scoring: 5.4.2
+scipy>=1.11           # surface-distance dependency; reported scoring: 1.18.0
+surface-distance==0.1 # Google DeepMind surface-distance, NSD and HD95 (scoring/nsd_core.py)
+matplotlib>=3.8       # figures 1-3, S3, S6; reported figures: 3.9-3.11
+pydicom>=3.0          # Duke DICOM conversion (scoring/duke/convert_duke_ct.py); reported: 3.0.2
+psutil>=5.9           # runtime harness (runtime/bench_case.py)
+#
+# Comparators, installed in their own environments (runtime/):
+#   TotalSegmentator==2.12.0   reference implementation, workstation (PyTorch 2.10.0, nnU-Net 2.6.4)
+#   TotalSegmentator==2.4.0    reference implementation, reading station (PyTorch 2.0.1, nnU-Net 2.2.1)
+#   onnxruntime-openvino==1.24.1 (bundles OpenVINO 2025.4.1)  TS-Portable on the CPU
+#   onnxruntime-gpu==1.22.0 with cuDNN 9                      TS-Portable fp32 ONNX on the GPU
+#
+# R packages (install in R; not installable with pip):
+#   R 4.1.2 (reported statistics; R 4.5.2 reproduces them, see README.md)
+#   boot 1.3-28
+#   boot.pval 0.7.0      one-sided p values by BCa interval inversion; alternatively set
+#                        BOOT_PVAL_R_FILE to R/boot.pval.R from the CRAN source tarball
+#   jsonlite (reported: 1.7.3)
+#   ggplot2 (>= 3.5), patchwork (>= 1.2)   figures 4, 5 and S4 (rendered with 4.0.1 and 1.3.2)

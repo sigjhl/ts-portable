@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the accompanying manuscript."
+title: "ts-portable: accuracy-controlled INT8 quantization of TotalSegmentator for CPU"
+version: 1.0.0
+repository-code: "https://github.com/sigjhl/ts-portable"
+license: Apache-2.0
+authors:
+  - family-names: Lee
+    given-names: Jeong Hyun
+preferred-citation:
+  type: article
+  title: "Quantized TotalSegmentator for Fast Abdominal Organ Segmentation on CPUs"
+  authors:
+    - family-names: Lee
+      given-names: Jeong Hyun
+  year: 2026
+  notes: "Under review. Volume, pages, and DOI to be added on publication."

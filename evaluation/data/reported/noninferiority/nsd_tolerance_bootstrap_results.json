@@ -1,0 +1,1109 @@
+{
+  "comparator": "Original TotalSegmentator 2.12.0, resolution matched",
+  "estimand": "per-case mean NSD at 1-mm or 2-mm tolerance; paired difference Original TotalSegmentator minus INT8-TS",
+  "noninferiority_margin": 0.01,
+  "method": {
+    "implementation": "R boot package",
+    "r_version": "R version 4.1.2 (2021-11-01)",
+    "boot_version": "1.3.28",
+    "jsonlite_version": "1.7.3",
+    "boot_pval": {
+      "implementation": "official boot.pval::boot.pval function sourced from CRAN package",
+      "package_version": "0.7.0",
+      "source": "R/boot.pval.R",
+      "source_url": "https://cran.r-project.org/src/contrib/boot.pval_0.7.0.tar.gz",
+      "source_sha256": "9c953aa0a2a9e645495da49e13b600a37be44ce15b3f11424a19b8a5b63cfd20"
+    },
+    "primary_interval": "BCa when finite and warning-free with finite jackknife acceleration; percentile otherwise",
+    "decision_rule": "selected one-sided 95% upper bound < 0.01",
+    "paired_resampling_unit": "case",
+    "replicates": 10000,
+    "base_seed": 20260725,
+    "p_value_method": "boot.pval BCa interval inversion, alternative less, theta_null 0.01",
+    "pval_precision_argument": 0.001
+  },
+  "endpoints": {
+    "nsd1": {
+      "amos_full": {
+        "n": 100,
+        "percentile_ci95_two_sided": [0.000395570495321584, 0.000766613728992577],
+        "percentile_upper95_one_sided": 0.000734892427636637,
+        "selected_interval_method": "BCa",
+        "ci95_two_sided": [0.000397825231556126, 0.000769633045200201],
+        "upper95_one_sided": 0.000736156474471518,
+        "p_value_one_sided_bca": 0.0005,
+        "p_value_reporting": "p < 0.001",
+        "p_value_at_lower_grid_boundary": true,
+        "noninferiority_margin": 0.01,
+        "null_hypothesis": "mean(reference - INT8) >= 0.01",
+        "alternative_hypothesis": "mean(reference - INT8) < 0.01",
+        "verdict": "NON-INFERIOR (met)",
+        "bootstrap": {
+          "implementation": "R boot package",
+          "package_version": "1.3.28",
+          "method": "ordinary paired case bootstrap; BCa interval",
+          "replicates": 10000,
+          "seed": 20260826,
+          "rng": "Mersenne-Twister; Inversion; Rejection",
+          "percentile_warnings": []
+        },
+        "p_value": {
+          "implementation": {
+            "implementation": "official boot.pval::boot.pval function sourced from CRAN package",
+            "package_version": "0.7.0",
+            "source": "R/boot.pval.R",
+            "source_url": "https://cran.r-project.org/src/contrib/boot.pval_0.7.0.tar.gz",
+            "source_sha256": "9c953aa0a2a9e645495da49e13b600a37be44ce15b3f11424a19b8a5b63cfd20"
+          },
+          "method": "BCa confidence-interval inversion; alternative='less'; theta_null=0.01",
+          "pval_precision_argument": 0.001,
+          "one_sided_grid_resolution": 0.0005,
+          "reporting_rule": "when the result is the first one-sided grid point, report p < pval_precision",
+          "decision_alpha": 0.05,
+          "agrees_with_one_sided_bound": true
+        },
+        "bca_diagnostic": {
+          "eligible": true,
+          "fallback_reasons": [],
+          "ci95_two_sided": [0.000397825231556126, 0.000769633045200201],
+          "upper95_one_sided": 0.000736156474471518,
+          "warnings": [],
+          "errors": null,
+          "jackknife": {
+            "acceleration": 0.00138280740364746,
+            "max_abs_standardized_jackknife_influence": 0.344775796779773,
+            "largest_influences": [
+              {
+                "index": 33,
+                "difference": 0.00378173017116301,
+                "leave_one_out_mean": 0.000548813421168718,
+                "standardized_jackknife_influence": 0.344775796779773
+              },
+              {
+                "index": 52,
+                "difference": -0.00219182424860553,
+                "leave_one_out_mean": 0.000609152354701733,
+                "standardized_jackknife_influence": -0.298711354125796
+              },
+              {
+                "index": 9,
+                "difference": -0.00165955587415922,
+                "leave_one_out_mean": 0.000603775906475003,
+                "standardized_jackknife_influence": -0.241373990854086
+              },
+              {
+                "index": 47,
+                "difference": -0.00157675484473641,
+                "leave_one_out_mean": 0.000602939532440429,
+                "standardized_jackknife_influence": -0.232454444002884
+              },
+              {
+                "index": 11,
+                "difference": -0.00134876359652403,
+                "leave_one_out_mean": 0.000600636590539294,
+                "standardized_jackknife_influence": -0.207894621084376
+              }
+            ]
+          }
+        },
+        "mean_nsd1_int8": 0.758104330557094,
+        "mean_nsd1_original_ts": 0.758685473145763,
+        "mean_difference_original_ts_minus_int8": 0.000581142588668661,
+        "metric": "per-case mean surface-area-weighted NSD@1 mm"
+      },
+      "amos_fast": {
+        "n": 100,
+        "percentile_ci95_two_sided": [-0.00029952535631367, 0.000896197185814676],
+        "percentile_upper95_one_sided": 0.000801311106766479,
+        "selected_interval_method": "BCa",
+        "ci95_two_sided": [-0.000306837742744488, 0.000887050261412328],
+        "upper95_one_sided": 0.000797134602204192,
+        "p_value_one_sided_bca": 0.0005,
+        "p_value_reporting": "p < 0.001",
+        "p_value_at_lower_grid_boundary": true,
+        "noninferiority_margin": 0.01,
+        "null_hypothesis": "mean(reference - INT8) >= 0.01",
+        "alternative_hypothesis": "mean(reference - INT8) < 0.01",
+        "verdict": "NON-INFERIOR (met)",
+        "bootstrap": {
+          "implementation": "R boot package",
+          "package_version": "1.3.28",
+          "method": "ordinary paired case bootstrap; BCa interval",
+          "replicates": 10000,
+          "seed": 20260827,
+          "rng": "Mersenne-Twister; Inversion; Rejection",
+          "percentile_warnings": []
+        },
+        "p_value": {
+          "implementation": {
+            "implementation": "official boot.pval::boot.pval function sourced from CRAN package",
+            "package_version": "0.7.0",
+            "source": "R/boot.pval.R",
+            "source_url": "https://cran.r-project.org/src/contrib/boot.pval_0.7.0.tar.gz",
+            "source_sha256": "9c953aa0a2a9e645495da49e13b600a37be44ce15b3f11424a19b8a5b63cfd20"
+          },
+          "method": "BCa confidence-interval inversion; alternative='less'; theta_null=0.01",
+          "pval_precision_argument": 0.001,
+          "one_sided_grid_resolution": 0.0005,
+          "reporting_rule": "when the result is the first one-sided grid point, report p < pval_precision",
+          "decision_alpha": 0.05,
+          "agrees_with_one_sided_bound": true
+        },
+        "bca_diagnostic": {
+          "eligible": true,
+          "fallback_reasons": [],
+          "ci95_two_sided": [-0.000306837742744488, 0.000887050261412328],
+          "upper95_one_sided": 0.000797134602204192,
+          "warnings": [],
+          "errors": null,
+          "jackknife": {
+            "acceleration": -0.0101051612570748,
+            "max_abs_standardized_jackknife_influence": 0.311701062872726,
+            "largest_influences": [
+              {
+                "index": 28,
+                "difference": -0.00912356931456348,
+                "leave_one_out_mean": 0.000400218118931962,
+                "standardized_jackknife_influence": -0.311701062872726
+              },
+              {
+                "index": 38,
+                "difference": -0.00908532571151505,
+                "leave_one_out_mean": 0.000399831819911271,
+                "standardized_jackknife_influence": -0.31043675687916
+              },
+              {
+                "index": 68,
+                "difference": 0.00911777764083599,
+                "leave_one_out_mean": 0.000215962089079442,
+                "standardized_jackknife_influence": 0.291344739512009
+              },
+              {
+                "index": 35,
+                "difference": -0.00665044000235049,
+                "leave_one_out_mean": 0.000375237014768195,
+                "standardized_jackknife_influence": -0.22994118767649
+              },
+              {
+                "index": 57,
+                "difference": -0.00627991577786857,
+                "leave_one_out_mean": 0.000371494345834034,
+                "standardized_jackknife_influence": -0.217691923474565
+              }
+            ]
+          }
+        },
+        "mean_nsd1_int8": 0.668248062449583,
+        "mean_nsd1_original_ts": 0.66855304269418,
+        "mean_difference_original_ts_minus_int8": 0.000304980244597008,
+        "metric": "per-case mean surface-area-weighted NSD@1 mm"
+      },
+      "ts_full": {
+        "n": 102,
+        "percentile_ci95_two_sided": [0.000134945456327822, 0.00037284931028025],
+        "percentile_upper95_one_sided": 0.000351061479942589,
+        "selected_interval_method": "BCa",
+        "ci95_two_sided": [0.000134498945778719, 0.000370820626303978],
+        "upper95_one_sided": 0.0003507435668093,
+        "p_value_one_sided_bca": 0.0005,
+        "p_value_reporting": "p < 0.001",
+        "p_value_at_lower_grid_boundary": true,
+        "noninferiority_margin": 0.01,
+        "null_hypothesis": "mean(reference - INT8) >= 0.01",
+        "alternative_hypothesis": "mean(reference - INT8) < 0.01",
+        "verdict": "NON-INFERIOR (met)",
+        "bootstrap": {
+          "implementation": "R boot package",
+          "package_version": "1.3.28",
+          "method": "ordinary paired case bootstrap; BCa interval",
+          "replicates": 10000,
+          "seed": 20260828,
+          "rng": "Mersenne-Twister; Inversion; Rejection",
+          "percentile_warnings": []
+        },
+        "p_value": {
+          "implementation": {
+            "implementation": "official boot.pval::boot.pval function sourced from CRAN package",
+            "package_version": "0.7.0",
+            "source": "R/boot.pval.R",
+            "source_url": "https://cran.r-project.org/src/contrib/boot.pval_0.7.0.tar.gz",
+            "source_sha256": "9c953aa0a2a9e645495da49e13b600a37be44ce15b3f11424a19b8a5b63cfd20"
+          },
+          "method": "BCa confidence-interval inversion; alternative='less'; theta_null=0.01",
+          "pval_precision_argument": 0.001,
+          "one_sided_grid_resolution": 0.0005,
+          "reporting_rule": "when the result is the first one-sided grid point, report p < pval_precision",
+          "decision_alpha": 0.05,
+          "agrees_with_one_sided_bound": true
+        },
+        "bca_diagnostic": {
+          "eligible": true,
+          "fallback_reasons": [],
+          "ci95_two_sided": [0.000134498945778719, 0.000370820626303978],
+          "upper95_one_sided": 0.0003507435668093,
+          "warnings": [],
+          "errors": null,
+          "jackknife": {
+            "acceleration": -0.00263516805488311,
+            "max_abs_standardized_jackknife_influence": 0.362371561129039,
+            "largest_influences": [
+              {
+                "index": 97,
+                "difference": -0.00193948344684125,
+                "leave_one_out_mean": 0.000273813098865325,
+                "standardized_jackknife_influence": -0.362371561129039
+              },
+              {
+                "index": 12,
+                "difference": -0.00136671120221854,
+                "leave_one_out_mean": 0.000268142086542328,
+                "standardized_jackknife_influence": -0.267666047558979
+              },
+              {
+                "index": 21,
+                "difference": 0.00180472507749829,
+                "leave_one_out_mean": 0.000236741727337211,
+                "standardized_jackknife_influence": 0.256717779424728
+              },
+              {
+                "index": 29,
+                "difference": -0.00120903661944116,
+                "leave_one_out_mean": 0.000266580952059384,
+                "standardized_jackknife_influence": -0.241595209666489
+              },
+              {
+                "index": 8,
+                "difference": 0.00170712222205927,
+                "leave_one_out_mean": 0.000237708092242548,
+                "standardized_jackknife_influence": 0.240579552342258
+              }
+            ]
+          }
+        },
+        "mean_nsd1_int8": 0.840759625414363,
+        "mean_nsd1_original_ts": 0.841011739527486,
+        "mean_difference_original_ts_minus_int8": 0.000252114113123104,
+        "metric": "per-case mean surface-area-weighted NSD@1 mm"
+      },
+      "ts_fast": {
+        "n": 102,
+        "percentile_ci95_two_sided": [0.000240704168718322, 0.000685745769266745],
+        "percentile_upper95_one_sided": 0.000643069617354919,
+        "selected_interval_method": "BCa",
+        "ci95_two_sided": [0.000267785089191515, 0.000737378655085846],
+        "upper95_one_sided": 0.000685595222743172,
+        "p_value_one_sided_bca": 0.0005,
+        "p_value_reporting": "p < 0.001",
+        "p_value_at_lower_grid_boundary": true,
+        "noninferiority_margin": 0.01,
+        "null_hypothesis": "mean(reference - INT8) >= 0.01",
+        "alternative_hypothesis": "mean(reference - INT8) < 0.01",
+        "verdict": "NON-INFERIOR (met)",
+        "bootstrap": {
+          "implementation": "R boot package",
+          "package_version": "1.3.28",
+          "method": "ordinary paired case bootstrap; BCa interval",
+          "replicates": 10000,
+          "seed": 20260829,
+          "rng": "Mersenne-Twister; Inversion; Rejection",
+          "percentile_warnings": []
+        },
+        "p_value": {
+          "implementation": {
+            "implementation": "official boot.pval::boot.pval function sourced from CRAN package",
+            "package_version": "0.7.0",
+            "source": "R/boot.pval.R",
+            "source_url": "https://cran.r-project.org/src/contrib/boot.pval_0.7.0.tar.gz",
+            "source_sha256": "9c953aa0a2a9e645495da49e13b600a37be44ce15b3f11424a19b8a5b63cfd20"
+          },
+          "method": "BCa confidence-interval inversion; alternative='less'; theta_null=0.01",
+          "pval_precision_argument": 0.001,
+          "one_sided_grid_resolution": 0.0005,
+          "reporting_rule": "when the result is the first one-sided grid point, report p < pval_precision",
+          "decision_alpha": 0.05,
+          "agrees_with_one_sided_bound": true
+        },
+        "bca_diagnostic": {
+          "eligible": true,
+          "fallback_reasons": [],
+          "ci95_two_sided": [0.000267785089191515, 0.000737378655085846],
+          "upper95_one_sided": 0.000685595222743172,
+          "warnings": [],
+          "errors": null,
+          "jackknife": {
+            "acceleration": 0.0613119320395144,
+            "max_abs_standardized_jackknife_influence": 0.660464024486706,
+            "largest_influences": [
+              {
+                "index": 16,
+                "difference": 0.00815596392413265,
+                "leave_one_out_mean": 0.000370447381447276,
+                "standardized_jackknife_influence": 0.660464024486706
+              },
+              {
+                "index": 74,
+                "difference": 0.00505806802661346,
+                "leave_one_out_mean": 0.000401119618056377,
+                "standardized_jackknife_influence": 0.395060092786302
+              },
+              {
+                "index": 85,
+                "difference": 0.00358544307367631,
+                "leave_one_out_mean": 0.000415700063134962,
+                "standardized_jackknife_influence": 0.268896895132491
+              },
+              {
+                "index": 97,
+                "difference": 0.00265921479297676,
+                "leave_one_out_mean": 0.000424870640171591,
+                "standardized_jackknife_influence": 0.189544768565997
+              },
+              {
+                "index": 65,
+                "difference": 0.00233556403945945,
+                "leave_one_out_mean": 0.000428075103077703,
+                "standardized_jackknife_influence": 0.161816857324667
+              }
+            ]
+          }
+        },
+        "mean_nsd1_int8": 0.599988026287642,
+        "mean_nsd1_original_ts": 0.600434802262645,
+        "mean_difference_original_ts_minus_int8": 0.000446775975003015,
+        "metric": "per-case mean surface-area-weighted NSD@1 mm"
+      }
+    },
+    "nsd2": {
+      "amos_full": {
+        "n": 100,
+        "percentile_ci95_two_sided": [0.000135385350873213, 0.000475069728980964],
+        "percentile_upper95_one_sided": 0.000446466843355663,
+        "selected_interval_method": "BCa",
+        "ci95_two_sided": [0.000141935404595285, 0.000482566826823756],
+        "upper95_one_sided": 0.000453135000537548,
+        "p_value_one_sided_bca": 0.0005,
+        "p_value_reporting": "p < 0.001",
+        "p_value_at_lower_grid_boundary": true,
+        "noninferiority_margin": 0.01,
+        "null_hypothesis": "mean(reference - INT8) >= 0.01",
+        "alternative_hypothesis": "mean(reference - INT8) < 0.01",
+        "verdict": "NON-INFERIOR (met)",
+        "bootstrap": {
+          "implementation": "R boot package",
+          "package_version": "1.3.28",
+          "method": "ordinary paired case bootstrap; BCa interval",
+          "replicates": 10000,
+          "seed": 20260926,
+          "rng": "Mersenne-Twister; Inversion; Rejection",
+          "percentile_warnings": []
+        },
+        "p_value": {
+          "implementation": {
+            "implementation": "official boot.pval::boot.pval function sourced from CRAN package",
+            "package_version": "0.7.0",
+            "source": "R/boot.pval.R",
+            "source_url": "https://cran.r-project.org/src/contrib/boot.pval_0.7.0.tar.gz",
+            "source_sha256": "9c953aa0a2a9e645495da49e13b600a37be44ce15b3f11424a19b8a5b63cfd20"
+          },
+          "method": "BCa confidence-interval inversion; alternative='less'; theta_null=0.01",
+          "pval_precision_argument": 0.001,
+          "one_sided_grid_resolution": 0.0005,
+          "reporting_rule": "when the result is the first one-sided grid point, report p < pval_precision",
+          "decision_alpha": 0.05,
+          "agrees_with_one_sided_bound": true
+        },
+        "bca_diagnostic": {
+          "eligible": true,
+          "fallback_reasons": [],
+          "ci95_two_sided": [0.000141935404595285, 0.000482566826823756],
+          "upper95_one_sided": 0.000453135000537548,
+          "warnings": [],
+          "errors": null,
+          "jackknife": {
+            "acceleration": 0.00590297199874782,
+            "max_abs_standardized_jackknife_influence": 0.423879416630657,
+            "largest_influences": [
+              {
+                "index": 33,
+                "difference": 0.00402191895615744,
+                "leave_one_out_mean": 0.000266971381853901,
+                "standardized_jackknife_influence": 0.423879416630657
+              },
+              {
+                "index": 9,
+                "difference": -0.00200576250617002,
+                "leave_one_out_mean": 0.000327857053190542,
+                "standardized_jackknife_influence": -0.263431986169105
+              },
+              {
+                "index": 52,
+                "difference": -0.00196759027937532,
+                "leave_one_out_mean": 0.00032747147514211,
+                "standardized_jackknife_influence": -0.259079366192382
+              },
+              {
+                "index": 47,
+                "difference": -0.0016980803042822,
+                "leave_one_out_mean": 0.000324749152161372,
+                "standardized_jackknife_influence": -0.228348266646478
+              },
+              {
+                "index": 72,
+                "difference": 0.00213199426107968,
+                "leave_one_out_mean": 0.000286061530289029,
+                "standardized_jackknife_influence": 0.208379178026768
+              }
+            ]
+          }
+        },
+        "mean_nsd2_int8": 0.868938527320406,
+        "mean_nsd2_original_ts": 0.869243048178003,
+        "mean_difference_original_ts_minus_int8": 0.000304520857596936,
+        "metric": "per-case mean surface-area-weighted NSD@2 mm"
+      },
+      "amos_fast": {
+        "n": 100,
+        "percentile_ci95_two_sided": [-0.000450542883472103, 0.000806647946487698],
+        "percentile_upper95_one_sided": 0.000713041571993685,
+        "selected_interval_method": "BCa",
+        "ci95_two_sided": [-0.000466183587351743, 0.000793857991302423],
+        "upper95_one_sided": 0.000699191989136796,
+        "p_value_one_sided_bca": 0.0005,
+        "p_value_reporting": "p < 0.001",
+        "p_value_at_lower_grid_boundary": true,
+        "noninferiority_margin": 0.01,
+        "null_hypothesis": "mean(reference - INT8) >= 0.01",
+        "alternative_hypothesis": "mean(reference - INT8) < 0.01",
+        "verdict": "NON-INFERIOR (met)",
+        "bootstrap": {
+          "implementation": "R boot package",
+          "package_version": "1.3.28",
+          "method": "ordinary paired case bootstrap; BCa interval",
+          "replicates": 10000,
+          "seed": 20260927,
+          "rng": "Mersenne-Twister; Inversion; Rejection",
+          "percentile_warnings": []
+        },
+        "p_value": {
+          "implementation": {
+            "implementation": "official boot.pval::boot.pval function sourced from CRAN package",
+            "package_version": "0.7.0",
+            "source": "R/boot.pval.R",
+            "source_url": "https://cran.r-project.org/src/contrib/boot.pval_0.7.0.tar.gz",
+            "source_sha256": "9c953aa0a2a9e645495da49e13b600a37be44ce15b3f11424a19b8a5b63cfd20"
+          },
+          "method": "BCa confidence-interval inversion; alternative='less'; theta_null=0.01",
+          "pval_precision_argument": 0.001,
+          "one_sided_grid_resolution": 0.0005,
+          "reporting_rule": "when the result is the first one-sided grid point, report p < pval_precision",
+          "decision_alpha": 0.05,
+          "agrees_with_one_sided_bound": true
+        },
+        "bca_diagnostic": {
+          "eligible": true,
+          "fallback_reasons": [],
+          "ci95_two_sided": [-0.000466183587351743, 0.000793857991302423],
+          "upper95_one_sided": 0.000699191989136796,
+          "warnings": [],
+          "errors": null,
+          "jackknife": {
+            "acceleration": -0.000749162355777946,
+            "max_abs_standardized_jackknife_influence": 0.44566817223535,
+            "largest_influences": [
+              {
+                "index": 68,
+                "difference": 0.0146208027244179,
+                "leave_one_out_mean": 2.92035671744332e-05,
+                "standardized_jackknife_influence": 0.44566817223535
+              },
+              {
+                "index": 28,
+                "difference": -0.0119223278182552,
+                "leave_one_out_mean": 0.000297315996898404,
+                "standardized_jackknife_influence": -0.373222034526838
+              },
+              {
+                "index": 38,
+                "difference": -0.0103513426475363,
+                "leave_one_out_mean": 0.000281447459820436,
+                "standardized_jackknife_influence": -0.324755092422851
+              },
+              {
+                "index": 98,
+                "difference": -0.00739470612520254,
+                "leave_one_out_mean": 0.000251582444443327,
+                "standardized_jackknife_influence": -0.233538998330179
+              },
+              {
+                "index": 52,
+                "difference": 0.00734274530606116,
+                "leave_one_out_mean": 0.000102719298672986,
+                "standardized_jackknife_influence": 0.221130605554452
+              }
+            ]
+          }
+        },
+        "mean_nsd2_int8": 0.832611749176232,
+        "mean_nsd2_original_ts": 0.832786868734979,
+        "mean_difference_original_ts_minus_int8": 0.000175119558746868,
+        "metric": "per-case mean surface-area-weighted NSD@2 mm"
+      },
+      "ts_full": {
+        "n": 102,
+        "percentile_ci95_two_sided": [-8.11455646069116e-05, 0.000106757424604493],
+        "percentile_upper95_one_sided": 9.22347660789899e-05,
+        "selected_interval_method": "BCa",
+        "ci95_two_sided": [-8.44059176477764e-05, 0.000104220313284431],
+        "upper95_one_sided": 9.02636737006724e-05,
+        "p_value_one_sided_bca": 0.0005,
+        "p_value_reporting": "p < 0.001",
+        "p_value_at_lower_grid_boundary": true,
+        "noninferiority_margin": 0.01,
+        "null_hypothesis": "mean(reference - INT8) >= 0.01",
+        "alternative_hypothesis": "mean(reference - INT8) < 0.01",
+        "verdict": "NON-INFERIOR (met)",
+        "bootstrap": {
+          "implementation": "R boot package",
+          "package_version": "1.3.28",
+          "method": "ordinary paired case bootstrap; BCa interval",
+          "replicates": 10000,
+          "seed": 20260928,
+          "rng": "Mersenne-Twister; Inversion; Rejection",
+          "percentile_warnings": []
+        },
+        "p_value": {
+          "implementation": {
+            "implementation": "official boot.pval::boot.pval function sourced from CRAN package",
+            "package_version": "0.7.0",
+            "source": "R/boot.pval.R",
+            "source_url": "https://cran.r-project.org/src/contrib/boot.pval_0.7.0.tar.gz",
+            "source_sha256": "9c953aa0a2a9e645495da49e13b600a37be44ce15b3f11424a19b8a5b63cfd20"
+          },
+          "method": "BCa confidence-interval inversion; alternative='less'; theta_null=0.01",
+          "pval_precision_argument": 0.001,
+          "one_sided_grid_resolution": 0.0005,
+          "reporting_rule": "when the result is the first one-sided grid point, report p < pval_precision",
+          "decision_alpha": 0.05,
+          "agrees_with_one_sided_bound": true
+        },
+        "bca_diagnostic": {
+          "eligible": true,
+          "fallback_reasons": [],
+          "ci95_two_sided": [-8.44059176477764e-05, 0.000104220313284431],
+          "upper95_one_sided": 9.02636737006724e-05,
+          "warnings": [],
+          "errors": null,
+          "jackknife": {
+            "acceleration": -0.00882456099709833,
+            "max_abs_standardized_jackknife_influence": 0.436324476709401,
+            "largest_influences": [
+              {
+                "index": 97,
+                "difference": -0.00213237114840314,
+                "leave_one_out_mean": 3.45747020059441e-05,
+                "standardized_jackknife_influence": -0.436324476709401
+              },
+              {
+                "index": 74,
+                "difference": -0.00196998771706414,
+                "leave_one_out_mean": 3.29669452600133e-05,
+                "standardized_jackknife_influence": -0.40330409952157
+              },
+              {
+                "index": 8,
+                "difference": 0.00197813932974622,
+                "leave_one_out_mean": -6.12342154008921e-06,
+                "standardized_jackknife_influence": 0.399540397581005
+              },
+              {
+                "index": 42,
+                "difference": 0.00173904055913909,
+                "leave_one_out_mean": -3.7561069796226e-06,
+                "standardized_jackknife_influence": 0.350920094847585
+              },
+              {
+                "index": 9,
+                "difference": -0.000972692065321135,
+                "leave_one_out_mean": 2.30927308863202e-05,
+                "standardized_jackknife_influence": -0.200505831762418
+              }
+            ]
+          }
+        },
+        "mean_nsd2_int8": 0.936815220645121,
+        "mean_nsd2_original_ts": 0.936828550779966,
+        "mean_difference_original_ts_minus_int8": 1.33301348450707e-05,
+        "metric": "per-case mean surface-area-weighted NSD@2 mm"
+      },
+      "ts_fast": {
+        "n": 102,
+        "percentile_ci95_two_sided": [0.000244025377812284, 0.000744967028826211],
+        "percentile_upper95_one_sided": 0.000691973295916423,
+        "selected_interval_method": "BCa",
+        "ci95_two_sided": [0.000288047347531072, 0.000871938440923827],
+        "upper95_one_sided": 0.000785056305508152,
+        "p_value_one_sided_bca": 0.0005,
+        "p_value_reporting": "p < 0.001",
+        "p_value_at_lower_grid_boundary": true,
+        "noninferiority_margin": 0.01,
+        "null_hypothesis": "mean(reference - INT8) >= 0.01",
+        "alternative_hypothesis": "mean(reference - INT8) < 0.01",
+        "verdict": "NON-INFERIOR (met)",
+        "bootstrap": {
+          "implementation": "R boot package",
+          "package_version": "1.3.28",
+          "method": "ordinary paired case bootstrap; BCa interval",
+          "replicates": 10000,
+          "seed": 20260929,
+          "rng": "Mersenne-Twister; Inversion; Rejection",
+          "percentile_warnings": []
+        },
+        "p_value": {
+          "implementation": {
+            "implementation": "official boot.pval::boot.pval function sourced from CRAN package",
+            "package_version": "0.7.0",
+            "source": "R/boot.pval.R",
+            "source_url": "https://cran.r-project.org/src/contrib/boot.pval_0.7.0.tar.gz",
+            "source_sha256": "9c953aa0a2a9e645495da49e13b600a37be44ce15b3f11424a19b8a5b63cfd20"
+          },
+          "method": "BCa confidence-interval inversion; alternative='less'; theta_null=0.01",
+          "pval_precision_argument": 0.001,
+          "one_sided_grid_resolution": 0.0005,
+          "reporting_rule": "when the result is the first one-sided grid point, report p < pval_precision",
+          "decision_alpha": 0.05,
+          "agrees_with_one_sided_bound": true
+        },
+        "bca_diagnostic": {
+          "eligible": true,
+          "fallback_reasons": [],
+          "ci95_two_sided": [0.000288047347531072, 0.000871938440923827],
+          "upper95_one_sided": 0.000785056305508152,
+          "warnings": [],
+          "errors": null,
+          "jackknife": {
+            "acceleration": 0.0961037608230797,
+            "max_abs_standardized_jackknife_influence": 0.807821850988609,
+            "largest_influences": [
+              {
+                "index": 16,
+                "difference": 0.0111506047845121,
+                "leave_one_out_mean": 0.000354505829157487,
+                "standardized_jackknife_influence": 0.807821850988609
+              },
+              {
+                "index": 74,
+                "difference": 0.00449519346538918,
+                "leave_one_out_mean": 0.000420400990732962,
+                "standardized_jackknife_influence": 0.30489776102308
+              },
+              {
+                "index": 85,
+                "difference": 0.00377581146918493,
+                "leave_one_out_mean": 0.000427523584754786,
+                "standardized_jackknife_influence": 0.250536802934875
+              },
+              {
+                "index": 97,
+                "difference": 0.00289099250012703,
+                "leave_one_out_mean": 0.000436284168606844,
+                "standardized_jackknife_influence": 0.183674402782524
+              },
+              {
+                "index": 92,
+                "difference": 0.00189964490153371,
+                "leave_one_out_mean": 0.000446099491365194,
+                "standardized_jackknife_influence": 0.108762039751029
+              }
+            ]
+          }
+        },
+        "mean_nsd2_int8": 0.917817593659265,
+        "mean_nsd2_original_ts": 0.918277943595827,
+        "mean_difference_original_ts_minus_int8": 0.000460349936562925,
+        "metric": "per-case mean surface-area-weighted NSD@2 mm"
+      }
+    }
+  },
+  "diagnostics": {
+    "nsd1": {
+      "amos_full": {
+        "case_order": ["amos_0008", "amos_0013", "amos_0018", "amos_0022", "amos_0029", "amos_0032", "amos_0034", "amos_0040", "amos_0041", "amos_0051", "amos_0056", "amos_0061", "amos_0063", "amos_0070", "amos_0073", "amos_0085", "amos_0087", "amos_0090", "amos_0106", "amos_0108", "amos_0112", "amos_0117", "amos_0120", "amos_0123", "amos_0128", "amos_0132", "amos_0136", "amos_0140", "amos_0144", "amos_0150", "amos_0155", "amos_0157", "amos_0167", "amos_0174", "amos_0176", "amos_0189", "amos_0191", "amos_0194", "amos_0200", "amos_0202", "amos_0203", "amos_0204", "amos_0206", "amos_0207", "amos_0208", "amos_0216", "amos_0218", "amos_0219", "amos_0223", "amos_0228", "amos_0233", "amos_0238", "amos_0244", "amos_0247", "amos_0250", "amos_0255", "amos_0257", "amos_0258", "amos_0278", "amos_0280", "amos_0283", "amos_0284", "amos_0286", "amos_0287", "amos_0289", "amos_0290", "amos_0292", "amos_0293", "amos_0304", "amos_0308", "amos_0309", "amos_0310", "amos_0311", "amos_0313", "amos_0316", "amos_0318", "amos_0323", "amos_0325", "amos_0326", "amos_0328", "amos_0333", "amos_0334", "amos_0339", "amos_0342", "amos_0344", "amos_0346", "amos_0352", "amos_0356", "amos_0357", "amos_0363", "amos_0364", "amos_0365", "amos_0368", "amos_0372", "amos_0373", "amos_0377", "amos_0385", "amos_0397", "amos_0399", "amos_0409"],
+        "bca": {
+          "eligible": true,
+          "fallback_reasons": [],
+          "ci95_two_sided": [0.000397825231556126, 0.000769633045200201],
+          "upper95_one_sided": 0.000736156474471518,
+          "warnings": [],
+          "errors": null,
+          "jackknife": {
+            "acceleration": 0.00138280740364746,
+            "max_abs_standardized_jackknife_influence": 0.344775796779773,
+            "largest_influences": [
+              {
+                "index": 33,
+                "difference": 0.00378173017116301,
+                "leave_one_out_mean": 0.000548813421168718,
+                "standardized_jackknife_influence": 0.344775796779773
+              },
+              {
+                "index": 52,
+                "difference": -0.00219182424860553,
+                "leave_one_out_mean": 0.000609152354701733,
+                "standardized_jackknife_influence": -0.298711354125796
+              },
+              {
+                "index": 9,
+                "difference": -0.00165955587415922,
+                "leave_one_out_mean": 0.000603775906475003,
+                "standardized_jackknife_influence": -0.241373990854086
+              },
+              {
+                "index": 47,
+                "difference": -0.00157675484473641,
+                "leave_one_out_mean": 0.000602939532440429,
+                "standardized_jackknife_influence": -0.232454444002884
+              },
+              {
+                "index": 11,
+                "difference": -0.00134876359652403,
+                "leave_one_out_mean": 0.000600636590539294,
+                "standardized_jackknife_influence": -0.207894621084376
+              }
+            ]
+          }
+        }
+      },
+      "amos_fast": {
+        "case_order": ["amos_0008", "amos_0013", "amos_0018", "amos_0022", "amos_0029", "amos_0032", "amos_0034", "amos_0040", "amos_0041", "amos_0051", "amos_0056", "amos_0061", "amos_0063", "amos_0070", "amos_0073", "amos_0085", "amos_0087", "amos_0090", "amos_0106", "amos_0108", "amos_0112", "amos_0117", "amos_0120", "amos_0123", "amos_0128", "amos_0132", "amos_0136", "amos_0140", "amos_0144", "amos_0150", "amos_0155", "amos_0157", "amos_0167", "amos_0174", "amos_0176", "amos_0189", "amos_0191", "amos_0194", "amos_0200", "amos_0202", "amos_0203", "amos_0204", "amos_0206", "amos_0207", "amos_0208", "amos_0216", "amos_0218", "amos_0219", "amos_0223", "amos_0228", "amos_0233", "amos_0238", "amos_0244", "amos_0247", "amos_0250", "amos_0255", "amos_0257", "amos_0258", "amos_0278", "amos_0280", "amos_0283", "amos_0284", "amos_0286", "amos_0287", "amos_0289", "amos_0290", "amos_0292", "amos_0293", "amos_0304", "amos_0308", "amos_0309", "amos_0310", "amos_0311", "amos_0313", "amos_0316", "amos_0318", "amos_0323", "amos_0325", "amos_0326", "amos_0328", "amos_0333", "amos_0334", "amos_0339", "amos_0342", "amos_0344", "amos_0346", "amos_0352", "amos_0356", "amos_0357", "amos_0363", "amos_0364", "amos_0365", "amos_0368", "amos_0372", "amos_0373", "amos_0377", "amos_0385", "amos_0397", "amos_0399", "amos_0409"],
+        "bca": {
+          "eligible": true,
+          "fallback_reasons": [],
+          "ci95_two_sided": [-0.000306837742744488, 0.000887050261412328],
+          "upper95_one_sided": 0.000797134602204192,
+          "warnings": [],
+          "errors": null,
+          "jackknife": {
+            "acceleration": -0.0101051612570748,
+            "max_abs_standardized_jackknife_influence": 0.311701062872726,
+            "largest_influences": [
+              {
+                "index": 28,
+                "difference": -0.00912356931456348,
+                "leave_one_out_mean": 0.000400218118931962,
+                "standardized_jackknife_influence": -0.311701062872726
+              },
+              {
+                "index": 38,
+                "difference": -0.00908532571151505,
+                "leave_one_out_mean": 0.000399831819911271,
+                "standardized_jackknife_influence": -0.31043675687916
+              },
+              {
+                "index": 68,
+                "difference": 0.00911777764083599,
+                "leave_one_out_mean": 0.000215962089079442,
+                "standardized_jackknife_influence": 0.291344739512009
+              },
+              {
+                "index": 35,
+                "difference": -0.00665044000235049,
+                "leave_one_out_mean": 0.000375237014768195,
+                "standardized_jackknife_influence": -0.22994118767649
+              },
+              {
+                "index": 57,
+                "difference": -0.00627991577786857,
+                "leave_one_out_mean": 0.000371494345834034,
+                "standardized_jackknife_influence": -0.217691923474565
+              }
+            ]
+          }
+        }
+      },
+      "ts_full": {
+        "case_order": ["s0011", "s0058", "s0223", "s0250", "s0310", "s0344", "s0357", "s0358", "s0363", "s0407", "s0419", "s0425", "s0454", "s0461", "s0477", "s0481", "s0511", "s0513", "s0519", "s0522", "s0573", "s0582", "s0591", "s0629", "s0649", "s0703", "s0720", "s0726", "s0727", "s0747", "s0762", "s0763", "s0777", "s0811", "s0812", "s0815", "s0859", "s0866", "s0878", "s0885", "s0903", "s0908", "s0912", "s0914", "s0915", "s0928", "s0950", "s0963", "s0965", "s0970", "s0999", "s1029", "s1042", "s1082", "s1086", "s1123", "s1124", "s1127", "s1144", "s1164", "s1167", "s1206", "s1221", "s1233", "s1245", "s1267", "s1287", "s1336", "s1337", "s1348", "s1350", "s1353", "s1358", "s1359", "s1361", "s1364", "s1365", "s1366", "s1369", "s1370", "s1371", "s1372", "s1373", "s1374", "s1378", "s1379", "s1383", "s1384", "s1385", "s1387", "s1388", "s1389", "s1390", "s1391", "s1395", "s1397", "s1399", "s1400", "s1401", "s1403", "s1404", "s1405"],
+        "bca": {
+          "eligible": true,
+          "fallback_reasons": [],
+          "ci95_two_sided": [0.000134498945778719, 0.000370820626303978],
+          "upper95_one_sided": 0.0003507435668093,
+          "warnings": [],
+          "errors": null,
+          "jackknife": {
+            "acceleration": -0.00263516805488311,
+            "max_abs_standardized_jackknife_influence": 0.362371561129039,
+            "largest_influences": [
+              {
+                "index": 97,
+                "difference": -0.00193948344684125,
+                "leave_one_out_mean": 0.000273813098865325,
+                "standardized_jackknife_influence": -0.362371561129039
+              },
+              {
+                "index": 12,
+                "difference": -0.00136671120221854,
+                "leave_one_out_mean": 0.000268142086542328,
+                "standardized_jackknife_influence": -0.267666047558979
+              },
+              {
+                "index": 21,
+                "difference": 0.00180472507749829,
+                "leave_one_out_mean": 0.000236741727337211,
+                "standardized_jackknife_influence": 0.256717779424728
+              },
+              {
+                "index": 29,
+                "difference": -0.00120903661944116,
+                "leave_one_out_mean": 0.000266580952059384,
+                "standardized_jackknife_influence": -0.241595209666489
+              },
+              {
+                "index": 8,
+                "difference": 0.00170712222205927,
+                "leave_one_out_mean": 0.000237708092242548,
+                "standardized_jackknife_influence": 0.240579552342258
+              }
+            ]
+          }
+        }
+      },
+      "ts_fast": {
+        "case_order": ["s0011", "s0058", "s0223", "s0250", "s0310", "s0344", "s0357", "s0358", "s0363", "s0407", "s0419", "s0425", "s0454", "s0461", "s0477", "s0481", "s0511", "s0513", "s0519", "s0522", "s0573", "s0582", "s0591", "s0629", "s0649", "s0703", "s0720", "s0726", "s0727", "s0747", "s0762", "s0763", "s0777", "s0811", "s0812", "s0815", "s0859", "s0866", "s0878", "s0885", "s0903", "s0908", "s0912", "s0914", "s0915", "s0928", "s0950", "s0963", "s0965", "s0970", "s0999", "s1029", "s1042", "s1082", "s1086", "s1123", "s1124", "s1127", "s1144", "s1164", "s1167", "s1206", "s1221", "s1233", "s1245", "s1267", "s1287", "s1336", "s1337", "s1348", "s1350", "s1353", "s1358", "s1359", "s1361", "s1364", "s1365", "s1366", "s1369", "s1370", "s1371", "s1372", "s1373", "s1374", "s1378", "s1379", "s1383", "s1384", "s1385", "s1387", "s1388", "s1389", "s1390", "s1391", "s1395", "s1397", "s1399", "s1400", "s1401", "s1403", "s1404", "s1405"],
+        "bca": {
+          "eligible": true,
+          "fallback_reasons": [],
+          "ci95_two_sided": [0.000267785089191515, 0.000737378655085846],
+          "upper95_one_sided": 0.000685595222743172,
+          "warnings": [],
+          "errors": null,
+          "jackknife": {
+            "acceleration": 0.0613119320395144,
+            "max_abs_standardized_jackknife_influence": 0.660464024486706,
+            "largest_influences": [
+              {
+                "index": 16,
+                "difference": 0.00815596392413265,
+                "leave_one_out_mean": 0.000370447381447276,
+                "standardized_jackknife_influence": 0.660464024486706
+              },
+              {
+                "index": 74,
+                "difference": 0.00505806802661346,
+                "leave_one_out_mean": 0.000401119618056377,
+                "standardized_jackknife_influence": 0.395060092786302
+              },
+              {
+                "index": 85,
+                "difference": 0.00358544307367631,
+                "leave_one_out_mean": 0.000415700063134962,
+                "standardized_jackknife_influence": 0.268896895132491
+              },
+              {
+                "index": 97,
+                "difference": 0.00265921479297676,
+                "leave_one_out_mean": 0.000424870640171591,
+                "standardized_jackknife_influence": 0.189544768565997
+              },
+              {
+                "index": 65,
+                "difference": 0.00233556403945945,
+                "leave_one_out_mean": 0.000428075103077703,
+                "standardized_jackknife_influence": 0.161816857324667
+              }
+            ]
+          }
+        }
+      }
+    },
+    "nsd2": {
+      "amos_full": {
+        "case_order": ["amos_0008", "amos_0013", "amos_0018", "amos_0022", "amos_0029", "amos_0032", "amos_0034", "amos_0040", "amos_0041", "amos_0051", "amos_0056", "amos_0061", "amos_0063", "amos_0070", "amos_0073", "amos_0085", "amos_0087", "amos_0090", "amos_0106", "amos_0108", "amos_0112", "amos_0117", "amos_0120", "amos_0123", "amos_0128", "amos_0132", "amos_0136", "amos_0140", "amos_0144", "amos_0150", "amos_0155", "amos_0157", "amos_0167", "amos_0174", "amos_0176", "amos_0189", "amos_0191", "amos_0194", "amos_0200", "amos_0202", "amos_0203", "amos_0204", "amos_0206", "amos_0207", "amos_0208", "amos_0216", "amos_0218", "amos_0219", "amos_0223", "amos_0228", "amos_0233", "amos_0238", "amos_0244", "amos_0247", "amos_0250", "amos_0255", "amos_0257", "amos_0258", "amos_0278", "amos_0280", "amos_0283", "amos_0284", "amos_0286", "amos_0287", "amos_0289", "amos_0290", "amos_0292", "amos_0293", "amos_0304", "amos_0308", "amos_0309", "amos_0310", "amos_0311", "amos_0313", "amos_0316", "amos_0318", "amos_0323", "amos_0325", "amos_0326", "amos_0328", "amos_0333", "amos_0334", "amos_0339", "amos_0342", "amos_0344", "amos_0346", "amos_0352", "amos_0356", "amos_0357", "amos_0363", "amos_0364", "amos_0365", "amos_0368", "amos_0372", "amos_0373", "amos_0377", "amos_0385", "amos_0397", "amos_0399", "amos_0409"],
+        "bca": {
+          "eligible": true,
+          "fallback_reasons": [],
+          "ci95_two_sided": [0.000141935404595285, 0.000482566826823756],
+          "upper95_one_sided": 0.000453135000537548,
+          "warnings": [],
+          "errors": null,
+          "jackknife": {
+            "acceleration": 0.00590297199874782,
+            "max_abs_standardized_jackknife_influence": 0.423879416630657,
+            "largest_influences": [
+              {
+                "index": 33,
+                "difference": 0.00402191895615744,
+                "leave_one_out_mean": 0.000266971381853901,
+                "standardized_jackknife_influence": 0.423879416630657
+              },
+              {
+                "index": 9,
+                "difference": -0.00200576250617002,
+                "leave_one_out_mean": 0.000327857053190542,
+                "standardized_jackknife_influence": -0.263431986169105
+              },
+              {
+                "index": 52,
+                "difference": -0.00196759027937532,
+                "leave_one_out_mean": 0.00032747147514211,
+                "standardized_jackknife_influence": -0.259079366192382
+              },
+              {
+                "index": 47,
+                "difference": -0.0016980803042822,
+                "leave_one_out_mean": 0.000324749152161372,
+                "standardized_jackknife_influence": -0.228348266646478
+              },
+              {
+                "index": 72,
+                "difference": 0.00213199426107968,
+                "leave_one_out_mean": 0.000286061530289029,
+                "standardized_jackknife_influence": 0.208379178026768
+              }
+            ]
+          }
+        }
+      },
+      "amos_fast": {
+        "case_order": ["amos_0008", "amos_0013", "amos_0018", "amos_0022", "amos_0029", "amos_0032", "amos_0034", "amos_0040", "amos_0041", "amos_0051", "amos_0056", "amos_0061", "amos_0063", "amos_0070", "amos_0073", "amos_0085", "amos_0087", "amos_0090", "amos_0106", "amos_0108", "amos_0112", "amos_0117", "amos_0120", "amos_0123", "amos_0128", "amos_0132", "amos_0136", "amos_0140", "amos_0144", "amos_0150", "amos_0155", "amos_0157", "amos_0167", "amos_0174", "amos_0176", "amos_0189", "amos_0191", "amos_0194", "amos_0200", "amos_0202", "amos_0203", "amos_0204", "amos_0206", "amos_0207", "amos_0208", "amos_0216", "amos_0218", "amos_0219", "amos_0223", "amos_0228", "amos_0233", "amos_0238", "amos_0244", "amos_0247", "amos_0250", "amos_0255", "amos_0257", "amos_0258", "amos_0278", "amos_0280", "amos_0283", "amos_0284", "amos_0286", "amos_0287", "amos_0289", "amos_0290", "amos_0292", "amos_0293", "amos_0304", "amos_0308", "amos_0309", "amos_0310", "amos_0311", "amos_0313", "amos_0316", "amos_0318", "amos_0323", "amos_0325", "amos_0326", "amos_0328", "amos_0333", "amos_0334", "amos_0339", "amos_0342", "amos_0344", "amos_0346", "amos_0352", "amos_0356", "amos_0357", "amos_0363", "amos_0364", "amos_0365", "amos_0368", "amos_0372", "amos_0373", "amos_0377", "amos_0385", "amos_0397", "amos_0399", "amos_0409"],
+        "bca": {
+          "eligible": true,
+          "fallback_reasons": [],
+          "ci95_two_sided": [-0.000466183587351743, 0.000793857991302423],
+          "upper95_one_sided": 0.000699191989136796,
+          "warnings": [],
+          "errors": null,
+          "jackknife": {
+            "acceleration": -0.000749162355777946,
+            "max_abs_standardized_jackknife_influence": 0.44566817223535,
+            "largest_influences": [
+              {
+                "index": 68,
+                "difference": 0.0146208027244179,
+                "leave_one_out_mean": 2.92035671744332e-05,
+                "standardized_jackknife_influence": 0.44566817223535
+              },
+              {
+                "index": 28,
+                "difference": -0.0119223278182552,
+                "leave_one_out_mean": 0.000297315996898404,
+                "standardized_jackknife_influence": -0.373222034526838
+              },
+              {
+                "index": 38,
+                "difference": -0.0103513426475363,
+                "leave_one_out_mean": 0.000281447459820436,
+                "standardized_jackknife_influence": -0.324755092422851
+              },
+              {
+                "index": 98,
+                "difference": -0.00739470612520254,
+                "leave_one_out_mean": 0.000251582444443327,
+                "standardized_jackknife_influence": -0.233538998330179
+              },
+              {
+                "index": 52,
+                "difference": 0.00734274530606116,
+                "leave_one_out_mean": 0.000102719298672986,
+                "standardized_jackknife_influence": 0.221130605554452
+              }
+            ]
+          }
+        }
+      },
+      "ts_full": {
+        "case_order": ["s0011", "s0058", "s0223", "s0250", "s0310", "s0344", "s0357", "s0358", "s0363", "s0407", "s0419", "s0425", "s0454", "s0461", "s0477", "s0481", "s0511", "s0513", "s0519", "s0522", "s0573", "s0582", "s0591", "s0629", "s0649", "s0703", "s0720", "s0726", "s0727", "s0747", "s0762", "s0763", "s0777", "s0811", "s0812", "s0815", "s0859", "s0866", "s0878", "s0885", "s0903", "s0908", "s0912", "s0914", "s0915", "s0928", "s0950", "s0963", "s0965", "s0970", "s0999", "s1029", "s1042", "s1082", "s1086", "s1123", "s1124", "s1127", "s1144", "s1164", "s1167", "s1206", "s1221", "s1233", "s1245", "s1267", "s1287", "s1336", "s1337", "s1348", "s1350", "s1353", "s1358", "s1359", "s1361", "s1364", "s1365", "s1366", "s1369", "s1370", "s1371", "s1372", "s1373", "s1374", "s1378", "s1379", "s1383", "s1384", "s1385", "s1387", "s1388", "s1389", "s1390", "s1391", "s1395", "s1397", "s1399", "s1400", "s1401", "s1403", "s1404", "s1405"],
+        "bca": {
+          "eligible": true,
+          "fallback_reasons": [],
+          "ci95_two_sided": [-8.44059176477764e-05, 0.000104220313284431],
+          "upper95_one_sided": 9.02636737006724e-05,
+          "warnings": [],
+          "errors": null,
+          "jackknife": {
+            "acceleration": -0.00882456099709833,
+            "max_abs_standardized_jackknife_influence": 0.436324476709401,
+            "largest_influences": [
+              {
+                "index": 97,
+                "difference": -0.00213237114840314,
+                "leave_one_out_mean": 3.45747020059441e-05,
+                "standardized_jackknife_influence": -0.436324476709401
+              },
+              {
+                "index": 74,
+                "difference": -0.00196998771706414,
+                "leave_one_out_mean": 3.29669452600133e-05,
+                "standardized_jackknife_influence": -0.40330409952157
+              },
+              {
+                "index": 8,
+                "difference": 0.00197813932974622,
+                "leave_one_out_mean": -6.12342154008921e-06,
+                "standardized_jackknife_influence": 0.399540397581005
+              },
+              {
+                "index": 42,
+                "difference": 0.00173904055913909,
+                "leave_one_out_mean": -3.7561069796226e-06,
+                "standardized_jackknife_influence": 0.350920094847585
+              },
+              {
+                "index": 9,
+                "difference": -0.000972692065321135,
+                "leave_one_out_mean": 2.30927308863202e-05,
+                "standardized_jackknife_influence": -0.200505831762418
+              }
+            ]
+          }
+        }
+      },
+      "ts_fast": {
+        "case_order": ["s0011", "s0058", "s0223", "s0250", "s0310", "s0344", "s0357", "s0358", "s0363", "s0407", "s0419", "s0425", "s0454", "s0461", "s0477", "s0481", "s0511", "s0513", "s0519", "s0522", "s0573", "s0582", "s0591", "s0629", "s0649", "s0703", "s0720", "s0726", "s0727", "s0747", "s0762", "s0763", "s0777", "s0811", "s0812", "s0815", "s0859", "s0866", "s0878", "s0885", "s0903", "s0908", "s0912", "s0914", "s0915", "s0928", "s0950", "s0963", "s0965", "s0970", "s0999", "s1029", "s1042", "s1082", "s1086", "s1123", "s1124", "s1127", "s1144", "s1164", "s1167", "s1206", "s1221", "s1233", "s1245", "s1267", "s1287", "s1336", "s1337", "s1348", "s1350", "s1353", "s1358", "s1359", "s1361", "s1364", "s1365", "s1366", "s1369", "s1370", "s1371", "s1372", "s1373", "s1374", "s1378", "s1379", "s1383", "s1384", "s1385", "s1387", "s1388", "s1389", "s1390", "s1391", "s1395", "s1397", "s1399", "s1400", "s1401", "s1403", "s1404", "s1405"],
+        "bca": {
+          "eligible": true,
+          "fallback_reasons": [],
+          "ci95_two_sided": [0.000288047347531072, 0.000871938440923827],
+          "upper95_one_sided": 0.000785056305508152,
+          "warnings": [],
+          "errors": null,
+          "jackknife": {
+            "acceleration": 0.0961037608230797,
+            "max_abs_standardized_jackknife_influence": 0.807821850988609,
+            "largest_influences": [
+              {
+                "index": 16,
+                "difference": 0.0111506047845121,
+                "leave_one_out_mean": 0.000354505829157487,
+                "standardized_jackknife_influence": 0.807821850988609
+              },
+              {
+                "index": 74,
+                "difference": 0.00449519346538918,
+                "leave_one_out_mean": 0.000420400990732962,
+                "standardized_jackknife_influence": 0.30489776102308
+              },
+              {
+                "index": 85,
+                "difference": 0.00377581146918493,
+                "leave_one_out_mean": 0.000427523584754786,
+                "standardized_jackknife_influence": 0.250536802934875
+              },
+              {
+                "index": 97,
+                "difference": 0.00289099250012703,
+                "leave_one_out_mean": 0.000436284168606844,
+                "standardized_jackknife_influence": 0.183674402782524
+              },
+              {
+                "index": 92,
+                "difference": 0.00189964490153371,
+                "leave_one_out_mean": 0.000446099491365194,
+                "standardized_jackknife_influence": 0.108762039751029
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}
