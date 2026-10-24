@@ -97,5 +97,7 @@ Apache License 2.0. The weights are converted and quantized from the `total` tas
 > Wasserthal J, Breit HC, Meyer MT, et al. TotalSegmentator: robust segmentation of 104 anatomic
 > structures in CT images. *Radiol Artif Intell* 2023; 5:e230024.
 
-and the TS-Portable paper (Lee JH, *Quantized TotalSegmentator for Fast Abdominal Organ Segmentation on
-CPUs*; the preprint link will be added here when it is posted).
+and the TS-Portable paper:
+
+> Lee JH. Quantized TotalSegmentator for Fast Abdominal Organ Segmentation on CPUs. *medRxiv* 2026.
+> doi:[10.64898/2026.10.23.26366189](https://doi.org/10.64898/2026.10.23.26366189)

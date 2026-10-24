@@ -13,5 +13,8 @@ preferred-citation:
   authors:
     - family-names: Lee
       given-names: Jeong Hyun
+  journal: "medRxiv"
   year: 2026
-  notes: "Under review. Volume, pages, and DOI to be added on publication."
+  doi: "10.64898/2026.10.23.26366189"
+  url: "https://doi.org/10.64898/2026.10.23.26366189"
+  notes: "Preprint."

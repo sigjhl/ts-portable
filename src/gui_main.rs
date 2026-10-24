@@ -219,7 +219,10 @@ impl eframe::App for App {
         egui::CentralPanel::default().show(ctx, |ui| {
             ui.heading("CT organ segmentation");
             ui.label("8-bit integer TotalSegmentator · OpenVINO CPU · crop cascade");
-            ui.small("Companion app of [PLACEHOLDER]");
+            ui.hyperlink_to(
+                egui::RichText::new("Companion app of Lee JH, medRxiv 2026, doi:10.64898/2026.10.23.26366189").small(),
+                "https://doi.org/10.64898/2026.10.23.26366189",
+            );
             ui.add_space(8.0);
 
             if let Some(err) = &self.setup_error {

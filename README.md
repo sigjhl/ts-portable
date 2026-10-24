@@ -81,7 +81,12 @@ found, and the setting that reproduces the paper.
 
 [`evaluation/`](evaluation/README.md) reproduces the paper's results.
 
-See [`CITATION.cff`](CITATION.cff); the full reference will be added on publication.
+Please cite:
+
+> Lee JH. Quantized TotalSegmentator for Fast Abdominal Organ Segmentation on CPUs. *medRxiv*
+> 2026. doi:[10.64898/2026.10.23.26366189](https://doi.org/10.64898/2026.10.23.26366189)
+
+([`CITATION.cff`](CITATION.cff)).
 
 Apache License 2.0 ([`LICENSE`](LICENSE), [`NOTICE`](NOTICE)). Derived from TotalSegmentator
 (Wasserthal et al., *Radiology: Artificial Intelligence* 2023) and nnU-Net, both Apache-2.0. The INT8
