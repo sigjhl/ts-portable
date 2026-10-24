@@ -29,8 +29,9 @@ repository; its README walks through the Windows download and the command line.
 
 | File | Contents | Size |
 |---|---|---|
-| `ts-portable-models.zip` | INT8 models (`*_int8.onnx`), model cards, label map, `SHA256SUMS.txt`, in a `models/` folder | 172 MB (212 MB unpacked) |
-| `fp32/` | the same seven models unquantized (`*.onnx`), model cards, label map, `SHA256SUMS.txt` | 757 MB |
+| `ts-portable-models.zip` | INT8 models (`*_int8.onnx`), model cards, label map, `LICENSE`, `NOTICE`, `SHA256SUMS.txt`, in a `models/` folder | 172 MB (212 MB unpacked) |
+| `fp32/` | the same seven models unquantized (`*.onnx`), model cards, label map, `LICENSE`, `NOTICE`, `SHA256SUMS.txt` | 757 MB |
+| `LICENSE`, `NOTICE` | Apache License 2.0 and the attribution and change notice for the weights | |
 
 - **INT8 (`ts-portable-models.zip`)** is what TS-Portable uses by default (`--device openvino --int8`).
   It needs the OpenVINO execution provider of ONNX Runtime (`onnxruntime-openvino` 1.24.1) on an x86-64
@@ -83,7 +84,7 @@ The per-case results and the code behind every number are in the repository's `e
 ## Checksums
 
 ```
-6132bca2025353bb182fc69cbc6baeb526cd254ce242cca50185edb39f0af68d  ts-portable-models.zip
+b8a20812f00e13192cb5bc3912b902950a74e91756a275311230691030bfbc8e  ts-portable-models.zip
 ```
 
 Per-file checksums are in `models/SHA256SUMS.txt` inside the zip and in `fp32/SHA256SUMS.txt`; the INT8
@@ -91,8 +92,9 @@ ones are also in the GitHub repository (`deployment/models.sha256`).
 
 ## License and attribution
 
-Apache License 2.0. The weights are converted and quantized from the `total` task of TotalSegmentator
-(Apache-2.0), which is built on nnU-Net (Apache-2.0). Please cite TotalSegmentator:
+Apache License 2.0 (`LICENSE`; a copy is also inside the zip and in `fp32/`). The weights are converted
+and quantized from the `total` task of TotalSegmentator (Apache-2.0), which is built on nnU-Net
+(Apache-2.0); `NOTICE` gives the attribution and the changes made. Please cite TotalSegmentator:
 
 > Wasserthal J, Breit HC, Meyer MT, et al. TotalSegmentator: robust segmentation of 104 anatomic
 > structures in CT images. *Radiol Artif Intell* 2023; 5:e230024.

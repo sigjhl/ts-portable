@@ -1,0 +1,21 @@
+TS-Portable models (https://huggingface.co/sigjhl/ts-portable)
+Copyright 2026 Jeong Hyun Lee
+
+These model weights are licensed under the Apache License, Version 2.0 (see LICENSE).
+
+They are derived from TotalSegmentator (https://github.com/wasserth/TotalSegmentator),
+version 2.12.0, task "total". Copyright University Hospital Basel. Licensed under the
+Apache License, Version 2.0. TotalSegmentator is built on nnU-Net
+(https://github.com/MIC-DKFZ/nnUNet), Copyright German Cancer Research Center (DKFZ),
+Division of Medical Image Computing, also licensed under the Apache License, Version 2.0.
+
+Changes made to the original weights: the seven nnU-Net PyTorch checkpoints of the
+"total" task were exported to ONNX (the fp32 models) and then quantized to 8-bit
+integers with NNCF post-training quantization with accuracy control (the *_int8.onnx
+models). The model cards (*.model_card.json) restate the nnU-Net configuration; the
+label map restates TotalSegmentator's label numbers.
+
+Please cite: Wasserthal J, Breit HC, Meyer MT, et al. TotalSegmentator: robust
+segmentation of 104 anatomic structures in CT images. Radiol Artif Intell
+2023;5:e230024. And: Lee JH. Quantized TotalSegmentator for Fast Abdominal Organ
+Segmentation on CPUs. medRxiv 2026. doi:10.64898/2026.10.23.26366189
