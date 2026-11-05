@@ -87,7 +87,8 @@ jobs:
         run: |
           Compress-Archive -Path "dist\$env:BUNDLE" -DestinationPath "$env:BUNDLE.zip" -CompressionLevel Optimal
           $hash = (Get-FileHash -Algorithm SHA256 "$env:BUNDLE.zip").Hash.ToLower()
-          "$hash  $env:BUNDLE.zip" | Set-Content -Encoding ascii "$env:BUNDLE.zip.sha256"
+          # LF, not CRLF, so that `shasum -c` and `sha256sum -c` read the file name.
+          "$hash  $env:BUNDLE.zip`n" | Set-Content -Encoding ascii -NoNewline "$env:BUNDLE.zip.sha256"
           Get-Content "$env:BUNDLE.zip.sha256"
           "{0:N1} MB" -f ((Get-Item "$env:BUNDLE.zip").Length / 1MB)
 
