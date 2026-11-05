@@ -1,7 +1,8 @@
 # Builds the Windows app zip: the GUI and CLI, the OpenVINO runtime libraries,
-# third-party license notices, and an empty models\ folder. The INT8 models are
-# not bundled; users download ts-portable-models.zip from the Hugging
-# Face models repository and unzip it into the app folder (see the README).
+# third-party license notices, and the INT8 models in models\. The models come
+# from ts-portable-models.zip in the Hugging Face models repository, checked
+# against MODELS_SHA256 and deployment\models.sha256; a new models zip needs
+# both updated.
 #
 # Pushing a `v*` tag publishes the zip as a GitHub Release asset with a
 # build-provenance attestation (public repositories only); a tag with a hyphen,
@@ -25,6 +26,7 @@ jobs:
     env:
       BUNDLE: ts-portable-windows
       MODELS_URL: https://huggingface.co/sigjhl/ts-portable/resolve/main/ts-portable-models.zip
+      MODELS_SHA256: b8a20812f00e13192cb5bc3912b902950a74e91756a275311230691030bfbc8e
     defaults:
       run:
         shell: pwsh
@@ -41,18 +43,28 @@ jobs:
       - name: Build
         run: cargo build --release --locked --bins
 
+      - name: Fetch models
+        run: |
+          $ProgressPreference = 'SilentlyContinue'
+          Invoke-WebRequest $env:MODELS_URL -OutFile ts-portable-models.zip
+          $hash = (Get-FileHash -Algorithm SHA256 ts-portable-models.zip).Hash.ToLower()
+          if ($hash -ne $env:MODELS_SHA256) { throw "ts-portable-models.zip has SHA-256 $hash, expected $env:MODELS_SHA256" }
+          # The zip holds a models\ folder.
+          Expand-Archive ts-portable-models.zip -DestinationPath . -Force
+          $sums = Get-Content deployment\models.sha256 | ForEach-Object {
+            $expected, $name = $_ -split '\s+', 2
+            [pscustomobject]@{ Name = $name; Expected = $expected }
+          }
+          foreach ($f in $sums) {
+            $actual = (Get-FileHash -Algorithm SHA256 "models\$($f.Name)").Hash.ToLower()
+            if ($actual -ne $f.Expected) { throw "models\$($f.Name) has SHA-256 $actual, expected $($f.Expected)" }
+          }
+          $extra = Get-ChildItem models -File | Where-Object { $_.Name -notin @($sums.Name) + 'SHA256SUMS.txt' }
+          if ($extra) { throw "unexpected files in models\: $($extra.Name -join ', ')" }
+          "{0} model files verified" -f $sums.Count
+
       - name: Stage bundle
         run: |
-          # prepare_windows_openvino.ps1 copies a models directory; give it one
-          # holding only download instructions.
-          New-Item -ItemType Directory -Force models | Out-Null
-          @(
-            "Download the INT8 models:"
-            "  $env:MODELS_URL"
-            "and unzip it into the app folder (the folder holding onnx-totalseg-gui.exe),"
-            "so that this models folder receives the 15 model files. Checksums are in"
-            "models\SHA256SUMS.txt inside the zip."
-          ) | Set-Content -Encoding utf8 models\README.txt
           & deployment\prepare_windows_openvino.ps1 -StagingDir "dist\$env:BUNDLE" -ModelsDir models -Force
           Copy-Item target\release\onnx-totalseg-gui.exe "dist\$env:BUNDLE\"
           # Third-party license notices from the runtime wheels.

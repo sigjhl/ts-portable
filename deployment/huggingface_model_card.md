@@ -35,8 +35,8 @@ repository; its README walks through the Windows download and the command line.
 
 - **INT8 (`ts-portable-models.zip`)** is what TS-Portable uses by default (`--device openvino --int8`).
   It needs the OpenVINO execution provider of ONNX Runtime (`onnxruntime-openvino` 1.24.1) on an x86-64
-  CPU; it does not run on macOS. Unzip it next to the program, so that `models/` sits beside the
-  executable.
+  CPU; it does not run on macOS. The Windows app zip on GitHub already includes it; elsewhere,
+  unzip it next to the program, so that `models/` sits beside the executable.
 - **fp32 (`fp32/`)** runs through any ONNX Runtime provider: CPU (including macOS), CUDA on NVIDIA GPUs
   (`--device cuda`), or DirectML on Windows (`--device directml`). Point TS-Portable at it with
   `--models-dir fp32`.

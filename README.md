@@ -19,32 +19,25 @@ reference implementation (mean Dice difference 0.00017).
 
 ## Try it (Windows)
 
-1. Download **[the app](https://github.com/sigjhl/ts-portable/releases/latest/download/ts-portable-windows.zip)**,
-   right-click it, choose **Extract All…** and extract it anywhere (the Desktop is fine). Open the
-   extracted folders until you see `onnx-totalseg-gui.exe`. The folder that holds it is the
-   **app folder**.
-2. Download **[the models](https://huggingface.co/sigjhl/ts-portable/resolve/main/ts-portable-models.zip)**
-   (172 MB), right-click it and choose **Extract All…**. When Windows asks where to put the files,
-   click **Browse…** and choose the app folder. If Windows says some files already exist, choose
-   **Replace**. The app folder should now look like this:
+1. Download **[the app](https://github.com/sigjhl/ts-portable/releases/latest/download/ts-portable-windows.zip)**
+   (about 220 MB, models included), right-click it, choose **Extract All…** and extract it anywhere
+   (the Desktop is fine). Open the extracted folders until you see `onnx-totalseg-gui.exe`:
 
    ```
-   ts-portable-windows\                      ← the app folder
+   ts-portable-windows\
    ├── onnx-totalseg-gui.exe                 ← the app: double-click this
    ├── onnx-totalseg.exe
    ├── onnxruntime\
    ├── licenses\
-   └── models\                               ← from the models download
+   └── models\
        ├── total_1p5mm_291_organs_int8.onnx
        ├── ...                               (seven .onnx files in all)
        └── total_label_map.json
    ```
 
-   If `models` ended up one level too deep (for example `ts-portable-models\models\`), drag the
-   `models` folder into the app folder.
-3. Double-click **`onnx-totalseg-gui.exe`**. If Windows warns about an unrecognized app, click
+2. Double-click **`onnx-totalseg-gui.exe`**. If Windows warns about an unrecognized app, click
    **More info → Run anyway** (the app is not code-signed).
-4. Open a NIfTI file or a DICOM folder, pick the organs, click **Run**.
+3. Open a NIfTI file or a DICOM folder, pick the organs, click **Run**.
 
 Each scan gets an `output/<scan name>/` folder next to the app with the organ masks, an optional
 `preview_total.png`, and a table of volume (mL) and mean and median HU.

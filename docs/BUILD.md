@@ -16,8 +16,8 @@ comes from depends on the platform. The models are the same everywhere.
 `deployment\prepare_windows_openvino.ps1` downloads the `onnxruntime-openvino` 1.24.1 and `openvino`
 2025.4.1 wheels and stages their DLLs in `dist\onnx-totalseg-openvino\onnxruntime\` next to the
 binary. The [`Windows bundle`](../.github/workflows/windows-bundle.yml) workflow does the same on
-GitHub Actions when a `v*` tag is pushed and publishes the release zip (binaries and OpenVINO
-libraries; models are downloaded separately). See
+GitHub Actions when a `v*` tag is pushed and publishes the release zip (binaries, OpenVINO
+libraries and the INT8 models). See
 [`deployment/WINDOWS_INT8_PROTOCOL.md`](../deployment/WINDOWS_INT8_PROTOCOL.md).
 
 ### Linux (x86-64)
@@ -83,7 +83,7 @@ support it (recent Xeon and Core Ultra processors), which can change the output 
 ## Verifying the download
 
 Each release lists the zip's SHA-256 checksum (`.sha256` file); the models' checksums are in
-[`deployment/models.sha256`](../deployment/models.sha256) and, inside the models zip,
+[`deployment/models.sha256`](../deployment/models.sha256) and, inside the release and models zips,
 `models/SHA256SUMS.txt`. Releases also carry a GitHub build-provenance attestation, which proves the
 zip was built by the `Windows bundle` workflow from the tagged source. With the
 [GitHub CLI](https://cli.github.com):

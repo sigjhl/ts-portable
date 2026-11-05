@@ -36,7 +36,8 @@ cargo test --release --locked
 
 1. **Models**: `--models-dir DIR`, else `$ONNX_TOTALSEG_MODELS`, else `./models`
    relative to the current working directory. The GUI always uses `models/`
-   next to its executable. The INT8 set is `ts-portable-models.zip` from
+   next to its executable. The Windows release zip includes the INT8 set in
+   `models/`. Elsewhere, get it as `ts-portable-models.zip` from
    https://huggingface.co/sigjhl/ts-portable (172 MB zipped, 212 MB
    unpacked); unzipping it yields `models/` holding 7 `*_int8.onnx`, 7
    `*.model_card.json`, `total_label_map.json` and `SHA256SUMS.txt`. The
