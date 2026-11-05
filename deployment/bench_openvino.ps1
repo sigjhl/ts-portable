@@ -35,10 +35,10 @@ function Get-ProcessTreeMemory([int]$RootPid) {
   } catch {
     # Some locked-down reading workstations deny Win32_Process queries. This
     # package runs cases serially, so fall back to the wrapper plus any active
-    # onnx-totalseg process without requiring administrator privileges.
+    # ts-portable-cli process without requiring administrator privileges.
     $members = @()
     try { $members += Get-Process -Id $RootPid -ErrorAction Stop } catch {}
-    try { $members += Get-Process -Name "onnx-totalseg" -ErrorAction Stop } catch {}
+    try { $members += Get-Process -Name "ts-portable-cli" -ErrorAction Stop } catch {}
     $workingSet = 0L
     $private = 0L
     foreach ($member in @($members | Sort-Object Id -Unique)) {

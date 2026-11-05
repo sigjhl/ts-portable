@@ -16,7 +16,7 @@
 #
 # Configuration (environment variables; defaults in brackets):
 #   PY             Python with psutil and, for ts_*, TotalSegmentator 2.12.0        [python3]
-#   BIN            TS-Portable command-line program (cargo build --release)       [target/release/onnx-totalseg]
+#   BIN            TS-Portable command-line program (cargo build --release)       [target/release/ts-portable-cli]
 #   ORT_OPENVINO   onnxruntime-openvino 1.24.1 shared library (libonnxruntime.so.1.24.1)   [required for ours_*]
 #   INT8_MODELS    models folder of the release (INT8 models)                     [models]
 #   FP32_MODELS    folder of the fp32 ONNX models                                  [required for ours_fp32*]
@@ -28,7 +28,7 @@ set -uo pipefail
 cfg=$1; tier=$2; inputs=$3; jsonl=$4; maskdir=$5
 HERE=$(cd "$(dirname "$0")" && pwd)
 PY=${PY:-python3}
-BIN=${BIN:-target/release/onnx-totalseg}
+BIN=${BIN:-target/release/ts-portable-cli}
 INT8_MODELS=${INT8_MODELS:-models}
 BENCH=$HERE/bench_case.py
 RUNTS=$HERE/run_ts.py

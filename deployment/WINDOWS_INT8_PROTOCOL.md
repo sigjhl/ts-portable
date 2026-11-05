@@ -14,15 +14,15 @@ build needs **no OpenVINO or CUDA SDK** — just Rust.
 # 1. Rust toolchain (once): https://rustup.rs  -> default stable MSVC
 # 2. Build from the repository root:
 cargo build --release
-#    -> target\release\onnx-totalseg.exe and target\release\onnx-totalseg-gui.exe
+#    -> target\release\ts-portable-cli.exe and target\release\ts-portable.exe
 
 # 3. Stage the self-contained OpenVINO package (downloads the onnxruntime-openvino 1.24.1 and
 #    openvino 2025.4.1 wheels, bundles their DLLs, copies .\models):
 powershell -ExecutionPolicy Bypass -File deployment\prepare_windows_openvino.ps1 -Force
-#    -> dist\onnx-totalseg-openvino\  (onnx-totalseg.exe + onnxruntime\*.dll + models\ + README)
+#    -> dist\ts-portable-openvino\  (ts-portable-cli.exe + onnxruntime\*.dll + models\ + README)
 ```
 
-Copy `onnx-totalseg-gui.exe` next to `onnx-totalseg.exe` in the staged folder if you want the window.
+Copy `ts-portable.exe` next to `ts-portable-cli.exe` in the staged folder if you want the window.
 
 ### (Optional) trim the model payload
 
@@ -30,7 +30,7 @@ Copy `onnx-totalseg-gui.exe` next to `onnx-totalseg.exe` in the staged folder if
 weights:
 
 ```powershell
-$m = "dist\onnx-totalseg-openvino\models"
+$m = "dist\ts-portable-openvino\models"
 # INT8, all tiers/ROIs (about 210 MB unpacked): keep *_int8.onnx + cards + label map, drop fp32/fp16
 Get-ChildItem $m -File | Where-Object { $_.Name -notmatch '(_int8\.onnx$|\.model_card\.json$|^total_label_map\.json$)' } | Remove-Item
 # --- OR spleen-only (~48 MB): keep just the 6-mm localizer + the organs submodel (contains spleen).
@@ -40,7 +40,7 @@ Get-ChildItem $m -File | Where-Object { $_.Name -notmatch '(_int8\.onnx$|\.model
 #             selecting the organs model, but no other 1.5-mm weights are needed.
 ```
 
-Then copy `dist\onnx-totalseg-openvino\`, `deployment\run_openvino.ps1`, and
+Then copy `dist\ts-portable-openvino\`, `deployment\run_openvino.ps1`, and
 `deployment\bench_openvino.ps1` to the target computer.
 
 ---
@@ -60,7 +60,7 @@ for the fp32 OpenVINO baseline, `-Tier fast` for the 3-mm model, and `-Statistic
 HU table.
 
 To reproduce the manuscript's precision setting, set
-`$env:ONNX_TOTALSEG_OPENVINO_INFERENCE_PRECISION = "f32"` before running (see
+`$env:TS_PORTABLE_OPENVINO_INFERENCE_PRECISION = "f32"` before running (see
 [`docs/METHOD.md`](../docs/METHOD.md)).
 
 ---

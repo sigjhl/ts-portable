@@ -21,12 +21,12 @@ reference implementation (mean Dice difference 0.00017).
 
 1. Download **[the app](https://github.com/sigjhl/ts-portable/releases/latest/download/ts-portable-windows.zip)**
    (about 220 MB, models included), right-click it, choose **Extract All…** and extract it anywhere
-   (the Desktop is fine). Open the extracted folders until you see `onnx-totalseg-gui.exe`:
+   (the Desktop is fine). Open the extracted folders until you see `ts-portable.exe`:
 
    ```
    ts-portable-windows\
-   ├── onnx-totalseg-gui.exe                 ← the app: double-click this
-   ├── onnx-totalseg.exe
+   ├── ts-portable.exe                       ← the app: double-click this
+   ├── ts-portable-cli.exe
    ├── onnxruntime\
    ├── licenses\
    └── models\
@@ -35,7 +35,7 @@ reference implementation (mean Dice difference 0.00017).
        └── total_label_map.json
    ```
 
-2. Double-click **`onnx-totalseg-gui.exe`**. If Windows warns about an unrecognized app, click
+2. Double-click **`ts-portable.exe`**. If Windows warns about an unrecognized app, click
    **More info → Run anyway** (the app is not code-signed).
 3. Open a NIfTI file or a DICOM folder, pick the organs, click **Run**.
 
@@ -47,7 +47,7 @@ On macOS or Linux, [build from source](docs/BUILD.md).
 ## Command line
 
 ```
-onnx-totalseg -i scan.nii.gz -o output/ --device openvino --int8 --roi_subset spleen,liver --statistics -
+ts-portable-cli -i scan.nii.gz -o output/ --device openvino --int8 --roi_subset spleen,liver --statistics -
 ```
 
 | Option | Does |
@@ -57,9 +57,24 @@ onnx-totalseg -i scan.nii.gz -o output/ --device openvino --int8 --roi_subset sp
 | `--statistics` | write volumes and HU to `statistics.json` next to the masks; `--statistics -` prints them to the terminal instead |
 | `--preview` | write a PNG overlay next to the masks |
 
-The input can be a NIfTI file or a DICOM folder. `onnx-totalseg --help` lists everything;
+The input can be a NIfTI file or a DICOM folder. `ts-portable-cli --help` lists everything;
 [docs/BUILD.md](docs/BUILD.md) covers DICOM series selection, where the models and ONNX Runtime are
 found, and the setting that reproduces the paper.
+
+## fp32 models (Mac, NVIDIA GPU)
+
+The app and the command above use the INT8 models, which need an x86-64 CPU. The unquantized fp32
+models are in the [`fp32/` folder of the models repository](https://huggingface.co/sigjhl/ts-portable/tree/main/fp32)
+(757 MB) and run on any CPU, including Macs, and on NVIDIA GPUs. Download the folder (for example
+`hf download sigjhl/ts-portable --include "fp32/*" --local-dir .`) and pass it instead of `--int8`:
+
+```
+ts-portable-cli -i scan.nii.gz -o output/ --models-dir fp32 --device cpu
+ts-portable-cli -i scan.nii.gz -o output/ --models-dir fp32 --device cuda
+```
+
+`--device cuda` needs the GPU build of ONNX Runtime and NVIDIA's CUDA libraries:
+[setup](docs/BUILD.md#nvidia-gpu-cuda).
 
 ## More
 

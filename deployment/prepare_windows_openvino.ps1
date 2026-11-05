@@ -1,6 +1,6 @@
 param(
-  [string]$StagingDir = ".\dist\onnx-totalseg-openvino",
-  [string]$Binary = ".\target\release\onnx-totalseg.exe",
+  [string]$StagingDir = ".\dist\ts-portable-openvino",
+  [string]$Binary = ".\target\release\ts-portable-cli.exe",
   [string]$ModelsDir = ".\models",
   # onnxruntime-openvino wheel: provides onnxruntime.dll + the OpenVINO EP glue.
   [string]$OrtOpenvinoVersion = "1.24.1",
@@ -92,12 +92,12 @@ foreach ($dll in @("openvino.dll", "openvino_intel_cpu_plugin.dll", "openvino_on
   if (!(Test-Path (Join-Path $stagedOrt $dll))) { Write-Warning "expected OpenVINO DLL not staged: $dll (verify -PyTag / -OpenvinoVersion)" }
 }
 
-Copy-RequiredFile $binaryPath (Join-Path $StagingDir "onnx-totalseg.exe")
+Copy-RequiredFile $binaryPath (Join-Path $StagingDir "ts-portable-cli.exe")
 Copy-Item -Recurse -Force $modelsPath (Join-Path $StagingDir "models")
 
 $readme = @"
-onnx-totalseg OpenVINO CPU package
-==================================
+TS-Portable OpenVINO CPU package
+================================
 
 Self-contained Windows CPU package. Inference runs through the OpenVINO execution
 provider (oneDNN-backed): ~1.8-2.7x faster than the legacy MLAS CPU path on the
@@ -105,15 +105,15 @@ segmentation tiers, including on pre-AVX-512 CPUs. All OpenVINO DLLs are bundled
 in .\onnxruntime\ -- no system install or OpenVINO SDK is required on this machine.
 
 Run INT8:
-  .\onnx-totalseg.exe segment -i C:\path\ct.nii.gz -o C:\path\seg.nii.gz --fast ^
+  .\ts-portable-cli.exe segment -i C:\path\ct.nii.gz -o C:\path\seg.nii.gz --fast ^
     --device openvino --int8 --ort-lib .\onnxruntime\onnxruntime.dll --models-dir .\models
 
 Run FP32:
-  .\onnx-totalseg.exe segment -i C:\path\ct.nii.gz -o C:\path\seg.nii.gz --fast ^
+  .\ts-portable-cli.exe segment -i C:\path\ct.nii.gz -o C:\path\seg.nii.gz --fast ^
     --device openvino --ort-lib .\onnxruntime\onnxruntime.dll --models-dir .\models
 
 Warm server:
-  .\onnx-totalseg.exe serve --device openvino --ort-lib .\onnxruntime\onnxruntime.dll ^
+  .\ts-portable-cli.exe serve --device openvino --ort-lib .\onnxruntime\onnxruntime.dll ^
     --models-dir .\models --warm ultrafast
 
 Notes:

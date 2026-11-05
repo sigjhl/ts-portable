@@ -78,7 +78,7 @@ The per-case results and the code behind every number are in the repository's `e
 - The models are TotalSegmentator's: they reproduce its correct segmentations and its errors. Check
   masks on the source images when a result looks implausible.
 - INT8 results depend on the CPU and runtime. The paper's results used
-  `ONNX_TOTALSEG_OPENVINO_INFERENCE_PRECISION=f32`; without it, CPUs with BF16 support may give slightly
+  `TS_PORTABLE_OPENVINO_INFERENCE_PRECISION=f32`; without it, CPUs with BF16 support may give slightly
   different output.
 
 ## Checksums

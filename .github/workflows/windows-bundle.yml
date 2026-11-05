@@ -66,7 +66,7 @@ jobs:
       - name: Stage bundle
         run: |
           & deployment\prepare_windows_openvino.ps1 -StagingDir "dist\$env:BUNDLE" -ModelsDir models -Force
-          Copy-Item target\release\onnx-totalseg-gui.exe "dist\$env:BUNDLE\"
+          Copy-Item target\release\ts-portable.exe "dist\$env:BUNDLE\"
           # Third-party license notices from the runtime wheels.
           $licenses = New-Item -ItemType Directory -Force "dist\$env:BUNDLE\licenses"
           foreach ($pkg in Get-ChildItem .pkg-cache -Directory) {
@@ -80,8 +80,8 @@ jobs:
 
       - name: Smoke test
         run: |
-          & "dist\$env:BUNDLE\onnx-totalseg.exe" --help
-          if ($LASTEXITCODE -ne 0) { throw "onnx-totalseg.exe --help failed with exit code $LASTEXITCODE" }
+          & "dist\$env:BUNDLE\ts-portable-cli.exe" --help
+          if ($LASTEXITCODE -ne 0) { throw "ts-portable-cli.exe --help failed with exit code $LASTEXITCODE" }
 
       - name: Zip
         run: |

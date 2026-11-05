@@ -30,7 +30,7 @@ jobs:
       - name: Test
         run: cargo test --locked
       - name: CLI runs
-        run: cargo run --locked --bin onnx-totalseg -- --version
+        run: cargo run --locked --bin ts-portable-cli -- --version
 
   evaluation:
     name: Evaluation code tests

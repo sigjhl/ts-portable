@@ -134,7 +134,7 @@ workstation, `runtime/run_bench.sh` runs one configuration over a folder of scan
 process, writes the masks, and appends the cold wall time and peak memory per case:
 
 ```bash
-export PY=python3 BIN=target/release/onnx-totalseg INT8_MODELS=models \
+export PY=python3 BIN=target/release/ts-portable-cli INT8_MODELS=models \
        ORT_OPENVINO=/path/to/libonnxruntime.so.1.24.1
 runtime/run_bench.sh ours_int8_nncf full AMOS/imagesVa timing.jsonl masks/tsportable/full
 runtime/run_bench.sh ts_gpu         full AMOS/imagesVa timing.jsonl masks/reference/full

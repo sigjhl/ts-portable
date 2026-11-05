@@ -5,7 +5,7 @@ param(
   [Parameter(Mandatory=$true)]
   [string]$OutputPath,
 
-  [string]$Binary = ".\onnx-totalseg.exe",
+  [string]$Binary = ".\ts-portable-cli.exe",
   [string]$OrtLib = ".\onnxruntime\onnxruntime.dll",
   [string]$ModelsDir = ".\models",
   [ValidateSet("full", "fast", "fastest", "ultrafast")]

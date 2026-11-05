@@ -77,7 +77,7 @@ gains nothing from INT8. The Rust runtime loads the quantized graph with
 `--device openvino`.
 
 The manuscript's accuracy and runtime results were produced with
-`ONNX_TOTALSEG_OPENVINO_INFERENCE_PRECISION=f32`, which keeps the non-quantized
+`TS_PORTABLE_OPENVINO_INFERENCE_PRECISION=f32`, which keeps the non-quantized
 operations in fp32. Without it, OpenVINO may run them in BF16 on CPUs that
 support it; that configuration is not part of the manuscript's results.
 

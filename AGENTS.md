@@ -5,15 +5,15 @@ human introduction; this file is the reference.
 
 ## What is here
 
-- `onnx-totalseg` (CLI, `src/main.rs`): segments one CT scan with the
+- `ts-portable-cli` (CLI, `src/main.rs`): segments one CT scan with the
   TotalSegmentator `total` task models (TotalSegmentator 2.12.0) through ONNX
   Runtime. The INT8 models run on the CPU through the OpenVINO execution
   provider; the fp32 models run through the CPU, CUDA or DirectML providers.
-- `onnx-totalseg-gui` (desktop window, `src/gui_main.rs`): a front end that
+- `ts-portable` (desktop window, `src/gui_main.rs`): a front end that
   runs the CLI binary found next to it, always with `--int8 --device openvino
   --roi_subset <organs>`, and shows the volume table. It adds nothing the CLI
   cannot do.
-- `onnx-totalseg serve`: an HTTP server that keeps the models loaded for
+- `ts-portable-cli serve`: an HTTP server that keeps the models loaded for
   repeated runs on one machine (`--help` for its options). Batch work does not
   need it; one process per scan is how the manuscript's timings were measured.
 - `scripts/quantize_*.py`, `docs/METHOD.md`: how the INT8 models were made.
@@ -28,13 +28,13 @@ Rust stable (edition 2024). No ONNX Runtime, OpenVINO or CUDA SDK is needed to
 build; the binaries load the ONNX Runtime library at run time.
 
 ```
-cargo build --release --locked          # target/release/onnx-totalseg, onnx-totalseg-gui
+cargo build --release --locked          # target/release/ts-portable-cli, ts-portable
 cargo test --release --locked
 ```
 
 ## Run-time pieces and where they are looked up
 
-1. **Models**: `--models-dir DIR`, else `$ONNX_TOTALSEG_MODELS`, else `./models`
+1. **Models**: `--models-dir DIR`, else `$TS_PORTABLE_MODELS`, else `./models`
    relative to the current working directory. The GUI always uses `models/`
    next to its executable. The Windows release zip includes the INT8 set in
    `models/`. Elsewhere, get it as `ts-portable-models.zip` from
@@ -60,7 +60,7 @@ cargo test --release --locked
 Minimal INT8 run (Linux shown; on Windows use the `.exe` and `.dll` paths):
 
 ```
-onnx-totalseg -i scan.nii.gz -o out/ --device openvino --int8 \
+ts-portable-cli -i scan.nii.gz -o out/ --device openvino --int8 \
     --ort-lib /path/to/libonnxruntime.so.1.24.1 --models-dir /path/to/models \
     --roi_subset spleen,liver --statistics --quiet
 ```
@@ -128,13 +128,15 @@ Progress lines go to stdout (silenced by `--quiet`); errors go to stderr.
 
 ## Environment variables that change results
 
-- `ONNX_TOTALSEG_OPENVINO_INFERENCE_PRECISION=f32` keeps the non-quantized
+- `TS_PORTABLE_OPENVINO_INFERENCE_PRECISION=f32` keeps the non-quantized
   operations in fp32; the manuscript's numbers were produced with it. Unset, a
   BF16-capable CPU may compute them in BF16. Set it when reproducing the paper.
-- `ONNX_TOTALSEG_OPENVINO_THREADS=N` limits OpenVINO inference threads;
+- `TS_PORTABLE_OPENVINO_THREADS=N` limits OpenVINO inference threads;
   `--threads N` sets ONNX Runtime's intra-op threads.
-- `ONNX_TOTALSEG_OPENVINO_CACHE_DIR=DIR` caches compiled models between runs.
-- `ONNX_TOTALSEG_MODELS`, `ORT_DYLIB_PATH`: see above.
+- `TS_PORTABLE_OPENVINO_CACHE_DIR=DIR` caches compiled models between runs.
+- `TS_PORTABLE_MODELS`, `ORT_DYLIB_PATH`: see above.
+- Every `TS_PORTABLE_*` setting is also read under its name before 1.1.0,
+  `ONNX_TOTALSEG_*`, when the new name is unset.
 
 ## Do not
 
