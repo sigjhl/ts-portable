@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite the accompanying manuscript."
 title: "ts-portable: accuracy-controlled INT8 quantization of TotalSegmentator for CPU"
-version: 1.0.0
+version: 1.1.0
 repository-code: "https://github.com/sigjhl/ts-portable"
 license: Apache-2.0
 authors:

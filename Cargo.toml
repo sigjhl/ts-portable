@@ -1,6 +1,6 @@
 [package]
 name = "ts-portable"
-version = "1.0.0"
+version = "1.1.0"
 edition = "2024"
 description = "TS-Portable: 8-bit integer TotalSegmentator for CT organ segmentation on the CPU (command line and desktop app)"
 authors = ["Jeong Hyun Lee"]
