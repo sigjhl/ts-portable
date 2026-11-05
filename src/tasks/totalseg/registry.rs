@@ -1,12 +1,12 @@
 use std::{
     collections::{HashMap, HashSet},
-    env, fs,
+    fs,
     path::{Path, PathBuf},
 };
 
 use anyhow::{Context, Result, bail};
 
-use crate::runtime::model::ModelCard;
+use crate::{runtime::model::ModelCard, settings};
 
 const FAST: &str = "total_3mm_297";
 const FASTEST: &str = "total_6mm_298";
@@ -46,14 +46,14 @@ pub fn models_dir(cli: Option<&Path>) -> PathBuf {
     if let Some(path) = cli {
         return path.to_path_buf();
     }
-    if let Ok(path) = env::var("ONNX_TOTALSEG_MODELS") {
+    if let Ok(path) = settings::var("MODELS") {
         return PathBuf::from(path);
     }
     PathBuf::from("models")
 }
 
 pub fn resolve_card(models_dir: &Path, model: &str) -> Result<PathBuf> {
-    if let Ok(path) = env::var("ONNX_TOTALSEG_CARD") {
+    if let Ok(path) = settings::var("CARD") {
         return Ok(PathBuf::from(path));
     }
     let tag = match model {

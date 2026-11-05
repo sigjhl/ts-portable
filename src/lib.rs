@@ -5,6 +5,7 @@ pub mod report;
 pub mod resample;
 pub mod runtime;
 pub mod server;
+pub mod settings;
 pub mod tasks;
 pub mod volume;
 pub mod windows_ml;

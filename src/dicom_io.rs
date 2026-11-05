@@ -444,7 +444,7 @@ pub fn list_dicom_series(path: &Path) -> Result<Vec<SeriesInfo>> {
 /// The returned `TempDir` deletes the directory when dropped.
 pub fn stage_files(files: &[PathBuf]) -> std::io::Result<tempfile::TempDir> {
     let dir = tempfile::Builder::new()
-        .prefix("onnx_totalseg_series_")
+        .prefix("ts_portable_series_")
         .tempdir()?;
     for (i, f) in files.iter().enumerate() {
         let dest = dir.path().join(format!("{i:06}.dcm"));

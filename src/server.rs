@@ -44,7 +44,7 @@ pub struct ServerArgs {
     warm: Option<String>,
 
     /// Folder holding the model cards, label map and ONNX files
-    /// [default: $ONNX_TOTALSEG_MODELS, else ./models]
+    /// [default: $TS_PORTABLE_MODELS, else ./models]
     #[arg(long)]
     models_dir: Option<PathBuf>,
 
@@ -126,7 +126,7 @@ pub fn run(args: ServerArgs) -> Result<()> {
         args: args.clone(),
     });
     println!(
-        "onnx-totalseg serving on http://{} (device={}, warm={})",
+        "ts-portable serving on http://{} (device={}, warm={})",
         addr,
         args.device,
         if state.cache.lock().is_ok_and(|cache| cache.is_empty()) {

@@ -1,7 +1,7 @@
-// Friendly desktop front-end for onnx-totalseg.
+// Friendly desktop front-end for ts-portable-cli.
 //
 // It is a thin shell over the tested CLI: add NIfTI scans and/or DICOM series,
-// choose one or more organs and a resolution, press Run. It spawns the `onnx-totalseg`
+// choose one or more organs and a resolution, press Run. It spawns the `ts-portable-cli`
 // binary on the crop-cascade path (`--roi_subset <organ>`, INT8, OpenVINO CPU),
 // writes masks to `output/<scan>/` next to the executable, and shows the
 // per-organ volume and HU that the CLI reports via `--statistics -`.
@@ -34,7 +34,7 @@ fn main() -> eframe::Result<()> {
         ..Default::default()
     };
     eframe::run_native(
-        "onnx-totalseg — CT organ segmentation",
+        "TS-Portable — CT organ segmentation",
         options,
         Box::new(|_cc| Ok(Box::new(App::new()))),
     )
@@ -650,9 +650,9 @@ fn fallback_organs() -> Vec<String> {
 
 fn cli_binary_name() -> &'static str {
     if cfg!(windows) {
-        "onnx-totalseg.exe"
+        "ts-portable-cli.exe"
     } else {
-        "onnx-totalseg"
+        "ts-portable-cli"
     }
 }
 

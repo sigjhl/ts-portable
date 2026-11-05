@@ -70,6 +70,7 @@ mod imp {
     use ort::environment::Environment;
 
     use super::{CATALOG_PROVIDER_ORDER, provider_name_eq};
+    use crate::settings;
 
     type HResult = i32;
     type Bool = i32;
@@ -183,8 +184,8 @@ mod imp {
     }
 
     fn register_byo_provider_libraries_inner() -> Result<Vec<String>> {
-        let specs = env::var("ONNX_TOTALSEG_WINDOWS_ML_EP_LIBS")
-            .or_else(|_| env::var("ONNX_TOTALSEG_WINDOWSML_EP_LIBS"))
+        let specs = settings::var("WINDOWS_ML_EP_LIBS")
+            .or_else(|_| settings::var("WINDOWSML_EP_LIBS"))
             .unwrap_or_default();
         if specs.trim().is_empty() {
             return Ok(Vec::new());
@@ -343,7 +344,7 @@ mod imp {
     }
 
     fn install_missing_providers() -> bool {
-        env::var("ONNX_TOTALSEG_WINDOWS_ML_INSTALL")
+        settings::var("WINDOWS_ML_INSTALL")
             .is_ok_and(|value| matches!(value.as_str(), "1" | "true" | "TRUE" | "yes" | "YES"))
     }
 
@@ -417,8 +418,8 @@ mod imp {
 
     fn library_candidates(ort_lib: Option<&Path>) -> Vec<PathBuf> {
         let mut out = Vec::new();
-        if let Some(path) = env::var_os("ONNX_TOTALSEG_WINDOWS_ML_LIB")
-            .or_else(|| env::var_os("ONNX_TOTALSEG_WINDOWSML_LIB"))
+        if let Some(path) = settings::var_os("WINDOWS_ML_LIB")
+            .or_else(|| settings::var_os("WINDOWSML_LIB"))
         {
             out.push(PathBuf::from(path));
         }

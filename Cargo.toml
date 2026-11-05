@@ -15,13 +15,13 @@ name = "onnx_totalseg_rs"
 path = "src/lib.rs"
 
 [[bin]]
-name = "onnx-totalseg"
+name = "ts-portable-cli"
 path = "src/main.rs"
 
-# Friendly desktop front-end. Spawns the onnx-totalseg binary (the tested CLI
+# Friendly desktop front-end. Spawns the ts-portable-cli binary (the tested CLI
 # crop-cascade path) and shows per-organ volume and HU. No console window.
 [[bin]]
-name = "onnx-totalseg-gui"
+name = "ts-portable"
 path = "src/gui_main.rs"
 
 [dependencies]

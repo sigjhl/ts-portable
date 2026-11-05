@@ -23,7 +23,7 @@ use onnx_totalseg_rs::{
 };
 
 #[derive(Parser, Debug)]
-#[command(name = "onnx-totalseg")]
+#[command(name = "ts-portable-cli")]
 #[command(version)]
 #[command(about = "TS-Portable: 8-bit integer TotalSegmentator for CT organ segmentation on the CPU (ONNX Runtime with OpenVINO)")]
 #[command(args_conflicts_with_subcommands = true)]
@@ -160,7 +160,7 @@ struct SegmentArgs {
     quiet: bool,
 
     /// Folder holding the model cards, label map and ONNX files
-    /// [default: $ONNX_TOTALSEG_MODELS, else ./models]
+    /// [default: $TS_PORTABLE_MODELS, else ./models]
     #[arg(long)]
     models_dir: Option<PathBuf>,
 
@@ -496,7 +496,7 @@ struct CropBboxWorkerRun<'a> {
 
 fn crop_bbox_worker(run: CropBboxWorkerRun<'_>) -> Result<Option<[[usize; 2]; 3]>> {
     let temp = tempfile::Builder::new()
-        .prefix("onnx_totalseg_crop_bbox_")
+        .prefix("ts_portable_crop_bbox_")
         .tempdir()?;
     let bbox_path = temp.path().join("bbox.json");
     let exe = std::env::current_exe().context("failed to locate current executable")?;
@@ -1612,7 +1612,7 @@ mod cli_tests {
     #[test]
     fn roi_subset_accepts_commas_and_repeated_options() {
         let cli = Cli::try_parse_from([
-            "onnx-totalseg",
+            "ts-portable-cli",
             "-i",
             "scan.nii.gz",
             "-o",

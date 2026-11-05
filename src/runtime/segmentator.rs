@@ -32,6 +32,7 @@ use crate::{
         resample_data_or_seg_to_shape, resize_labels_to_shape,
     },
     runtime::model::ModelCard,
+    settings,
     volume::Volume,
     windows_ml,
 };
@@ -968,7 +969,7 @@ impl MultiModelSegmentator {
 
     fn use_part_workers(&self) -> bool {
         self.active_provider == "CUDAExecutionProvider"
-            && env::var_os("ONNX_TOTALSEG_CUDA_FULL_RESIDENT").is_none()
+            && settings::var_os("CUDA_FULL_RESIDENT").is_none()
     }
 
     fn keep_parts_resident(&self) -> bool {
@@ -996,7 +997,7 @@ impl MultiModelSegmentator {
     ) -> Result<()> {
         let t = StageTimer::new(self.profile);
         let temp = tempfile::Builder::new()
-            .prefix("onnx_totalseg_full_cuda_")
+            .prefix("ts_portable_full_cuda_")
             .tempdir()?;
         let input_raw = temp.path().join("input.f32");
         write_raw_f32_volume(&input_raw, img_crop)
@@ -2190,17 +2191,17 @@ fn ensure_ort(opts: &RuntimeOptions) -> Result<()> {
         let lib = opts
             .ort_lib
             .clone()
-            .or_else(|| env::var_os("ONNX_TOTALSEG_ORT_LIB").map(PathBuf::from));
+            .or_else(|| settings::var_os("ORT_LIB").map(PathBuf::from));
         match lib {
             Some(path) => ort::init_from(&path)
                 .map_err(|e| format!("failed to load ONNX Runtime from {}: {e}", path.display()))?
-                .with_name("onnx-totalseg")
+                .with_name("ts-portable")
                 .with_telemetry(false)
                 .commit()
                 .then_some(())
                 .ok_or_else(|| "ONNX Runtime environment was already initialized".to_string()),
             None => ort::init()
-                .with_name("onnx-totalseg")
+                .with_name("ts-portable")
                 .with_telemetry(false)
                 .commit()
                 .then_some(())
@@ -2353,34 +2354,34 @@ fn execution_providers_from_names(
             "cuda" | "cudaexecutionprovider" => {
                 let mut cuda = ep::CUDA::default();
                 let low_memory =
-                    cuda_low_memory || env::var_os("ONNX_TOTALSEG_CUDA_LOW_MEMORY").is_some();
+                    cuda_low_memory || settings::var_os("CUDA_LOW_MEMORY").is_some();
                 if low_memory {
                     cuda = cuda
                         .with_arena_extend_strategy(ArenaExtendStrategy::SameAsRequested)
                         .with_conv_algorithm_search(ConvAlgorithmSearch::Heuristic)
                         .with_conv_max_workspace(false);
                 }
-                if let Ok(value) = env::var("ONNX_TOTALSEG_CUDA_CONV_SEARCH") {
+                if let Ok(value) = settings::var("CUDA_CONV_SEARCH") {
                     cuda = cuda.with_conv_algorithm_search(
                         match value.to_ascii_lowercase().as_str() {
                             "exhaustive" => ConvAlgorithmSearch::Exhaustive,
                             "heuristic" => ConvAlgorithmSearch::Heuristic,
                             "default" => ConvAlgorithmSearch::Default,
-                            other => bail!("unsupported ONNX_TOTALSEG_CUDA_CONV_SEARCH='{other}'"),
+                            other => bail!("unsupported TS_PORTABLE_CUDA_CONV_SEARCH='{other}'"),
                         },
                     );
                 }
-                if let Ok(value) = env::var("ONNX_TOTALSEG_CUDA_CONV_MAX_WORKSPACE") {
+                if let Ok(value) = settings::var("CUDA_CONV_MAX_WORKSPACE") {
                     let enable = match value.to_ascii_lowercase().as_str() {
                         "1" | "true" | "yes" | "on" => true,
                         "0" | "false" | "no" | "off" => false,
                         other => {
-                            bail!("unsupported ONNX_TOTALSEG_CUDA_CONV_MAX_WORKSPACE='{other}'")
+                            bail!("unsupported TS_PORTABLE_CUDA_CONV_MAX_WORKSPACE='{other}'")
                         }
                     };
                     cuda = cuda.with_conv_max_workspace(enable);
                 }
-                if let Ok(value) = env::var("ONNX_TOTALSEG_CUDA_ARENA_STRATEGY") {
+                if let Ok(value) = settings::var("CUDA_ARENA_STRATEGY") {
                     cuda = cuda.with_arena_extend_strategy(
                         match value.to_ascii_lowercase().as_str() {
                             "same" | "same_as_requested" | "sameasrequested" => {
@@ -2390,14 +2391,14 @@ fn execution_providers_from_names(
                                 ArenaExtendStrategy::NextPowerOfTwo
                             }
                             other => {
-                                bail!("unsupported ONNX_TOTALSEG_CUDA_ARENA_STRATEGY='{other}'")
+                                bail!("unsupported TS_PORTABLE_CUDA_ARENA_STRATEGY='{other}'")
                             }
                         },
                     );
                 }
-                if let Ok(value) = env::var("ONNX_TOTALSEG_CUDA_MEM_LIMIT_MB") {
+                if let Ok(value) = settings::var("CUDA_MEM_LIMIT_MB") {
                     let mb = value.parse::<usize>().with_context(|| {
-                        format!("invalid ONNX_TOTALSEG_CUDA_MEM_LIMIT_MB='{value}'")
+                        format!("invalid TS_PORTABLE_CUDA_MEM_LIMIT_MB='{value}'")
                     })?;
                     cuda = cuda.with_memory_limit(mb * 1024 * 1024);
                 }
@@ -2410,35 +2411,35 @@ fn execution_providers_from_names(
                 // Self-bundled OpenVINO runtime, CPU device. oneDNN-backed int8/fp32
                 // 3D-conv kernels; ~2-2.7x over MLAS on the CPU tiers.
                 let mut ov = ep::OpenVINO::default().with_device_type("CPU");
-                if env::var_os("ONNX_TOTALSEG_OPENVINO_QDQ_OPTIMIZER").is_some() {
+                if settings::var_os("OPENVINO_QDQ_OPTIMIZER").is_some() {
                     ov = ov.with_qdq_optimizer(true);
                 }
-                if let Ok(cache_dir) = env::var("ONNX_TOTALSEG_OPENVINO_CACHE_DIR") {
+                if let Ok(cache_dir) = settings::var("OPENVINO_CACHE_DIR") {
                     ov = ov.with_cache_dir(cache_dir);
                 }
-                let threads = env::var("ONNX_TOTALSEG_OPENVINO_THREADS")
+                let threads = settings::var("OPENVINO_THREADS")
                     .ok()
                     .and_then(|v| v.parse::<usize>().ok());
-                let precision = env::var("ONNX_TOTALSEG_OPENVINO_INFERENCE_PRECISION")
+                let precision = settings::var("OPENVINO_INFERENCE_PRECISION")
                     .ok()
                     .map(|value| {
                         Ok(match value.to_ascii_lowercase().as_str() {
                             "f32" | "fp32" => "f32",
                             "bf16" => "bf16",
                             other => bail!(
-                                "unsupported ONNX_TOTALSEG_OPENVINO_INFERENCE_PRECISION='{other}'"
+                                "unsupported TS_PORTABLE_OPENVINO_INFERENCE_PRECISION='{other}'"
                             ),
                         })
                     })
                     .transpose()?;
-                let execution_mode = env::var("ONNX_TOTALSEG_OPENVINO_EXECUTION_MODE")
+                let execution_mode = settings::var("OPENVINO_EXECUTION_MODE")
                     .ok()
                     .map(|value| {
                         Ok(match value.to_ascii_lowercase().as_str() {
                             "performance" => "PERFORMANCE",
                             "accuracy" => "ACCURACY",
                             other => {
-                                bail!("unsupported ONNX_TOTALSEG_OPENVINO_EXECUTION_MODE='{other}'")
+                                bail!("unsupported TS_PORTABLE_OPENVINO_EXECUTION_MODE='{other}'")
                             }
                         })
                     })
