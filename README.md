@@ -17,6 +17,10 @@ Threadripper PRO 7945WX (12 cores); GPU: NVIDIA RTX A6000. On a six-core office 
 i5-10400), segmenting the spleen alone took a median of 5.8 s. Accuracy was noninferior to the
 reference implementation (mean Dice difference 0.00017).
 
+![The Windows app segmenting the spleen on a CT scan](docs/demo.gif)
+
+*The Windows app segmenting the spleen on the CPU, in real time.*
+
 ## Try it (Windows)
 
 1. Download **[the app](https://github.com/sigjhl/ts-portable/releases/latest/download/ts-portable-windows.zip)**
