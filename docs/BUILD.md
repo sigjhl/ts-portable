@@ -102,8 +102,9 @@ documents every output path and field.
 
 ### Reproducing the paper's numbers
 
-The manuscript's results were produced with `TS_PORTABLE_OPENVINO_INFERENCE_PRECISION=f32`, which
-keeps the non-quantized operations in fp32. Without it, OpenVINO may run them in BF16 on CPUs that
+The manuscript's results were produced with `TS_PORTABLE_OPENVINO_INFERENCE_PRECISION=f32` (named
+`ONNX_TOTALSEG_OPENVINO_INFERENCE_PRECISION` before version 1.1.0; both names work), which keeps the
+non-quantized operations in fp32. Without it, OpenVINO may run them in BF16 on CPUs that
 support it (recent Xeon and Core Ultra processors), which can change the output slightly.
 
 ## Verifying the download
